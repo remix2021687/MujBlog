@@ -5,7 +5,7 @@ ALLOWED_HOSTS = ['localhost']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'shopdb',
+        'NAME': 'KlaudieBlog',
         'USER': 'ROOT',
         'PASSWORD': '2010665KE',
         'HOST': '172.18.0.2',
