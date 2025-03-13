@@ -46,7 +46,6 @@ main {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 64px;
-  height: 1500px;
 }
 
 .Header {
@@ -273,6 +272,7 @@ main {
   background-color: white;
   border-radius: 10px;
   padding: 25px;
+  overflow: hidden;
   -webkit-box-shadow: 15px 21px 13px -3px rgba(0, 0, 0, 0.2);
           box-shadow: 15px 21px 13px -3px rgba(0, 0, 0, 0.2);
 }

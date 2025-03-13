@@ -41,8 +41,9 @@ export const BlogBox = ({id, name, image, display_description}) => {
     useEffect(() => {
         if (returnEvent) {
             setIsOpenModal(false);
-        } else {
-            setIsOpenModal(true);
+        } 
+        else if (returnEvent === false) {
+            setIsOpenModal(false);
         }
     }, [returnEvent])
 
@@ -50,7 +51,8 @@ export const BlogBox = ({id, name, image, display_description}) => {
         <>
             <AnimatePresence>
                 {IsOpenModal && 
-                    <Modal 
+                    <Modal
+                        id={id}
                         image={image}
                         name={name}
                         text={display_description}

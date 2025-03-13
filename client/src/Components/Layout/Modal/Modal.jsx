@@ -1,6 +1,13 @@
 import { motion } from "motion/react"
+import { useEffect } from "react"
+import { GetPostSelf } from "../../../Axios/AxiosInit"
+import { useState } from "react"
+import moment from "moment/moment"
 
-export const Modal = ({id, name, image, text, author, setReturnEvent}) => {
+export const Modal = ({id, setReturnEvent}) => {
+    const [data, setData] = useState([]);
+
+    const formateData = moment(data.date_created).format("D.MM.YYYY")
     
     const ModalAnimation = {
         open: {
@@ -45,6 +52,20 @@ export const Modal = ({id, name, image, text, author, setReturnEvent}) => {
         setReturnEvent(event)
     }
 
+    useEffect(() => {
+        GetPostSelf(id)
+        .then((res) => {
+            setData(res.data)
+            console.log(data);
+        })
+        .catch((err) => {
+            console.error(err);
+            setData(false)
+            setReturnEvent(false);
+        })
+
+    }, [])
+
     return (
         <motion.section 
             className="Modal"
@@ -57,21 +78,21 @@ export const Modal = ({id, name, image, text, author, setReturnEvent}) => {
             }}
         >
             <section className="Modal_left">
-                <motion.img variants={ModalAnimationChildren} src={image} />
+                <motion.img variants={ModalAnimationChildren} src={data.photo} />
                 <section className="Modal_lefr_header">
-                    <motion.h1 variants={ModalAnimationChildren}>{name}</motion.h1>
-                    <motion.p variants={ModalAnimationChildren}>{text}</motion.p>
+                    <motion.h1 variants={ModalAnimationChildren}>{data.name}</motion.h1>
+                    <motion.p variants={ModalAnimationChildren}>{data.text}</motion.p>
                 </section>
             </section>
             <section className="Modal_right">
                 <motion.section variants={ModalAnimationChildren} className="Modal_right_presonal">
                     <section>
                         <h1>Auhor by</h1>
-                        <h3>Maksym Yeromin</h3>
+                        <h3>{data.author?.last_name} {data.author?.first_name}</h3>
                     </section>
                     <motion.button variants={ModalAnimationChildren} onClick={ClickHendler}>Close</motion.button>
                 </motion.section>
-                <motion.h4 variants={ModalAnimationChildren}><span>Created by</span> 03.02.2025</motion.h4>
+                <motion.h4 variants={ModalAnimationChildren}><span>Created by</span> {formateData}</motion.h4>
             </section>
         </motion.section>
     )
