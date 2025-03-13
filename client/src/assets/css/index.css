@@ -65,11 +65,12 @@ main {
           justify-content: space-evenly;
   -ms-flex-item-align: center;
       align-self: center;
-  position: fixed !important;
+  position: sticky !important;
   top: 0;
   width: 100%;
-  height: 80px;
-  border-bottom: 1px solid #D8D8D8;
+  background-color: white;
+  padding: 10px 0;
+  z-index: 100;
 }
 .Header h1 {
   font-size: 24px;
@@ -111,4 +112,216 @@ main {
   background-color: black;
   -webkit-transition: 0.5s ease;
   transition: 0.5s ease;
+}
+
+.BlogBox {
+  position: relative;
+  text-align: center;
+  width: 35%;
+  cursor: pointer;
+}
+.BlogBox:hover img {
+  -webkit-filter: brightness(0.7);
+          filter: brightness(0.7);
+}
+.BlogBox img {
+  max-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+.BlogBox .Blogbox_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 15px;
+  position: absolute;
+  width: 100%;
+  top: 35%;
+}
+.BlogBox .Blogbox_content h2 {
+  font-size: 64px;
+  font-weight: 500;
+  color: white;
+}
+.BlogBox .Blogbox_content p {
+  max-width: 80%;
+  font-size: 14px;
+  font-weight: 400;
+  color: white;
+}
+.BlogBox .Blogbox_content section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+.BlogBox .Blogbox_content section button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 40%;
+  height: 50px;
+  background-color: black;
+  border: none;
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.Modal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  position: fixed;
+  z-index: 150;
+  width: 95%;
+  height: 95%;
+  top: 3%;
+  background-color: whitesmoke;
+  border-radius: 25px;
+  padding: 20px;
+  gap: 50px;
+  overflow-y: scroll;
+  scrollbar-width: 20px;
+}
+.Modal .Modal_left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 50%;
+}
+.Modal .Modal_left img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+.Modal .Modal_left .Modal_lefr_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+}
+.Modal .Modal_left .Modal_lefr_header h1 {
+  font-size: 60px;
+}
+.Modal .Modal_left .Modal_lefr_header p {
+  font-size: 18px;
+}
+.Modal .Modal_right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 30%;
+  height: 200px;
+  position: sticky !important;
+  top: 10px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 25px;
+  -webkit-box-shadow: 15px 21px 13px -3px rgba(0, 0, 0, 0.2);
+          box-shadow: 15px 21px 13px -3px rgba(0, 0, 0, 0.2);
+}
+.Modal .Modal_right .Modal_right_presonal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.Modal .Modal_right .Modal_right_presonal h1 {
+  font-size: 12px;
+}
+.Modal .Modal_right .Modal_right_presonal button {
+  width: 30%;
+  height: 50px;
+  background: none;
+  border: 2px solid black;
+  font-size: 18px;
+  font-weight: 500;
+  color: black;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.Modal .Modal_right h4 {
+  justify-self: flex-start;
+}
+.Modal .Modal_right h4 span {
+  font-size: 12px;
+}
+
+.HomePage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 50px 0;
 }

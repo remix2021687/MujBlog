@@ -2,9 +2,11 @@ import { NavLink } from "react-router"
 import { motion, useMotionValueEvent, useScroll } from 'motion/react';
 import { useState } from "react";
 
+import Logo from '../../../../../assets/img/kludieLogo.png'
+
 export const Header = () => {
     const { scrollY } = useScroll();
-    const [ scrollDuraction, setScrollDuraction ] = useState('down');
+    const [ scrollDuraction, setScrollDuraction ] = useState('up');
 
     useMotionValueEvent(scrollY,  "change", (current) => {
         const diff = current - scrollY.getPrevious();
@@ -14,18 +16,23 @@ export const Header = () => {
     return (
         <motion.header 
             className="Header"
+            transition={{
+                ease: 'easeInOut'
+            }}
+            
             animate={scrollDuraction == "down" ? {
-                width: "50%",
-                top: "10px",
-                borderRadius: '8px',
-                backgroundColor: 'red'
+                width: "98%",
+                top: '10px',
+                borderRadius: '15px',
+                boxShadow: '0px 0px 21px 7px rgba(0,0,0,0.2)'
             }: {}}
         >
-            <h1>Klaudie Blog</h1>
+            <NavLink to={'/'}>
+                <img src={Logo} alt="Logo" width={350} />
+            </NavLink>
             <section className="Header_links">
                 <NavLink>Home</NavLink>
-                <NavLink>Blog</NavLink>
-                <NavLink>About</NavLink>
+                <NavLink>Galerye</NavLink>
             </section>
         </motion.header>
     )

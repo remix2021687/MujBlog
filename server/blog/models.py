@@ -1,4 +1,6 @@
 import uuid
+from django.utils import timezone
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -10,6 +12,10 @@ class Post(models.Model):
     display_description = models.TextField(max_length=500, blank=False, null=False)
     text = models.TextField(blank=False, null=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_created = models.DateTimeField(auto_now=True, editable=False)
+
+    class Meta:
+        ordering = ['-date_created']
 
     def __str__(self):
         return f'Post: {self.name} | Author: {self.author}'
