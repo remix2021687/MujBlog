@@ -79,7 +79,7 @@ export const Modal = ({id, setReturnEvent}) => {
         >
             <section className="Modal_left">
                 <motion.img variants={ModalAnimationChildren} src={data.photo} />
-                <section className="Modal_lefr_header">
+                <section className="Modal_left_header">
                     <motion.h1 variants={ModalAnimationChildren}>{data.name}</motion.h1>
                     <motion.p variants={ModalAnimationChildren}>{data.text}</motion.p>
                 </section>

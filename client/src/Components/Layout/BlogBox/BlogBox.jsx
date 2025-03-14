@@ -1,4 +1,3 @@
-import { NavLink } from "react-router"
 import { motion, AnimatePresence } from 'motion/react';
 import { Modal } from "../Modal/Modal";
 import { useState } from "react";

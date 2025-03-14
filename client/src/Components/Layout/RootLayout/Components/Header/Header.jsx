@@ -31,8 +31,8 @@ export const Header = () => {
                 <img src={Logo} alt="Logo" width={350} />
             </NavLink>
             <section className="Header_links">
-                <NavLink>Home</NavLink>
-                <NavLink>Galerye</NavLink>
+                <NavLink to={'/'}>Home</NavLink>
+                <NavLink to={'/gallery'}>Gallery</NavLink>
             </section>
         </motion.header>
     )

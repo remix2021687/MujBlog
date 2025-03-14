@@ -1,9 +1,14 @@
-from rest_framework import generics
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework import viewsets
 
-from api.blog.serializer import PostSerializer, PostSerializerList
+from api.blog.serializer import PostSerializer, PostSerializerList, PostPhotoSerializer
 from blog.models import Post
+
+
+class PostGalleryViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostPhotoSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 
 class PostViewSet(viewsets.ReadOnlyModelViewSet):

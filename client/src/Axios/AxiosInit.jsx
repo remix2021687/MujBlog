@@ -24,3 +24,13 @@ export const GetPostSelf = async (id) => {
         return response
     }
 }
+
+export const GetGallery = async () => {
+    const response = await AxiosInit.get('gallery/')
+
+    try {
+        return response
+    } catch (err) {
+        return response
+    }
+}
