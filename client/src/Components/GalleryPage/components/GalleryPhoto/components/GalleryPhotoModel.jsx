@@ -1,18 +1,17 @@
 import { motion } from "motion/react"
-import { useState } from "react"
 
 export const GalleryPhotoModel = ({ id, photo, onClose}) => {
     
     return (
         <motion.section
-            className="PreviewModalImage"
+            className="GalleryPhotoModel"
             initial={{opacity: 0}}
             animate={{opacity: 1}}
             exit={{opacity: 0}}
             onClick={onClose}
         >
             <motion.section 
-                className="PreviewModalImage_bg"
+                className="GalleryPhotoModel_bg"
                 layoutId={id}
             >
                 <motion.img 

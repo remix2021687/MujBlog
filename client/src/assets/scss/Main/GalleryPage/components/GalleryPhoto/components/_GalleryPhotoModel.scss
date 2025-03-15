@@ -1,4 +1,4 @@
-.PreviewModalImage {
+.GalleryPhotoModel {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,7 +10,7 @@
     z-index: 100;
     backdrop-filter: brightness(0.5);
 
-    .PreviewModalImage_bg {
+    .GalleryPhotoModel_bg {
         display: flex;
         flex-direction: column;
         align-items: center;
