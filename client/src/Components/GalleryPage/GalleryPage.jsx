@@ -23,6 +23,7 @@ export const GalleryPage = () => {
                 data.map((data) => 
                     <GalleryPhoto
                         key={data.id}
+                        id={data.id}
                         name={data.name}
                         photo={data.photo}
                     />
