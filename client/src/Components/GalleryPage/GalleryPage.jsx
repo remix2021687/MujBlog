@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react"
 import { GetGallery } from "../../Axios/AxiosInit";
-import { GalleryPhoto } from "./components/GalleryPhoto";
+import { GalleryPhoto } from "./components/GalleryPhoto/GalleryPhoto";
 
 export const GalleryPage = () => {
     const [data, setData] = useState([]);
@@ -23,6 +23,7 @@ export const GalleryPage = () => {
                 data.map((data) => 
                     <GalleryPhoto
                         key={data.id}
+                        id={data.id}
                         name={data.name}
                         photo={data.photo}
                     />

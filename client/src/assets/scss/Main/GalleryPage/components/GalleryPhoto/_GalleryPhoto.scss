@@ -5,6 +5,7 @@
     width: 30%;
     height: fit-content;
     position: relative;
+    z-index: 50;
     cursor: pointer;
     
     &:hover {
@@ -25,7 +26,9 @@
     h1 {
         font-size: 60px;
         position: absolute;
-        top: 50%;
+        top: 45%;
         color: white;
     }
 }
+
+@import './components/GalleryPhotoModel';
