@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react"
 import { GetGallery } from "../../Axios/AxiosInit";
-import { GalleryPhoto } from "./components/GalleryPhoto";
+import { GalleryPhoto } from "./components/GalleryPhoto/GalleryPhoto";
 
 export const GalleryPage = () => {
     const [data, setData] = useState([]);

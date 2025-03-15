@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "motion/react"
 import { useState } from "react"
+import { GalleryPhotoModel } from "./components/GalleryPhotoModel";
 
 export const GalleryPhoto = ({ id, name, photo }) => {
     const [selectPhotoID, setSelectPhotoID] = useState(null);
@@ -52,25 +53,11 @@ export const GalleryPhoto = ({ id, name, photo }) => {
 
             <AnimatePresence>
                 {selectPhotoID && (
-                    <motion.section
-                        className="PreviewModalImage"
-                        initial={{opacity: 0}}
-                        animate={{opacity: 1}}
-                        exit={{opacity: 0}}
-                        onClick={() => setSelectPhotoID(null)}
-                    >
-                        <motion.section 
-                            className="PreviewModalImage_bg"
-                            // initial={{opacity: 0}}
-                            // animate={{opacity: 1}}
-                            // exit={{opacity: 0}}
-                            layoutId={id}
-                        >
-                            <motion.img 
-                                src={photo}
-                            />
-                        </motion.section>
-                    </motion.section>
+                    <GalleryPhotoModel
+                        id={id}
+                        photo={photo}
+                        onClose={() => setSelectPhotoID(null)}
+                    />
                 )}
             </AnimatePresence>
         </>
