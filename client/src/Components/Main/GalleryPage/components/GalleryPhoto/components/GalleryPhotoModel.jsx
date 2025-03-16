@@ -35,7 +35,6 @@ export const GalleryPhotoModel = ({ id, photo, onClose}) => {
             >
                 <motion.img 
                     drag
-                    dragElastic={0.2}
                     src={photo}
                     animate={{scale: zoomImg}}
                     

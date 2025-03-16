@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const AxiosInit = axios.create({
-    baseURL: import.meta.env.VITE_URL
+    baseURL: `${import.meta.env.VITE_URL}/api/`
 })
 
 export const GetPost = async () => {

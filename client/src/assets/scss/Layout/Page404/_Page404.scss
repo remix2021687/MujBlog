@@ -1,0 +1,73 @@
+.Page404 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    gap: 25px;
+    text-align: center;
+
+    img {
+        width: 30%;
+    }
+
+    .Page404_header {
+
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        h1 {
+            font-size: 60px;
+        }
+    
+        h3 {
+            font-size: 20px;
+        }
+    }
+
+    a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        width: 15%;
+        height: 50px;
+        border: 2px solid black;
+        border-radius: 10px;
+        font-size: 20px;
+        font-weight: 500;
+        color: black;
+        overflow: hidden;
+        cursor: pointer;
+
+        &:hover {
+            span {
+                color: white;
+            }
+
+            &::before {
+                transform: scale(1);
+            }
+        }
+
+        span {
+            position: relative;
+            color: black;
+            z-index: 5;
+            transition: 0.3s ease;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            transform: scale(0);
+            transition: 0.3s ease;
+        }
+    }
+}
