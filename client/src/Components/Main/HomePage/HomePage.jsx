@@ -1,6 +1,5 @@
-import { BlogBox } from "../Layout/BlogBox/BlogBox"
-import examplePhoto from '../../assets/img/examplePhoto.jpg'
-import { GetPost } from "../../Axios/AxiosInit"
+import { BlogBox } from '../../Layout/BlogBox/BlogBox'
+import { GetPost } from "../../../Axios/AxiosInit"
 import { useState } from "react"
 import { useEffect } from "react"
 

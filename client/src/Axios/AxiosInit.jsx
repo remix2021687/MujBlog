@@ -4,6 +4,16 @@ export const AxiosInit = axios.create({
     baseURL: `${import.meta.env.VITE_URL}/api/`
 })
 
+export const AuthLogin = async (data) => {
+    const response = await AxiosInit.post('auth/login/', data)
+
+    try {
+        return response
+    } catch(err) {
+        return response
+    }
+}
+
 export const GetPost = async () => {
     const response = await AxiosInit.get('posts/')
 

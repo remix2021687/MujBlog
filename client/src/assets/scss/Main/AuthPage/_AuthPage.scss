@@ -1,0 +1,92 @@
+.AuthPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    width: 100%;
+    height: 100vh;
+    
+    img {
+        max-width: 25%;
+        object-fit: cover;
+    }
+
+    .AuthPage_form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        width: 28%;
+
+        button {
+            width: 45%;
+            height: 50px;
+            background: none;
+            position: relative;
+            border: 2px solid black;
+            border-radius: 5px;
+            font-size: 20px;
+            font-weight: 500;
+            overflow: hidden;
+            cursor: pointer;
+
+            &:hover {
+                span {
+                    color: white;
+                }
+
+                &::before {
+                    transform: scale(1);
+                }
+            }
+
+            span {
+                position: relative;
+                z-index: 5;
+                transition: 0.5s ease;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: black;
+                transform: scale(0);
+                transition: 0.5s ease;
+            }
+        }
+
+        .AuthPage_form_username_password {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            width: 100%;
+
+            section {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+
+                span {
+                    color: red;
+                    padding-left: 20px;
+                }
+
+                input {
+                    height: 40px;
+                    padding: 0 20px;
+                    border: none;
+                    border-bottom: 1px solid black;
+                    outline: none;
+                    font-size: 18px;
+                }
+            }
+    
+        }
+    }
+
+}
