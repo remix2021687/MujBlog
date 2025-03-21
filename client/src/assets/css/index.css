@@ -121,7 +121,7 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 240px;
+  width: 15%;
   height: 100vh;
   background-color: white;
   padding: 24px 0;
@@ -230,9 +230,41 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  gap: 25px;
   padding: 40px 0;
 }
-.LeftHeader .LeftHeader_content .LeftHeader_details button {
+.LeftHeader .LeftHeader_content .LeftHeader_details .LeftHeader_details_profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 15px;
+  width: 80%;
+  height: 60px;
+  background-color: white;
+  border-radius: 16px;
+  cursor: pointer;
+}
+.LeftHeader .LeftHeader_content .LeftHeader_details .LeftHeader_details_profile .LeftHeader_details_profile_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 3px;
+}
+.LeftHeader .LeftHeader_content .LeftHeader_details .LeftHeader_details_exit {
   width: 80%;
   height: 50px;
   font-size: 18px;
@@ -243,7 +275,7 @@ main {
   -webkit-transition: 0.5s ease;
   transition: 0.5s ease;
 }
-.LeftHeader .LeftHeader_content .LeftHeader_details button:hover {
+.LeftHeader .LeftHeader_content .LeftHeader_details .LeftHeader_details_exit:hover {
   background-color: red;
   color: white;
 }
@@ -698,6 +730,108 @@ main {
 .GalleryPhotoModel img {
   width: 100%;
   border-radius: 10px;
+}
+
+.AdminPage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  margin: 30px 30px;
+}
+
+.Dashboard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.Dashboard > h1 {
+  font-size: 32px;
+}
+.Dashboard .Dashboard_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 27px;
+  width: 100%;
+}
+.Dashboard .Dashboard_content .Dashboard_content_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 30px;
+  width: 100%;
+}
+
+.InfoBlocks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 20%;
+  padding: 16px;
+  background-color: white;
+  border-radius: 8px;
+}
+.InfoBlocks .InfoBlocks_details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 16px;
+}
+.InfoBlocks .InfoBlocks_details h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(32, 34, 36, 0.4392156863);
+}
+.InfoBlocks .InfoBlocks_details h1 {
+  font-size: 32px;
+}
+.InfoBlocks .InfoBlocks_icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: red;
+  padding: 5px;
+  border-radius: 20px;
+  width: 60px;
+  height: 60px;
 }
 
 .AuthPage {

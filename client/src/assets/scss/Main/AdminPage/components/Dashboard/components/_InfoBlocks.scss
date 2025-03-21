@@ -1,0 +1,38 @@
+.InfoBlocks {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 20%;
+    padding: 16px;
+    background-color: white;
+    border-radius: 8px;
+
+    .InfoBlocks_details {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        h3 {
+            font-size: 14px;
+            font-weight: 500;
+            color: #20222470;
+        }
+
+        h1 {
+            font-size: 32px;
+        }
+    }
+
+    .InfoBlocks_icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: red;
+        padding: 5px;
+        border-radius: 20px;
+        width: 60px;
+        height: 60px;
+
+    }
+}

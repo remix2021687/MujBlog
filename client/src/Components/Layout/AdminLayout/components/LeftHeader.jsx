@@ -1,9 +1,9 @@
-import { Gauge, Note } from '@phosphor-icons/react'
-import { motion, AnimatePresence} from 'motion/react'
-import { useState } from 'react'
+import { Gauge, Note, User } from '@phosphor-icons/react'
+import { motion } from 'motion/react'
+import { useState, useEffect } from 'react'
 import Logo from '../../../../assets/img/kludieLogo.png'
 
-export const LeftHeader = () => {
+export const LeftHeader = ({ setCatergoryState }) => {
     const [selectButton, setSelectButton] = useState('Dashboard');
 
     const ButtonInfo = [
@@ -18,6 +18,10 @@ export const LeftHeader = () => {
             icon: <Note size={22} />
         }
     ]
+
+    useEffect(() => {
+        setCatergoryState(selectButton)
+    })
 
     return (
         <section className="LeftHeader">
@@ -36,7 +40,9 @@ export const LeftHeader = () => {
                                         'LeftHeader_catergory_button'
                                     }
                                     name={data.name}
-                                    onClick={() => setSelectButton(data.name)}
+                                    onClick={() => {
+                                        setSelectButton(data.name)
+                                    }}
                                 >
                                     {selectButton === data.name && (
                                         <motion.section 
@@ -56,6 +62,19 @@ export const LeftHeader = () => {
                 <section>
                     <hr />
                     <section className='LeftHeader_details'>
+                        <motion.section 
+                            className='LeftHeader_details_profile'
+                            whileHover={{
+                                scale: 1.05,
+                                boxShadow: '0px 0px 10px 7px rgba(0,0,0,0.12)'
+                            }}
+                        >
+                            <span><User size={32}/></span>
+                            <section className='LeftHeader_details_profile_info'>
+                                <h4>Yeromin Maksym</h4>
+                                <h5>Admin</h5>
+                            </section>
+                        </motion.section>
                         <motion.button 
                             className='LeftHeader_details_exit'
                             whileHover={{
