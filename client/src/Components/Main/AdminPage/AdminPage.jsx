@@ -1,4 +1,5 @@
 import { useContext } from "react"
+import { AnimatePresence } from "motion/react";
 import { CatergoryStateContext } from "../../Layout/AdminLayout/AdminLayout"
 import { Dashboard } from "./components/Dashboard/Dashboard";
 
@@ -7,18 +8,20 @@ export const AdminPage = () => {
 
     return (
         <section className="AdminPage">
-            {(() => {
-                switch (CatergoryValue) {
-                    case "Dashboard":
-                        return <Dashboard />
-                    
-                    case "Posts":
-                        break;
+            <AnimatePresence>
+                {(() => {
+                    switch (CatergoryValue) {
+                        case "Dashboard":
+                            return <Dashboard />
+                        
+                        case "Posts":
+                            break;
 
-                    default:
-                        return <Dashboard />
-                }
-            })()}
+                        default:
+                            return <Dashboard />
+                    }
+                })()}
+            </AnimatePresence>
         </section>
     )   
 }

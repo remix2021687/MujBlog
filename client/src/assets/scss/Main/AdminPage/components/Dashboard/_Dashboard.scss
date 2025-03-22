@@ -7,18 +7,29 @@
     .Dashboard_content {
         display: flex;
         flex-direction: column;
+        gap: 20px;
         margin-top: 27px;
         width: 100%;
 
         .Dashboard_content_header {
             display: flex;
             flex-direction: row;
-            // justify-content: center;
             gap: 30px;
             width: 100%;
+        }
+
+        .Dashboard_content_posts {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            width: 100%;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
         }
     }
 
 }
 
 @import './components/InfoBlocks';
+@import './components/PostBlock';

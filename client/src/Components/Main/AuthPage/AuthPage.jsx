@@ -1,11 +1,15 @@
 import { motion } from 'motion/react'
 import { useForm } from 'react-hook-form'
-import Logo from '../../../assets/img/kludieLogo.png'
 import { AuthLogin } from '../../../Axios/AxiosInit'
+import { useNavigate } from 'react-router'
+
+import Logo from '../../../assets/img/kludieLogo.png'
+
 
 
 export const AuthPage = () => {
     const RequiredErrorMSG = 'This field is required !'
+    const navigate = useNavigate();
     const {register, handleSubmit, formState: {errors}} = useForm();
 
     const onSubmit = async (event) => {
@@ -16,6 +20,7 @@ export const AuthPage = () => {
         .then((res) => {
             localStorage.setItem('token', res.data.access)
             localStorage.setItem('token_ref', res.data.refresh)
+            navigate('/admin');
         })
         .catch((err) => {
             console.log(err)
