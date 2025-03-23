@@ -2,10 +2,12 @@ import { Gauge, Note, User } from '@phosphor-icons/react'
 import { motion } from 'motion/react'
 import { useState, useEffect } from 'react'
 import Logo from '../../../../assets/img/kludieLogo.png'
+import { GetProfile } from '../../../../Axios/AxiosInit'
 
 export const LeftHeader = ({ setCatergoryState }) => {
     const [selectButton, setSelectButton] = useState('Dashboard');
-
+    const [data, setData] = useState([]);
+    
     const ButtonInfo = [
         {
             value: "Dashboard",
@@ -18,6 +20,18 @@ export const LeftHeader = ({ setCatergoryState }) => {
             icon: <Note size={22} />
         }
     ]
+
+    useEffect(() => {
+        GetProfile()
+        .then((res) => {
+            setData(res.data)
+        })
+
+        .catch((err) => {
+            setData([]);
+            console.error(err);
+        })
+    }, [])
 
     useEffect(() => {
         setCatergoryState(selectButton)
@@ -71,7 +85,7 @@ export const LeftHeader = ({ setCatergoryState }) => {
                         >
                             <span><User size={32}/></span>
                             <section className='LeftHeader_details_profile_info'>
-                                <h4>Yeromin Maksym</h4>
+                                <h4>{data[0]?.last_name} {data[0]?.first_name}</h4>
                                 <h5>Admin</h5>
                             </section>
                         </motion.section>

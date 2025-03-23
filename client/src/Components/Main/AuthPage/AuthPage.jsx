@@ -4,6 +4,7 @@ import { AuthLogin } from '../../../Axios/AxiosInit'
 import { useNavigate } from 'react-router'
 
 import Logo from '../../../assets/img/kludieLogo.png'
+import { useEffect } from 'react'
 
 
 
@@ -26,6 +27,12 @@ export const AuthPage = () => {
             console.log(err)
         })
     }
+
+    useEffect(() => {
+        if (localStorage.getItem('token')) {
+            navigate('/admin')
+        }
+    })
 
     return (
         <section className="AuthPage">

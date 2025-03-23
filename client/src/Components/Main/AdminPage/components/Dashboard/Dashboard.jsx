@@ -56,7 +56,7 @@ export const Dashboard = () => {
                 <section className="Dashboard_content_header">
                     <InfoBlocks 
                         name={"User"}
-                        count={"40 690"}
+                        count={"2"}
                         icon={<User size={40} />}
                         BgColorIcon={"#8280FF"}
                         colorIcon={'white'}

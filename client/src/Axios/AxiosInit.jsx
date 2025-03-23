@@ -7,7 +7,7 @@ export const AxiosInit = axios.create({
 AxiosInit.interceptors.request.use((config) => {
     const token = localStorage.getItem('token');
 
-    config.headers.Authorization = `Bearer ${token}`
+    config.headers.Authorization = token ? `Bearer ${token}`: token
 
     return config
 })
@@ -29,6 +29,16 @@ export const refTokenAuth = async (token) => {
         return request
     } catch(err) {
         return request
+    }
+}
+
+export const GetProfile = async () => {
+    const response = await AxiosInit.get('admin/profile/')
+
+    try {
+        return response
+    } catch (err) {
+        return response
     }
 }
 
