@@ -94,6 +94,12 @@ export const LeftHeader = ({ setCatergoryState }) => {
                             whileHover={{
                                 scale: 1.05,
                             }}
+
+                            onClick={() => {
+                                window.location.reload();
+                                localStorage.removeItem('token')
+                                localStorage.removeItem('token_ref')
+                            }}
                         >
                             Logout
                         </motion.button>

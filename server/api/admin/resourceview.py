@@ -22,7 +22,7 @@ class PostListAdminViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [IsAdminUser]
 
 
-class PostViewSet(viewsets.ModelViewSet):
+class AdminPostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostDetailSerializer
     permission_classes = [IsAdminUser]
