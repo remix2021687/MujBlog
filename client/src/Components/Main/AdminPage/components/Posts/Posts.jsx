@@ -1,11 +1,16 @@
+import { useState } from "react"
 import { PostEdit } from "./components/PostEdit/PostEdit"
 import { motion } from "motion/react"
+import { useEffect } from "react";
+import { GetPostAdmin } from "../../../../../Axios/AxiosInit";
 
 export const Posts = () => {
+    const [data, setData] = useState([]);
+    
     const PostParent = {
         open: {
             transition: {
-                duraction: 0.5,
+                // duraction: 0.5,
                 staggerChildren: 0.08,
                 delayChildren: 0.1
             }
@@ -13,7 +18,7 @@ export const Posts = () => {
 
         close: {
             transition: {
-                duraction: 0.5,
+                // duraction: 0.5
                 staggerChildren: 0.08,
                 delayChildren: 0.1
             }
@@ -31,6 +36,20 @@ export const Posts = () => {
             opacity: 0
         }
     }
+
+    useEffect(() => {
+        GetPostAdmin()
+        .then((res) => {
+            setData(res.data)
+        })
+        .catch((err) => {
+            console.error(err);
+            setData([])
+        })
+
+    }, [])
+
+
     return (
         <motion.section 
             className="Posts"
@@ -41,12 +60,22 @@ export const Posts = () => {
         >
             <motion.h1 variants={PostChild}>Posts</motion.h1>
             <section className="Posts_content">
-                <PostEdit postChild={PostChild} />
-                <PostEdit postChild={PostChild} />
-                <PostEdit postChild={PostChild} />
-                <PostEdit postChild={PostChild} />
-                <PostEdit postChild={PostChild} />
-                <PostEdit postChild={PostChild} />
+                {
+                    data ?
+                    data.map((data, index) => 
+                        <PostEdit
+                            key={index + 1}
+                            id={data.id}
+                            Name={data.name}
+                            Photo={data.photo}
+                            DisplayDescription={data.display_description}
+                            Text={data.text}
+                            postChild={PostChild} 
+                        />
+                    )
+                    :
+                    null
+                }
             </section>
         </motion.section>
     )

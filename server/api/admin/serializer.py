@@ -19,10 +19,13 @@ class AdminProfileListSerializer(serializers.ModelSerializer):
 class PostListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = ('id', 'photo', 'name', 'date_created')
+        fields = ('id', 'photo', 'name', 'display_description', 'text', 'date_created')
 
 
 class PostDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = "__all__"
+        fields = ("id", 'photo', 'name', 'display_description', 'text', 'date_created')
+        extra_kwargs = {
+            'photo': {'required': False},
+        }

@@ -943,6 +943,9 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 .PostEdit .PostEdit_header .PostEdit_header_photo_name {
   display: -webkit-box;
@@ -1018,6 +1021,13 @@ main {
   background-color: #F5F6FA;
 }
 .PostEdit .PostEdit_edit_dropmenu .PostEdit_edit_dropmenu_change_photo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   position: relative;
   width: 35%;
   overflow: hidden;
@@ -1061,6 +1071,17 @@ main {
 .PostEdit .PostEdit_edit_dropmenu .PostEdit_edit_dropmenu_change_photo:hover .NewPhoto_change {
   opacity: 1;
 }
+.PostEdit .PostEdit_edit_dropmenu .PostEdit_edit_dropmenu_change_name,
+.PostEdit .PostEdit_edit_dropmenu .PostEdit_edit_dropmenu_change_display_description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 15px;
+}
 .PostEdit .PostEdit_edit_dropmenu .PostEdit_edit_dropmenu_change_name input,
 .PostEdit .PostEdit_edit_dropmenu .PostEdit_edit_dropmenu_change_display_description input {
   width: 15%;
@@ -1074,6 +1095,16 @@ main {
 }
 .PostEdit .PostEdit_edit_dropmenu .PostEdit_edit_dropmenu_change_display_description input {
   width: 35%;
+}
+.PostEdit .PostEdit_edit_dropmenu .PostEdit_edit_dropmenu_change_text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 15px;
 }
 .PostEdit .PostEdit_edit_dropmenu .PostEdit_edit_dropmenu_change_text textarea {
   width: 35% !important;

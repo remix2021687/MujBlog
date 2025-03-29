@@ -52,6 +52,20 @@ export const GetPostAdmin = async () => {
     }
 }
 
+export const EditPostAdmin = async (id, data) => {
+    const request = await AxiosInit.put(`admin/edit/${id}/`, data, {
+        headers: {
+            "Content-Type": 'multipart/form-data'
+        }
+    })
+
+    try {
+        return request
+    } catch (err) {
+        return request
+    }
+}
+
 export const GetPost = async () => {
     const response = await AxiosInit.get('posts/')
 

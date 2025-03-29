@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { User, Note } from "@phosphor-icons/react"
 import { InfoBlocks } from "./components/InfoBlocks"
 import { PostBlock } from "./components/PostBlock"
-import { AxiosInit, GetPostAdmin, refTokenAuth } from "../../../../../Axios/AxiosInit";
+import { GetPostAdmin, refTokenAuth } from "../../../../../Axios/AxiosInit";
 import moment from "moment";
 
 
