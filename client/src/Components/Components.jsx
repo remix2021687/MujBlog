@@ -13,5 +13,5 @@ export const Components = {
     GalleryPage,
     AdminLayout,
     RootLayout,
-    Page404
+    Page404,
 }

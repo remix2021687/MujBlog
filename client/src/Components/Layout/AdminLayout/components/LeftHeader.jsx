@@ -1,12 +1,16 @@
-import { Gauge, Note, User } from '@phosphor-icons/react'
 import { motion } from 'motion/react'
+import { toast } from "react-toastify";
+import { useNavigate } from 'react-router';
 import { useState, useEffect } from 'react'
-import Logo from '../../../../assets/img/kludieLogo.png'
+import { Gauge, Note, User, Plus } from '@phosphor-icons/react'
+
 import { GetProfile } from '../../../../Axios/AxiosInit'
+import Logo from '../../../../assets/img/kludieLogo.png'
 
 export const LeftHeader = ({ setCatergoryState }) => {
     const [selectButton, setSelectButton] = useState('Dashboard');
     const [data, setData] = useState([]);
+    const navigate = useNavigate()
     
     const ButtonInfo = [
         {
@@ -18,7 +22,12 @@ export const LeftHeader = ({ setCatergoryState }) => {
             value: "Posts",
             name: "Posts",
             icon: <Note size={22} />
-        }
+        },
+        {
+            value: "Create",
+            name: "Create",
+            icon: <Plus size={22} />
+        },
     ]
 
     useEffect(() => {
@@ -36,6 +45,20 @@ export const LeftHeader = ({ setCatergoryState }) => {
     useEffect(() => {
         setCatergoryState(selectButton)
     })
+
+    const Logout = () => {
+        navigate('admin/login/')
+        localStorage.removeItem('token')
+        localStorage.removeItem('token_ref')
+
+        toast.success('Logout successfull !', {
+            position: 'top-center',
+            closeOnClick: false,
+            draggable: true,
+            pauseOnHover: false,
+            autoClose: 3000,
+        })
+    }
 
     return (
         <section className="LeftHeader">

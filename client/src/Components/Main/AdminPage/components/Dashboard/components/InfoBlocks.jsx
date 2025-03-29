@@ -1,6 +1,11 @@
-export const InfoBlocks = ({ name, count, icon, colorIcon, BgColorIcon}) => {
+import { motion } from "motion/react"
+
+export const InfoBlocks = ({ name, count, icon, colorIcon, BgColorIcon, childAnimation}) => {
     return (
-        <section className="InfoBlocks">
+        <motion.section 
+            className="InfoBlocks"
+            variants={childAnimation}
+        >
             <section className="InfoBlocks_details">
                 <h3>Total {name}</h3>
                 <h1>{count}</h1>
@@ -11,6 +16,6 @@ export const InfoBlocks = ({ name, count, icon, colorIcon, BgColorIcon}) => {
             }}>
                 {icon}
             </section>
-        </section>
+        </motion.section>
     )
 }

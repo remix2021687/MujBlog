@@ -985,7 +985,7 @@ main {
 }
 .PostEdit .PostEdit_header .PostEdit_header_control button {
   width: 100%;
-  height: 40px;
+  height: 35px;
   background: none;
   border-radius: 8px;
   border: none;
@@ -997,7 +997,7 @@ main {
 }
 .PostEdit .PostEdit_header .PostEdit_header_control button.edit:hover {
   color: white;
-  background-color: green;
+  background-color: orange;
 }
 .PostEdit .PostEdit_header .PostEdit_header_control button.delete:hover {
   color: white;
@@ -1145,6 +1145,65 @@ main {
 .PostEdit .PostEdit_edit_dropmenu .PostEdit_edit_dropmenu_change_submit_cancel button.cancel:hover {
   color: white;
   background-color: red;
+}
+
+.Create {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.Create h1 {
+  font-size: 32px;
+}
+.Create .Create_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100vh;
+}
+.Create .Create_form .Create_form_photo_label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+.Create .Create_form .Create_form_photo_label button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px;
+  width: 30%;
 }
 
 .AuthPage {

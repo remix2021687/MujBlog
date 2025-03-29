@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { PostEditDropmenu } from './components/PostEditDropmenu';
 
 
-export const PostEdit = ({ id, Name, Photo, DisplayDescription, Text, postChild }) => {
+export const PostEdit = ({ id, index, Name, Photo, DisplayDescription, Text, postChild }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const CloseHendle = (event) => {
@@ -16,6 +16,7 @@ export const PostEdit = ({ id, Name, Photo, DisplayDescription, Text, postChild 
         <motion.section 
             className="PostEdit"
             variants={postChild}
+            custom={index}
         >
             <section className='PostEdit_header'>
                 <section className='PostEdit_header_photo_name'>

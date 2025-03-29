@@ -1,6 +1,7 @@
 import { motion } from "motion/react"
-import { FileArrowUp } from '@phosphor-icons/react'
 import { useForm } from "react-hook-form"
+import { toast } from "react-toastify";
+import { FileArrowUp } from '@phosphor-icons/react'
 import { EditPostAdmin } from "../../../../../../../../Axios/AxiosInit"
 
 export const PostEditDropmenu = ({ Id, Photo, Name, DisplayDescription, Text, setCloseEdit}) => {
@@ -60,6 +61,26 @@ export const PostEditDropmenu = ({ Id, Photo, Name, DisplayDescription, Text, se
             "name": data.name,
             'display_description': data.display_description,
             "text": data.text
+        })
+        .then(() => {
+            toast.success('Update successfull !', {
+                position: 'top-right',
+                closeOnClick: false,
+                draggable: true,
+                pauseOnHover: false,
+                autoClose: 3000,
+            })
+
+            setCloseEdit(true)
+        })
+        .catch(() => {
+            toast.error('Problem to update !', {
+                position: 'top-right',
+                closeOnClick: false,
+                draggable: true,
+                pauseOnHover: false,
+                autoClose: 3000,
+            })
         })
     }
 
@@ -128,7 +149,6 @@ export const PostEditDropmenu = ({ Id, Photo, Name, DisplayDescription, Text, se
                             }
                         })}
                         variants={PostEditChild} 
-                        type='text' 
                         name='text' 
                         placeholder='Text*' 
                     />
@@ -136,10 +156,11 @@ export const PostEditDropmenu = ({ Id, Photo, Name, DisplayDescription, Text, se
                 </section>
                 <section className='PostEdit_edit_dropmenu_change_submit_cancel'>
                     <motion.button variants={PostEditChild} className='save'>Save</motion.button>
-                    <motion.button 
+                    <motion.button
+                        type='button'
                         variants={PostEditChild} 
                         className='cancel'
-                        onClick={(event) => {setCloseEdit(event)}}
+                        onClick={() => {setCloseEdit(true)}}
                     >
                         Cancel
                     </motion.button>

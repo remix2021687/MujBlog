@@ -1,7 +1,7 @@
-import { useState } from "react"
-import { PostEdit } from "./components/PostEdit/PostEdit"
+import { useState, useEffect } from "react"
+import { NavLink } from "react-router";
 import { motion } from "motion/react"
-import { useEffect } from "react";
+import { PostEdit } from "./components/PostEdit/PostEdit"
 import { GetPostAdmin } from "../../../../../Axios/AxiosInit";
 
 export const Posts = () => {
@@ -10,7 +10,7 @@ export const Posts = () => {
     const PostParent = {
         open: {
             transition: {
-                // duraction: 0.5,
+                duraction: 0.5,
                 staggerChildren: 0.08,
                 delayChildren: 0.1
             }
@@ -18,7 +18,7 @@ export const Posts = () => {
 
         close: {
             transition: {
-                // duraction: 0.5
+                duraction: 0.5,
                 staggerChildren: 0.08,
                 delayChildren: 0.1
             }
@@ -26,13 +26,17 @@ export const Posts = () => {
     }
 
     const PostChild = {
-        open: {
-            y: 0,
-            opacity: 1
-        },
+        open: (index) => ({
+            x: 0,
+            opacity: 1,
+
+            transition: {
+                delay: index * 0.1
+            }
+        }),
 
         close: {
-            y: -15,
+            x: -15,
             opacity: 0
         }
     }
@@ -59,12 +63,14 @@ export const Posts = () => {
             exit="close"
         >
             <motion.h1 variants={PostChild}>Posts</motion.h1>
+            
             <section className="Posts_content">
                 {
                     data ?
                     data.map((data, index) => 
                         <PostEdit
                             key={index + 1}
+                            index={index}
                             id={data.id}
                             Name={data.name}
                             Photo={data.photo}
