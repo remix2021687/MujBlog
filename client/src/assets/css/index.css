@@ -1155,6 +1155,9 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  gap: 25px;
+  padding-bottom: 25px;
+  width: 100%;
 }
 .Create h1 {
   font-size: 32px;
@@ -1173,7 +1176,13 @@ main {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 100vh;
+  gap: 25px;
+  width: 100%;
+  height: 100%;
+  padding: 25px 0;
+}
+.Create .Create_form span {
+  color: red;
 }
 .Create .Create_form .Create_form_photo_label {
   display: -webkit-box;
@@ -1186,9 +1195,98 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  width: 30%;
+  min-height: 30%;
+  border-radius: 10px;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+.Create .Create_form .Create_form_photo_label img {
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 100%;
 }
-.Create .Create_form .Create_form_photo_label button {
+.Create .Create_form .Create_form_photo_label .Create_form_photo_label_zone {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+}
+.Create .Create_form .Create_form_photo_label .Create_form_photo_label_zone.choosed {
+  color: white;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  opacity: 0;
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+}
+.Create .Create_form .Create_form_photo_label .Create_form_photo_label_zone.choosed:hover {
+  opacity: 1;
+}
+.Create .Create_form .Create_form_photo_label:hover {
+  -webkit-box-shadow: 0px 0px 10px 7px rgba(0, 0, 0, 0.12);
+          box-shadow: 0px 0px 10px 7px rgba(0, 0, 0, 0.12);
+}
+.Create .Create_form .Create_form_input_name, .Create .Create_form .Create_form_input_display_description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+  width: 35%;
+}
+.Create .Create_form .Create_form_input_name input, .Create .Create_form .Create_form_input_display_description input {
+  height: 45px;
+  padding: 0 10px;
+  border: 2px solid rgba(151, 151, 151, 0.815);
+  border-radius: 8px;
+  outline: none;
+}
+.Create .Create_form .Create_form_input_text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+  width: 35%;
+}
+.Create .Create_form .Create_form_input_text textarea {
+  resize: none;
+  width: 100%;
+  height: 150px;
+  border: 2px solid rgba(151, 151, 151, 0.815);
+  border-radius: 10px;
+  outline: none;
+  padding: 10px;
+}
+.Create .Create_form .Create_form_button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1203,7 +1301,24 @@ main {
       -ms-flex-pack: center;
           justify-content: center;
   gap: 10px;
-  width: 30%;
+  width: 15%;
+  height: 50px;
+  font-size: 20px;
+  font-weight: 500;
+  background: none;
+  border: none;
+  border-radius: 10px;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+.Create .Create_form .Create_form_button:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  color: white;
+  background-color: green;
+  -webkit-box-shadow: 0px 0px 10px 7px rgba(0, 0, 0, 0.12);
+          box-shadow: 0px 0px 10px 7px rgba(0, 0, 0, 0.12);
 }
 
 .AuthPage {
