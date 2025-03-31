@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import { ToastContainer } from "react-toastify";
 
 export const App = ({ Route, Components }) => {
     useEffect(() => {
@@ -19,6 +20,9 @@ export const App = ({ Route, Components }) => {
 
 
     return (
-        <Route Components={Components} />
+        <>
+            <ToastContainer />
+            <Route Components={Components} />
+        </>
     )
 }

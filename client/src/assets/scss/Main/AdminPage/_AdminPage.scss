@@ -1,0 +1,12 @@
+.AdminPage {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 30px 30px;
+}
+
+@import './components/Dashboard/Dashboard';
+
+@import './components/Posts/Posts';
+
+@import './components/Create/Create';

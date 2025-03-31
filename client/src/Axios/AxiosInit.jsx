@@ -4,6 +4,82 @@ export const AxiosInit = axios.create({
     baseURL: `${import.meta.env.VITE_URL}/api/`
 })
 
+AxiosInit.interceptors.request.use((config) => {
+    const token = localStorage.getItem('token');
+
+    config.headers.Authorization = token ? `Bearer ${token}`: token
+
+    return config
+})
+
+export const AuthLogin = async (data) => {
+    const response = await AxiosInit.post('auth/login/', data)
+
+    try {
+        return response
+    } catch(err) {
+        return response
+    }
+}
+
+export const refTokenAuth = async (token) => {
+    const request = await AxiosInit.post('auth/login/refresh/', token)
+
+    try {
+        return request
+    } catch(err) {
+        return request
+    }
+}
+
+export const GetProfile = async () => {
+    const response = await AxiosInit.get('admin/profile/')
+
+    try {
+        return response
+    } catch (err) {
+        return response
+    }
+}
+
+export const GetPostAdmin = async () => {
+    const response = await AxiosInit.get('admin/posts/')
+
+    try {
+        return response
+    } catch (err) {
+        return response
+    }
+}
+
+export const CreatePostAdmin = async (data) => {
+    const request = await AxiosInit.post('admin/create/', data, {
+        headers: {
+            "Content-Type": "multipart/form-data"
+        }
+    })
+
+    try {
+        return request
+    } catch(err) {
+        return request
+    }
+}
+
+export const EditPostAdmin = async (id, data) => {
+    const request = await AxiosInit.put(`admin/edit/${id}/`, data, {
+        headers: {
+            "Content-Type": 'multipart/form-data'
+        }
+    })
+
+    try {
+        return request
+    } catch (err) {
+        return request
+    }
+}
+
 export const GetPost = async () => {
     const response = await AxiosInit.get('posts/')
 

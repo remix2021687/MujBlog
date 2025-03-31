@@ -1,0 +1,31 @@
+.PostBlock {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+
+    .PostBlock_info {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+
+        img {
+            border-radius: 10px;
+            width: 10%;
+            object-fit: cover;
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+    }
+
+    & > h2 {
+        font-size: 18px;
+    }
+}
