@@ -1,17 +1,45 @@
 import { Image, Plus } from '@phosphor-icons/react'
 import { useForm } from 'react-hook-form'
-import examplePhoto from '../../../../../assets/img/examplePhoto.jpg'
+import { useState, useEffect } from 'react'
+import { toast } from 'react-toastify'
+import { CreatePostAdmin, GetProfile } from '../../../../../Axios/AxiosInit'
 
 
 export const Create = () => {
     const RequiredErrorMSG = 'This field is required !'
     const { register, handleSubmit, watch, formState: {errors} } = useForm();
+    const [AdminID, setAdminID] = useState([]);
 
     const ImageWatch = watch("photo");
 
+
     const OnSubmit = (data) => {
-        console.log(data)
+        CreatePostAdmin({
+            'photo': data.photo[0],
+            'name': data.name,
+            'display_description': data.display_description,
+            'text': data.text,
+            'author': AdminID
+        })
     }
+
+    useEffect(() => {
+        GetProfile()
+        .then((res) => {
+            setAdminID(res.data?.[0].id)
+
+            toast.success('Post has been created', {
+                position: 'top-right',
+                closeOnClick: false,
+                draggable: true,
+                pauseOnHover: false,
+                autoClose: 3000,
+            })
+        })
+        .catch((res) => {
+            setAdminID([]);
+        })
+    }, [])
 
     return (
         <section className="Create">
@@ -19,15 +47,15 @@ export const Create = () => {
             <form className="Create_form" onSubmit={handleSubmit(OnSubmit)}>
                 <label htmlFor="setPhoto" className="Create_form_photo_label">
                     <section className={
-                        ImageWatch ?
+                        ImageWatch?.[0] ?
                         'Create_form_photo_label_zone choosed'
                         :
                         'Create_form_photo_label_zone'
                     }>
                         <Image size={32} weight='bold' />
-                        <h2>{ImageWatch ? 'Change Photo': 'Upload Photo'}</h2>
+                        <h2>{ImageWatch?.[0] ? 'Change Photo': 'Upload Photo'}</h2>
                     </section>
-                    {ImageWatch ? <img src={URL.createObjectURL(ImageWatch[0])} alt='photo' />: null}
+                    {ImageWatch?.[0] ? <img src={URL.createObjectURL(ImageWatch?.[0])} alt='photo' />: null}
                     <input
                         {...register('photo', {
                             required: RequiredErrorMSG

@@ -52,6 +52,20 @@ export const GetPostAdmin = async () => {
     }
 }
 
+export const CreatePostAdmin = async (data) => {
+    const request = await AxiosInit.post('admin/create/', data, {
+        headers: {
+            "Content-Type": "multipart/form-data"
+        }
+    })
+
+    try {
+        return request
+    } catch(err) {
+        return request
+    }
+}
+
 export const EditPostAdmin = async (id, data) => {
     const request = await AxiosInit.put(`admin/edit/${id}/`, data, {
         headers: {

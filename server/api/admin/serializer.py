@@ -22,7 +22,12 @@ class PostListSerializer(serializers.ModelSerializer):
         fields = ('id', 'photo', 'name', 'display_description', 'text', 'date_created')
 
 
-class PostDetailSerializer(serializers.ModelSerializer):
+class PostCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ('photo', 'name', 'display_description', 'text', 'author')
+
+class PostEditSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = ("id", 'photo', 'name', 'display_description', 'text', 'date_created')

@@ -47,7 +47,7 @@ export const LeftHeader = ({ setCatergoryState }) => {
     })
 
     const Logout = () => {
-        navigate('admin/login/')
+        navigate('/')
         localStorage.removeItem('token')
         localStorage.removeItem('token_ref')
 
@@ -118,11 +118,7 @@ export const LeftHeader = ({ setCatergoryState }) => {
                                 scale: 1.05,
                             }}
 
-                            onClick={() => {
-                                window.location.reload();
-                                localStorage.removeItem('token')
-                                localStorage.removeItem('token_ref')
-                            }}
+                            onClick={Logout}
                         >
                             Logout
                         </motion.button>
