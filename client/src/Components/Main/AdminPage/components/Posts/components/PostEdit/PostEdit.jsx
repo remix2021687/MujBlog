@@ -1,6 +1,8 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 import { PostEditDropmenu } from './components/PostEditDropmenu';
+import { DeletePostAdmin } from '../../../../../../../Axios/AxiosInit';
 
 
 export const PostEdit = ({ id, index, Name, Photo, DisplayDescription, Text, postChild }) => {
@@ -10,6 +12,29 @@ export const PostEdit = ({ id, index, Name, Photo, DisplayDescription, Text, pos
         if (event) {
             setIsOpen(false);
         }
+    }
+
+    const onDelete = () => {
+        DeletePostAdmin(id)
+        .then(() => {
+            toast.success('Delete Post is successfull !', {
+                position: 'top-right',
+                closeOnClick: false,
+                draggable: true,
+                pauseOnHover: false,
+                autoClose: 3000,
+            })
+        })
+
+        .catch(() => {
+            toast.error("Delete Post isn't successfull !", {
+                position: 'top-right',
+                closeOnClick: false,
+                draggable: true,
+                pauseOnHover: false,
+                autoClose: 3000,
+            })
+        })
     }
 
     return (
@@ -25,7 +50,7 @@ export const PostEdit = ({ id, index, Name, Photo, DisplayDescription, Text, pos
                 </section>
                 <section className='PostEdit_header_control'>
                     <button className='edit' onClick={() => setIsOpen(true)}>Edit</button>
-                    <button className='delete'>Delete</button>
+                    <button className='delete' onClick={onDelete} >Delete</button>
                 </section>
             </section>
             <AnimatePresence>

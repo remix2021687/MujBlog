@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
 import { motion } from "motion/react"
-import { useNavigate } from "react-router";
 import { User, Note } from "@phosphor-icons/react"
 import { InfoBlocks } from "./components/InfoBlocks"
 import { PostBlock } from "./components/PostBlock"
-import { GetPostAdmin, refTokenAuth } from "../../../../../Axios/AxiosInit";
+import { GetPostAdmin } from "../../../../../Axios/AxiosInit";
 import moment from "moment";
 
 
 export const Dashboard = () => {
-    const navigate = useNavigate();
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -18,19 +16,7 @@ export const Dashboard = () => {
             setData(res.data)
         })
         .catch((err) => {
-            navigate('/admin/login')
             console.error(err);
-
-            refTokenAuth({
-                'refresh': localStorage.getItem('token_ref')
-            })
-            .then((res) => {
-                localStorage.setItem('token', res.data.access)
-            })
-            .catch(() => {
-                localStorage.removeItem('token')
-                localStorage.removeItem('token_ref');
-            })
         })
     }, [])
 

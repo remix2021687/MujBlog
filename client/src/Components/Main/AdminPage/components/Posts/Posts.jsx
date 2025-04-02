@@ -4,6 +4,7 @@ import { motion } from "motion/react"
 import { PostEdit } from "./components/PostEdit/PostEdit"
 import { GetPostAdmin } from "../../../../../Axios/AxiosInit";
 
+
 export const Posts = () => {
     const [data, setData] = useState([]);
     
@@ -63,7 +64,6 @@ export const Posts = () => {
             exit="close"
         >
             <motion.h1 variants={PostChild}>Posts</motion.h1>
-            
             <section className="Posts_content">
                 {
                     data ?

@@ -21,13 +21,8 @@ export const Create = () => {
             'text': data.text,
             'author': AdminID
         })
-    }
 
-    useEffect(() => {
-        GetProfile()
-        .then((res) => {
-            setAdminID(res.data?.[0].id)
-
+        .then(() => {
             toast.success('Post has been created', {
                 position: 'top-right',
                 closeOnClick: false,
@@ -35,6 +30,24 @@ export const Create = () => {
                 pauseOnHover: false,
                 autoClose: 3000,
             })
+        })
+
+        .catch(() => {
+            toast.error('Post hasnt created', {
+                position: 'top-right',
+                closeOnClick: false,
+                draggable: true,
+                pauseOnHover: false,
+                autoClose: 3000,
+            })
+        })
+        
+    }
+
+    useEffect(() => {
+        GetProfile()
+        .then((res) => {
+            setAdminID(res.data?.[0].id)
         })
         .catch((res) => {
             setAdminID([]);

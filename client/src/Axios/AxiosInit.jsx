@@ -7,106 +7,63 @@ export const AxiosInit = axios.create({
 AxiosInit.interceptors.request.use((config) => {
     const token = localStorage.getItem('token');
 
-    config.headers.Authorization = token ? `Bearer ${token}`: token
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`
+    }
 
     return config
 })
 
-export const AuthLogin = async (data) => {
-    const response = await AxiosInit.post('auth/login/', data)
-
-    try {
-        return response
-    } catch(err) {
-        return response
-    }
-}
-
-export const refTokenAuth = async (token) => {
-    const request = await AxiosInit.post('auth/login/refresh/', token)
-
-    try {
-        return request
-    } catch(err) {
-        return request
-    }
-}
-
-export const GetProfile = async () => {
-    const response = await AxiosInit.get('admin/profile/')
-
-    try {
-        return response
-    } catch (err) {
-        return response
-    }
-}
-
-export const GetPostAdmin = async () => {
-    const response = await AxiosInit.get('admin/posts/')
-
-    try {
-        return response
-    } catch (err) {
-        return response
-    }
-}
-
-export const CreatePostAdmin = async (data) => {
-    const request = await AxiosInit.post('admin/create/', data, {
-        headers: {
-            "Content-Type": "multipart/form-data"
+AxiosInit.interceptors.response.use(
+    response => response,
+    async error => {
+      const originalRequest = error.config;
+      
+      if (error.response?.status === 401 && !originalRequest._retry) {
+        originalRequest._retry = true;
+        
+        try {
+          const { data } = await axios.post(
+            `${import.meta.env.VITE_URL}/api/auth/login/refresh/`,
+            { refresh: localStorage.getItem('token_ref') }
+          );
+          
+          localStorage.setItem('token', data.access);
+          originalRequest.headers.Authorization = `Bearer ${data.access}`;
+          return api(originalRequest);
+          
+        } catch (refreshError) {
+          localStorage.removeItem('token');
+          localStorage.removeItem('token_ref');
+          window.location.href = 'login/'
+          return Promise.reject(refreshError)
         }
-    })
-
-    try {
-        return request
-    } catch(err) {
-        return request
+      }
+      
+      return Promise.reject(error);
     }
-}
+  );
+  
 
-export const EditPostAdmin = async (id, data) => {
-    const request = await AxiosInit.put(`admin/edit/${id}/`, data, {
-        headers: {
-            "Content-Type": 'multipart/form-data'
-        }
-    })
+export const AuthLogin = async (data) => await AxiosInit.post('auth/login/', data)
 
-    try {
-        return request
-    } catch (err) {
-        return request
-    }
-}
+export const GetProfile = async () => await AxiosInit.get('admin/profile/')
 
-export const GetPost = async () => {
-    const response = await AxiosInit.get('posts/')
+export const GetPostAdmin = async () => await AxiosInit.get('admin/posts/')
 
-    try {
-        return response
-    } catch (err) {
-        return response
-    }
-}
+export const CreatePostAdmin = async (data) => await AxiosInit.post('admin/create/', data, 
+    {headers: {"Content-Type": "multipart/form-data"}}
+)
+
+export const EditPostAdmin = async (id, data) => await AxiosInit.put(`admin/edit/${id}/`, data, 
+    {headers: {"Content-Type": 'multipart/form-data'}}
+)
+
+export const DeletePostAdmin = async (id) => await AxiosInit.delete(`admin/edit/${id}`)
+
+export const GetPost = async () => await AxiosInit.get('posts/')
 
 
-export const GetPostSelf = async (id) => {
-    const response = await AxiosInit.get(`posts/${id}/`)
+export const GetPostSelf = async (id) => await AxiosInit.get(`posts/${id}/`)
 
-    try {
-        return response
-    } catch (err) {
-        return response
-    }
-}
-
-export const GetGallery = async () => {
-    const response = await AxiosInit.get('gallery/')
-
-    try {
-        return response
-    } catch (err) {
-        return response
-    }
-}
+export const GetGallery = async () => await AxiosInit.get('gallery/')
