@@ -35,7 +35,7 @@ AxiosInit.interceptors.response.use(
         } catch (refreshError) {
           localStorage.removeItem('token');
           localStorage.removeItem('token_ref');
-          window.location.href = 'login/'
+          window.location.href = '/admin/login/'
           return Promise.reject(refreshError)
         }
       }
