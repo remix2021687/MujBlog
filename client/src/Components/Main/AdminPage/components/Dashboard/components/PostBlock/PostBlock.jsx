@@ -1,7 +1,6 @@
-import { motion } from "motion/react"
+import { motion, AnimatePresence } from "motion/react"
 import { useState } from "react";
 import { DropmenuInfoPost } from "./components/DropmenuInfoPost";
-import { GetPostAdmin } from "../../../../../../../Axios/AxiosInit";
 
 export const PostBlock = ({id, index, name, photo, dateCreated, childAnimation }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -15,6 +14,7 @@ export const PostBlock = ({id, index, name, photo, dateCreated, childAnimation }
                 }}
                 custom={index}
                 variants={childAnimation}
+                onClick={() => {setIsOpen(isOpen => !isOpen)}}
             >
                 <section className="PostBlock_info">
                     <img src={photo} alt={name} />
@@ -25,9 +25,11 @@ export const PostBlock = ({id, index, name, photo, dateCreated, childAnimation }
 
             </motion.section>
             
-            <DropmenuInfoPost 
-                id={id}
-            />
+            <AnimatePresence>
+                {
+                    isOpen && <DropmenuInfoPost id={id} />
+                }
+            </AnimatePresence>
         </>
     )
 }
