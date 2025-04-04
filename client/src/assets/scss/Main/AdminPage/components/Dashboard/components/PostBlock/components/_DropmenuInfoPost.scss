@@ -1,0 +1,28 @@
+.DropmenuInfoPost {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    padding: 10px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+
+    img {
+        object-fit: cover;
+        width: 30%;
+        border-radius: 8px;
+    }
+
+    p {
+        font-size: 16px;
+        max-width: 30%;
+    }
+
+    .DropmenuInfoPost_header {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        
+        h1 {font-size: 25px;}
+    }
+}

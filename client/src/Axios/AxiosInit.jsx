@@ -30,7 +30,7 @@ AxiosInit.interceptors.response.use(
           
           localStorage.setItem('token', data.access);
           originalRequest.headers.Authorization = `Bearer ${data.access}`;
-          return api(originalRequest);
+          return AxiosInit(originalRequest);
           
         } catch (refreshError) {
           localStorage.removeItem('token');
@@ -49,7 +49,18 @@ export const AuthLogin = async (data) => await AxiosInit.post('auth/login/', dat
 
 export const GetProfile = async () => await AxiosInit.get('admin/profile/')
 
-export const GetPostAdmin = async () => await AxiosInit.get('admin/posts/')
+export const GetPostAdmin = async (id) => {
+  
+  try {
+    if (id) {
+     return await AxiosInit.get(`admin/posts/${id}`)
+    } else {
+      return await AxiosInit.get('admin/posts/')
+    }
+  } catch(err) {
+    
+  }
+}
 
 export const CreatePostAdmin = async (data) => await AxiosInit.post('admin/create/', data, 
     {headers: {"Content-Type": "multipart/form-data"}}
