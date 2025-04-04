@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "motion/react"
 import { User, Note } from "@phosphor-icons/react"
 import { InfoBlocks } from "./components/InfoBlocks"
-import { PostBlock } from "./components/PostBlock"
+import { PostBlock } from "./components/PostBlock/PostBlock"
 import { GetPostAdmin } from "../../../../../Axios/AxiosInit";
 import moment from "moment";
 
@@ -16,6 +16,7 @@ export const Dashboard = () => {
             setData(res.data)
         })
         .catch((err) => {
+            setData([])
             console.error(err);
         })
     }, [])

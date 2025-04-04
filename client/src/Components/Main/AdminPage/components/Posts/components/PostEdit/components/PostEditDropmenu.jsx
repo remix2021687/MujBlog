@@ -8,7 +8,6 @@ export const PostEditDropmenu = ({ Id, Photo, Name, DisplayDescription, Text, se
     const RequiredErrorMSG = 'This field is required !'
     const {register, handleSubmit, watch, formState: {errors}} = useForm({
         defaultValues: {
-            "photo": Photo,
             "name": Name,
             'display_description': DisplayDescription,
             "text": Text
@@ -17,7 +16,9 @@ export const PostEditDropmenu = ({ Id, Photo, Name, DisplayDescription, Text, se
 
 
     const ImgaeWatch = watch('photo');
-    const ImgaePreview = ImgaeWatch != Photo ? URL.createObjectURL(ImgaeWatch?.[0]): Photo
+
+    console.log(ImgaeWatch)
+    const ImgaePreview = ImgaeWatch !== undefined ? ImgaeWatch.length > 0 ? URL.createObjectURL(ImgaeWatch[0]): null: Photo
 
     const PostEditParent = {
         open: {
@@ -57,7 +58,7 @@ export const PostEditDropmenu = ({ Id, Photo, Name, DisplayDescription, Text, se
 
     const OnSubmit = (data) => {
         EditPostAdmin(Id, {
-            "photo": data.photo[0],
+            ...(data.photo && data.photo.length > 0 && {"photo": data.photo}),
             "name": data.name,
             'display_description': data.display_description,
             "text": data.text
