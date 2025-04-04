@@ -1,24 +1,10 @@
 import { motion } from "motion/react"
-import { useEffect, useState } from "react"
+import { useState } from "react";
 import { DropmenuInfoPost } from "./components/DropmenuInfoPost";
 import { GetPostAdmin } from "../../../../../../../Axios/AxiosInit";
 
 export const PostBlock = ({id, index, name, photo, dateCreated, childAnimation }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [data, setData] = useState();
-
-    useEffect(() => {
-        GetPostAdmin(id)
-        .then((res) => {
-            if (res) {
-                console.log(res)
-            }
-            // setData(res.data[0]);
-        })
-        // .catch(() => {
-        //     setData()
-        // })
-    }, [])
     
     return (
         <>
@@ -40,10 +26,7 @@ export const PostBlock = ({id, index, name, photo, dateCreated, childAnimation }
             </motion.section>
             
             <DropmenuInfoPost 
-                name={data?.name}
-                photo={data?.photo}
-                DisplayDescription={data?.display_description}
-                text={data?.text}
+                id={id}
             />
         </>
     )
