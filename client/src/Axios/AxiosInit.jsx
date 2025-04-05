@@ -23,7 +23,7 @@ AxiosInit.interceptors.response.use(
         originalRequest._retry = true;
         
         try {
-          const { data } = await AxiosInit.post(
+          const { data } = await AxiosInit.post('auth/login/refresh/',
             {refresh: localStorage.getItem('token_ref')}
           );
           
