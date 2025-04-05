@@ -23,9 +23,8 @@ AxiosInit.interceptors.response.use(
         originalRequest._retry = true;
         
         try {
-          const { data } = await axios.post(
-            `${import.meta.env.VITE_URL}/api/auth/login/refresh/`,
-            { refresh: localStorage.getItem('token_ref') }
+          const { data } = await AxiosInit.post(
+            {refresh: localStorage.getItem('token_ref')}
           );
           
           localStorage.setItem('token', data.access);
