@@ -59,10 +59,11 @@ export const DropmenuInfoPost = ({ id }) => {
         >
             <motion.img variants={DropmenuInfoPostChild} src={data.photo} alt='photo' />
             <motion.section variants={DropmenuInfoPostChild} className="DropmenuInfoPost_header">
-                <motion.h1 variants={DropmenuInfoPostChild}>{data.name}</motion.h1>
-                <motion.p variants={DropmenuInfoPostChild}>{data.display_description}</motion.p>
+                <motion.h1 variants={DropmenuInfoPostChild}>Name: {data.name}</motion.h1>
+                <motion.p variants={DropmenuInfoPostChild}><b>Display Description:</b> {data.display_description}</motion.p>
             </motion.section>
-            <motion.p variants={DropmenuInfoPostChild}>{data.text}</motion.p>
+            <motion.p variants={DropmenuInfoPostChild}><b>Text:</b> {data.text}</motion.p>
+            <h3>Author: {data.author?.first_name} {data.author?.last_name}</h3>
         </motion.section>
     )
 }

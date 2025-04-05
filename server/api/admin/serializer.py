@@ -17,15 +17,18 @@ class AdminProfileListSerializer(serializers.ModelSerializer):
 
 
 class PostListSerializer(serializers.ModelSerializer):
+    author = AdminProfileSerializer(read_only=True)
+    
     class Meta:
         model = Post
-        fields = ('id', 'photo', 'name', 'display_description', 'text', 'date_created')
+        fields = ('id', 'photo', 'name', 'display_description', 'text', 'author', 'date_created')
 
 
 class PostCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = ('photo', 'name', 'display_description', 'text', 'author')
+
 
 class PostEditSerializer(serializers.ModelSerializer):
     class Meta:

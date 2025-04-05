@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import { NavLink } from "react-router";
 import { motion } from "motion/react"
 import { PostEdit } from "./components/PostEdit/PostEdit"
 import { GetPostAdmin } from "../../../../../Axios/AxiosInit";
