@@ -264,3 +264,4 @@ Thumbs.db
 /server/uploads
 Dockerfile
 docker-compose.*
+.git
