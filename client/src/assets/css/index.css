@@ -1030,20 +1030,6 @@ main {
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
-  -webkit-transition: 0.2s ease;
-  transition: 0.2s ease;
-}
-.PostEdit .PostEdit_header .PostEdit_header_control button.edit:hover {
-  color: white;
-  background-color: orange;
-}
-.PostEdit .PostEdit_header .PostEdit_header_control button.delete:hover {
-  color: white;
-  background-color: red;
-}
-.PostEdit .PostEdit_header .PostEdit_header_control button:hover {
-  -webkit-box-shadow: 0px 0px 10px 7px rgba(0, 0, 0, 0.12);
-          box-shadow: 0px 0px 10px 7px rgba(0, 0, 0, 0.12);
 }
 .PostEdit .PostEdit_edit_dropmenu {
   display: -webkit-box;
@@ -1218,11 +1204,60 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   gap: 20px;
-  width: 80%;
+  width: 50%;
+  height: 20%;
   background-color: whitesmoke;
   border-radius: 10px;
-  padding: 10px;
+  padding: 15px 10px;
+}
+.ConfirmDelateModal .ConfirmDelateModal_modal .ConfirmDelateModal_modal_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 15px;
+}
+.ConfirmDelateModal .ConfirmDelateModal_modal .ConfirmDelateModal_modal_header h2 {
+  font-size: 35px;
+}
+.ConfirmDelateModal .ConfirmDelateModal_modal .ConfirmDelateModal_modal_header p {
+  font-size: 14px;
+}
+.ConfirmDelateModal .ConfirmDelateModal_modal .ConfirmDelateModal_modal_button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 25px;
+  width: 100%;
+}
+.ConfirmDelateModal .ConfirmDelateModal_modal .ConfirmDelateModal_modal_button button {
+  width: 30%;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background: none;
+  font-size: 18px;
+  cursor: pointer;
 }
 
 .Create {

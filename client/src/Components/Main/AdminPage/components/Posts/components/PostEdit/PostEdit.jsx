@@ -1,13 +1,12 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
-import { toast } from 'react-toastify';
 import { PostEditDropmenu } from './components/PostEditDropmenu';
-import { DeletePostAdmin } from '../../../../../../../Axios/AxiosInit';
 import { ConfirmDelateModal } from './components/ConfirmDelateModal';
 
 
 export const PostEdit = ({ id, index, Name, Photo, DisplayDescription, Text, postChild }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isOnDelete, setIsOnDelete] = useState(false);
 
     const CloseHendle = (event) => {
         if (event) {
@@ -15,32 +14,21 @@ export const PostEdit = ({ id, index, Name, Photo, DisplayDescription, Text, pos
         }
     }
 
-    const onDelete = () => {
-        DeletePostAdmin(id)
-        .then(() => {
-            toast.success('Delete Post is successfull !', {
-                position: 'top-right',
-                closeOnClick: false,
-                draggable: true,
-                pauseOnHover: false,
-                autoClose: 3000,
-            })
-        })
-
-        .catch(() => {
-            toast.error("Delete Post isn't successfull !", {
-                position: 'top-right',
-                closeOnClick: false,
-                draggable: true,
-                pauseOnHover: false,
-                autoClose: 3000,
-            })
-        })
+    const CancelHendle = (event) => {
+        if (event) {
+            setIsOnDelete(false);
+        }
     }
+
+    const onDelete = () => setIsOnDelete(true);
 
     return (
         <>
-            <ConfirmDelateModal />
+            <AnimatePresence>
+                {
+                    isOnDelete && <ConfirmDelateModal id={id} name={Name}  cancelState={CancelHendle}/>
+                }
+            </AnimatePresence>
             <motion.section 
                 className="PostEdit"
                 variants={postChild}
@@ -52,8 +40,30 @@ export const PostEdit = ({ id, index, Name, Photo, DisplayDescription, Text, pos
                         <h2>{Name}</h2>
                     </section>
                     <section className='PostEdit_header_control'>
-                        <button className='edit' onClick={() => setIsOpen(true)}>Edit</button>
-                        <button className='delete' onClick={onDelete} >Delete</button>
+                        <motion.button 
+                            className='edit' 
+                            onClick={() => setIsOpen(true)}
+                            whileHover={{
+                                color: '#ffffff',
+                                backgroundColor: '#ffa500',
+                                boxShadow: '0px 0px 10px 7px rgba(0,0,0,0.12)'
+                            }}
+                            whileTap={{scale: 0.9}}
+                        >
+                            Edit
+                        </motion.button>
+                        <motion.button 
+                            className='delete' 
+                            onClick={onDelete}
+                            whileHover={{
+                                color: '#ffffff',
+                                backgroundColor: '#ff0000',
+                                boxShadow: '0px 0px 10px 7px rgba(0,0,0,0.12)'
+                            }}
+                            whileTap={{scale: 0.9}}
+                        >
+                            Delete
+                        </motion.button>
                     </section>
                 </section>
                 <AnimatePresence>
