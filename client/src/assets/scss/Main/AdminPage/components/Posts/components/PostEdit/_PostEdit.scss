@@ -42,28 +42,29 @@
                 font-size: 16px;
                 font-weight: 500;
                 cursor: pointer;
-                transition: 0.2s ease;
 
-                &.edit {
-                    &:hover {
-                        color: white;
-                        background-color: orange;
-                    }
-                }
+                // &.edit {
+                //     &:hover {
+                //         color: #ffffff;
+                //         background-color: #ffa500;
+                //     }
+                // }
 
-                &.delete {
-                    &:hover {
-                        color: white;
-                        background-color: red;
-                    }
-                }
+                // &.delete {
+                //     &:hover {
+                //         color: white;
+                //         background-color: red;
+                //     }
+                // }
 
-                &:hover {
-                    box-shadow: 0px 0px 10px 7px rgba(0,0,0,0.12);
-                }
+                // &:hover {
+                //     box-shadow: ;
+                // }
             }
         }
     }
 
     @import './components/PostEditDropmenu';
 }
+
+@import './components/ConfirmDelateModal';
