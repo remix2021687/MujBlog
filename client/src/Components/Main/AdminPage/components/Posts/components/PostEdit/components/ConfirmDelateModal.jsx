@@ -93,7 +93,7 @@ export const ConfirmDelateModal = ({ id, name, cancelState }) => {
                 >
                     <section className="ConfirmDelateModal_modal_header">
                         <motion.h2 variants={ConfirmDelateModalChild}>Confirm to delete post ?</motion.h2>
-                        <motion.p variants={ConfirmDelateModalChild}>Вы дейстивтельно хотите удалит <b>{name}</b> ?</motion.p>
+                        <motion.p variants={ConfirmDelateModalChild}>Do you really want to remove <b>{name}</b> ?</motion.p>
                     </section>
                     <section className="ConfirmDelateModal_modal_button">
                         <motion.button 
