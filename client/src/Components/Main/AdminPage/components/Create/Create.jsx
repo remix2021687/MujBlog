@@ -1,4 +1,5 @@
 import { Image, Plus } from '@phosphor-icons/react'
+import { motion } from 'motion/react'
 import { useForm } from 'react-hook-form'
 import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
@@ -44,6 +45,36 @@ export const Create = () => {
         
     }
 
+    const CreateParent = {
+        open: {
+            transition: {
+                duraction: 0.5,
+                staggerChildren: 0.08,
+                delayChildren: 0.1
+            }
+        },
+
+        close: {
+            transition: {
+                duraction: 0.5,
+                staggerChildren: 0.08,
+                delayChildren: 0.1
+            }
+        }
+    }
+
+    const CreateChild = {
+        open: {
+            opacity: 1,
+            y: 0
+        },
+
+        close: {
+            opacity: 0,
+            y: -15
+        }
+    }
+
     useEffect(() => {
         GetProfile()
         .then((res) => {
@@ -55,10 +86,16 @@ export const Create = () => {
     }, [])
 
     return (
-        <section className="Create">
-            <h1>Create Post</h1>
+        <motion.section 
+            className="Create"
+            variants={CreateParent}
+            initial="close"
+            animate="open"
+            exit="close"
+        >
+            <motion.h1 variants={CreateChild}>Create Post</motion.h1>
             <form className="Create_form" onSubmit={handleSubmit(OnSubmit)}>
-                <label htmlFor="setPhoto" className="Create_form_photo_label">
+                <motion.label variants={CreateChild} htmlFor="setPhoto" className="Create_form_photo_label">
                     <section className={
                         ImageWatch?.[0] ?
                         'Create_form_photo_label_zone choosed'
@@ -79,11 +116,11 @@ export const Create = () => {
                         accept='image/png, image/jpeg' 
                         hidden 
                     />
-                </label>
+                </motion.label>
                 
                 <span>{errors.photo?.message}</span>
 
-                <section className='Create_form_input_name'>
+                <motion.section variants={CreateChild} className='Create_form_input_name'>
                     <input 
                         {...register('name', {
                             required: RequiredErrorMSG
@@ -93,8 +130,8 @@ export const Create = () => {
                         placeholder="Name*"     
                     />
                     <span>{errors.name?.message}</span>
-                </section>
-                <section className='Create_form_input_display_description'>
+                </motion.section>
+                <motion.section variants={CreateChild}  className='Create_form_input_display_description'>
                     <input 
                         {...register('display_description', {
                             required: RequiredErrorMSG
@@ -104,8 +141,8 @@ export const Create = () => {
                         placeholder="Display description*" 
                     />
                     <span>{errors.display_description?.message}</span>
-                </section>
-                <section className='Create_form_input_text'>
+                </motion.section>
+                <motion.section variants={CreateChild} className='Create_form_input_text'>
                     <textarea 
                         {...register('text', {
                             required: RequiredErrorMSG
@@ -114,12 +151,21 @@ export const Create = () => {
                         placeholder="Text*"
                     ></textarea>
                     <span>{errors.text?.message}</span>
-                </section>
-                <button className='Create_form_button'>
+                </motion.section>
+                <motion.button 
+                    variants={CreateChild} 
+                    className='Create_form_button'
+                    whileHover={{
+                        scale: 1.05,
+                        color: '#ffffff',
+                        backgroundColor : '#008000',
+                        boxShadow: '0px 10px 7px #0000001f'
+                    }}
+                >
                     <Plus size={28} weight='bold' />
                     Create
-                </button>
+                </motion.button>
             </form>
-        </section>
+        </motion.section>
     )
 }
