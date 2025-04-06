@@ -52,7 +52,7 @@ export const LeftHeader = ({ setCatergoryState }) => {
         localStorage.removeItem('token')
         localStorage.removeItem('token_ref')
 
-        toast.success('Logout successfull !', {
+        toast.success('Logout successful !', {
             position: 'top-center',
             closeOnClick: false,
             draggable: true,
