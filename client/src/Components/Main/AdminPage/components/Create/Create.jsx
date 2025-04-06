@@ -95,7 +95,7 @@ export const Create = () => {
         >
             <motion.h1 variants={CreateChild}>Create Post</motion.h1>
             <form className="Create_form" onSubmit={handleSubmit(OnSubmit)}>
-                <motion.label variants={CreateChild} htmlFor="setPhoto" className="Create_form_photo_label">
+                <motion.label whileHover={{boxShadow: '0px 0px 10px 7px rgba(0,0,0,0.12)'}} variants={CreateChild} htmlFor="setPhoto" className="Create_form_photo_label">
                     <section className={
                         ImageWatch?.[0] ?
                         'Create_form_photo_label_zone choosed'
