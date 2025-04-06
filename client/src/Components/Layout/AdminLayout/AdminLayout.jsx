@@ -1,4 +1,4 @@
-import { LeftHeader } from "./components/LeftHeader"
+import { LeftHeader } from "./components/LeftHeader/LeftHeader"
 import { useState, createContext } from 'react'
 
 export const CatergoryStateContext = createContext(null);
