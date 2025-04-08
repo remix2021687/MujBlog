@@ -99,19 +99,13 @@ export const LeftHeader = ({ setCatergoryState }) => {
                 <section>
                     <hr />
                     <section className='LeftHeader_details'>
-                        <motion.section 
-                            className='LeftHeader_details_profile'
-                            whileHover={{
-                                scale: 1.05,
-                                boxShadow: '0px 0px 10px 7px rgba(0,0,0,0.12)'
-                            }}
-                        >
+                        <section className='LeftHeader_details_profile'>
                             <span><User size={32}/></span>
                             <section className='LeftHeader_details_profile_info'>
                                 <h4>{data[0]?.last_name} {data[0]?.first_name}</h4>
                                 <h5>Admin</h5>
                             </section>
-                        </motion.section>
+                        </section>
                         <motion.button 
                             className='LeftHeader_details_exit'
                             whileHover={{

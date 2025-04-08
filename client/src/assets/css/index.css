@@ -254,7 +254,6 @@ main {
   height: 60px;
   background-color: white;
   border-radius: 16px;
-  cursor: pointer;
 }
 .LeftHeader .LeftHeader_content .LeftHeader_details .LeftHeader_details_profile .LeftHeader_details_profile_info {
   display: -webkit-box;
