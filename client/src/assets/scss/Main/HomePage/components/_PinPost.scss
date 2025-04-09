@@ -1,0 +1,25 @@
+.PinPost {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+    padding: 25px;
+
+    border: 2px solid gold;
+    border-radius: 10px;
+
+    h1 {
+        text-align: center;
+        font-size: 32px;
+        font-weight: 500;
+    }
+
+    .PinPost_content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 25px;
+    }
+}

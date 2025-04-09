@@ -73,6 +73,7 @@ export const DeletePostAdmin = async (id) => await AxiosInit.delete(`admin/edit/
 
 export const GetPost = async () => await AxiosInit.get('posts/')
 
+export const GetPostPin = async () => await AxiosInit.get('pins/')
 
 export const GetPostSelf = async (id) => await AxiosInit.get(`posts/${id}/`)
 

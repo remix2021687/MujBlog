@@ -10,8 +10,9 @@ class Post(models.Model):
     photo = models.ImageField(upload_to='uploads/photos', blank=False, null=False)
     display_description = models.CharField(max_length=150, blank=False, null=False)
     text = models.TextField(blank=False, null=False)
+    pin_post = models.BooleanField(default=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    date_created = models.DateTimeField(auto_now=True, editable=False)
+    date_created = models.DateTimeField(auto_now_add=True, editable=False)
 
     class Meta:
         ordering = ['date_created']

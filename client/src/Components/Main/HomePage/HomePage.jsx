@@ -2,6 +2,7 @@ import { BlogBox } from '../../Layout/BlogBox/BlogBox'
 import { GetPost } from "../../../Axios/AxiosInit"
 import { useState } from "react"
 import { useEffect } from "react"
+import { PinPost } from './components/PinPost/PinPost'
 
 export const HomePage = () => {
     const [data, setData] = useState([]);
@@ -19,6 +20,7 @@ export const HomePage = () => {
 
     return (
         <section className="HomePage">
+            <PinPost />
             {
                 data ?
                 data.map((data, index) => 

@@ -21,6 +21,7 @@ class PostListAdminViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = PostListSerializer
     permission_classes = [IsAdminUser]
 
+
 class AdminPostCreateViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostCreateSerializer
@@ -31,6 +32,7 @@ class AdminPostCreateViewSet(viewsets.ModelViewSet):
 
     def list(self, request, *args, **kwargs):
         raise MethodNotAllowed(request.method)
+
 
 class AdminEditViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
