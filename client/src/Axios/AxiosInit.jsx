@@ -57,7 +57,7 @@ export const GetPostAdmin = async (id) => {
       return await AxiosInit.get('admin/posts/')
     }
   } catch(err) {
-    
+    return err;
   }
 }
 
@@ -73,8 +73,10 @@ export const DeletePostAdmin = async (id) => await AxiosInit.delete(`admin/edit/
 
 export const GetPost = async () => await AxiosInit.get('posts/')
 
+export const GetPostSelf = async (id) => await AxiosInit.get(`posts/${id}/`)
+
 export const GetPostPin = async () => await AxiosInit.get('pins/')
 
-export const GetPostSelf = async (id) => await AxiosInit.get(`posts/${id}/`)
+export const GetPostPinSelf = async (id) => await AxiosInit.get(`pins/${id}/`)
 
 export const GetGallery = async () => await AxiosInit.get('gallery/')

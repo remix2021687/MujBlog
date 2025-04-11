@@ -30,6 +30,7 @@ export const PinPost = () => {
                                     name={data.name}
                                     image={data.photo}
                                     display_description={data.display_description}
+                                    pinMode={true}
                                 />
                             )
                         }

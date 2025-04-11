@@ -28,3 +28,6 @@ class PostViewSet(viewsets.ReadOnlyModelViewSet):
         if self.action == 'list':
             return PostSerializerList
         return PostSerializer
+
+    def get_queryset(self):
+        return self.queryset.filter(pin_post=False)
