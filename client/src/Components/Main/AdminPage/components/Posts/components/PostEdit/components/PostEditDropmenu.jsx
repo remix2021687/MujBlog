@@ -1,23 +1,24 @@
 import { motion } from "motion/react"
-import { useForm } from "react-hook-form"
+import { useForm, Controller } from "react-hook-form"
 import { toast } from "react-toastify";
 import { FileArrowUp } from '@phosphor-icons/react'
 import { EditPostAdmin } from "../../../../../../../../Axios/AxiosInit"
+import { Checkbox } from "antd";
 
-export const PostEditDropmenu = ({ Id, Photo, Name, DisplayDescription, Text, setCloseEdit}) => {
+export const PostEditDropmenu = ({ Id, Photo, Name, DisplayDescription, Text, isPined, setCloseEdit}) => {
     const RequiredErrorMSG = 'This field is required !'
-    const {register, handleSubmit, watch, formState: {errors}} = useForm({
+    const {register, handleSubmit, control, watch, formState: {errors}} = useForm({
         defaultValues: {
             "name": Name,
             'display_description': DisplayDescription,
-            "text": Text
+            "text": Text,
+            "pin_post": isPined
         }
     });
 
 
     const ImgaeWatch = watch('photo');
 
-    console.log(ImgaeWatch)
     const ImgaePreview = ImgaeWatch !== undefined ? ImgaeWatch.length > 0 ? URL.createObjectURL(ImgaeWatch[0]): null: Photo
 
     const PostEditParent = {
@@ -60,8 +61,9 @@ export const PostEditDropmenu = ({ Id, Photo, Name, DisplayDescription, Text, se
         EditPostAdmin(Id, {
             ...(data.photo && data.photo.length > 0 && {"photo": data.photo}),
             "name": data.name,
-            'display_description': data.display_description,
-            "text": data.text
+            "display_description": data.display_description,
+            "text": data.text,
+            "pin_post": data.pin_post
         })
         .then(() => {
             toast.success('Update successfull !', {
@@ -154,6 +156,23 @@ export const PostEditDropmenu = ({ Id, Photo, Name, DisplayDescription, Text, se
                         placeholder='Text*' 
                     />
                     <span>{errors.text?.message}</span>
+                </section>
+                <section className="PostEdit_edit_dropmenu_change_check">
+                        <Controller 
+                            name="pin_post"
+                            control={control}
+                            rules={{
+                                required: false
+                            }}
+                            render={({ field }) => 
+                                <Checkbox 
+                                    checked={field.value}
+                                    onChange={(e) => field.onChange(e.target.checked)} 
+                                    {...field} 
+                                    /> 
+                            }
+                        />
+                        <h4>Pin post</h4>
                 </section>
                 <section className='PostEdit_edit_dropmenu_change_submit_cancel'>
                     <motion.button variants={PostEditChild} className='save'>Save</motion.button>

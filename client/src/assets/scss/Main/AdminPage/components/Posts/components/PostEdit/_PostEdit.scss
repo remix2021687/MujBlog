@@ -24,6 +24,19 @@
             }
 
             h2 {font-size: 32px;}
+
+            .PostEdit_header_photo_name_pin {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 10px;
+
+                span {
+                    font-size: 12px;
+                    font-weight: 600;
+                    color: orange;
+                }
+            }
         }
 
         .PostEdit_header_control {
