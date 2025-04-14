@@ -595,6 +595,46 @@ main {
   gap: 50px;
   margin: 50px 0;
 }
+.HomePage .PinPost {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+  width: 80%;
+  padding: 25px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.082);
+  -webkit-box-shadow: 9px 8px 50px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: 9px 8px 50px 0px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+.HomePage .PinPost > h1 {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 500;
+}
+.HomePage .PinPost .PinPost_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  position: relative;
+  gap: 25px;
+}
 
 .GalleryPage {
   display: -webkit-box;
@@ -891,6 +931,24 @@ main {
 .PostBlock .PostBlock_info h2 {
   font-size: 24px;
 }
+.PostBlock .PostBlock_info .PostBlock_info_name_pin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 10px;
+}
+.PostBlock .PostBlock_info .PostBlock_info_name_pin span {
+  font-size: 10px;
+  font-weight: 600;
+  color: orange;
+}
 .PostBlock > h2 {
   font-size: 18px;
 }
@@ -1005,6 +1063,24 @@ main {
 }
 .PostEdit .PostEdit_header .PostEdit_header_photo_name h2 {
   font-size: 32px;
+}
+.PostEdit .PostEdit_header .PostEdit_header_photo_name .PostEdit_header_photo_name_pin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 10px;
+}
+.PostEdit .PostEdit_header .PostEdit_header_photo_name .PostEdit_header_photo_name_pin span {
+  font-size: 12px;
+  font-weight: 600;
+  color: orange;
 }
 .PostEdit .PostEdit_header .PostEdit_header_control {
   display: -webkit-box;
@@ -1138,6 +1214,19 @@ main {
   padding: 10px;
   outline: none;
   resize: none;
+}
+.PostEdit .PostEdit_edit_dropmenu .PostEdit_edit_dropmenu_change_check {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
 }
 .PostEdit .PostEdit_edit_dropmenu .PostEdit_edit_dropmenu_change_submit_cancel {
   display: -webkit-box;

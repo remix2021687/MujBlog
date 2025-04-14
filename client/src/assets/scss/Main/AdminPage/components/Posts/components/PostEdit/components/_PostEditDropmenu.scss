@@ -87,6 +87,14 @@
         }
     }
 
+    .PostEdit_edit_dropmenu_change_check {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+
+    }
+
     .PostEdit_edit_dropmenu_change_submit_cancel {
         display: flex;
         flex-direction: row;

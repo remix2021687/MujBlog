@@ -116,6 +116,7 @@ export const Dashboard = () => {
                                 id={data.id}
                                 name={data.name}
                                 photo={data.photo}
+                                isPined={data.pin_post}
                                 dateCreated={moment(data.date_created).format("D.MM.YYYY")}
                                 childAnimation={DashboardChildPosts}
                             />

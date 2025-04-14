@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework import routers
-from .resourceview import PostListAdminViewSet, AdminEditViewSet, AdminPostCreateViewSet,  AdminProfileViewSet
+from .resourceview import PostListAdminViewSet, AdminEditViewSet, AdminPostCreateViewSet, AdminProfileViewSet
 
 router = routers.DefaultRouter()
 router.register('profile', AdminProfileViewSet, basename='admin_profile')

@@ -21,19 +21,19 @@ class PostListSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Post
-        fields = ('id', 'photo', 'name', 'display_description', 'text', 'author', 'date_created')
+        fields = ('id', 'photo', 'name', 'display_description', 'pin_post', 'text', 'author', 'date_created')
 
 
 class PostCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = ('photo', 'name', 'display_description', 'text', 'author')
+        fields = ('photo', 'name', 'display_description', 'pin_post', 'text', 'author')
 
 
 class PostEditSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = ("id", 'photo', 'name', 'display_description', 'text', 'date_created')
+        fields = ("id", 'photo', 'name', 'display_description', 'pin_post', 'text', 'date_created')
         extra_kwargs = {
             'photo': {'required': False},
         }

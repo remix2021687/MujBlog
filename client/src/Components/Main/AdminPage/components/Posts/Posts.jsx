@@ -75,6 +75,7 @@ export const Posts = () => {
                             Photo={data.photo}
                             DisplayDescription={data.display_description}
                             Text={data.text}
+                            isPined={data.pin_post}
                             postChild={PostChild} 
                         />
                     )

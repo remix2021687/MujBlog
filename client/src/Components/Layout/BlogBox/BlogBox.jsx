@@ -3,7 +3,7 @@ import { Modal } from "../Modal/Modal";
 import { useState } from "react";
 import { useEffect } from "react";
 
-export const BlogBox = ({id, name, image, display_description}) => {
+export const BlogBox = ({id, name, image, display_description, pinMode=false}) => {
     const [IsOpenModal, setIsOpenModal] = useState(false);
     const [returnEvent, setReturnEvent] = useState();
     
@@ -56,6 +56,7 @@ export const BlogBox = ({id, name, image, display_description}) => {
                         name={name}
                         text={display_description}
                         setReturnEvent={setReturnEvent}
+                        pinMode={pinMode}
                     />
                 }
             </AnimatePresence>

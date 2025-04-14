@@ -11,6 +11,15 @@ class PostGalleryViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly]
 
 
+class PostPinViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def get_queryset(self):
+        return self.queryset.filter(pin_post=True)
+
+
 class PostViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Post.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly]
@@ -19,3 +28,6 @@ class PostViewSet(viewsets.ReadOnlyModelViewSet):
         if self.action == 'list':
             return PostSerializerList
         return PostSerializer
+
+    def get_queryset(self):
+        return self.queryset.filter(pin_post=False)

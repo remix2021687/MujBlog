@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "motion/react"
 import { useState } from "react";
 import { DropmenuInfoPost } from "./components/DropmenuInfoPost";
 
-export const PostBlock = ({id, index, name, photo, dateCreated, childAnimation }) => {
+export const PostBlock = ({id, index, name, photo, isPined, dateCreated, childAnimation }) => {
     const [isOpen, setIsOpen] = useState(false);
     
     return (
@@ -18,7 +18,10 @@ export const PostBlock = ({id, index, name, photo, dateCreated, childAnimation }
             >
                 <section className="PostBlock_info">
                     <img src={photo} alt={name} />
-                    <h2>{name}</h2>
+                    <section className="PostBlock_info_name_pin">
+                        <h2>{name}</h2>
+                        {isPined ? <span>pined</span>: null}
+                    </section>
                 </section>
 
                 <h2>{dateCreated}</h2>

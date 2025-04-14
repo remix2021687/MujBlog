@@ -23,6 +23,19 @@
         h2 {
             font-size: 24px;
         }
+
+        .PostBlock_info_name_pin {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 10px;
+
+            span {
+                font-size: 10px;
+                font-weight: 600;
+                color: orange;
+            }
+        }
     }
 
     & > h2 {

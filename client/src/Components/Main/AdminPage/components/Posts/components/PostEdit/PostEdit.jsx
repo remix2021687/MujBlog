@@ -4,7 +4,7 @@ import { PostEditDropmenu } from './components/PostEditDropmenu';
 import { ConfirmDelateModal } from './components/ConfirmDelateModal';
 
 
-export const PostEdit = ({ id, index, Name, Photo, DisplayDescription, Text, postChild }) => {
+export const PostEdit = ({ id, index, Name, Photo, isPined, DisplayDescription, Text, postChild }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isOnDelete, setIsOnDelete] = useState(false);
 
@@ -37,7 +37,10 @@ export const PostEdit = ({ id, index, Name, Photo, DisplayDescription, Text, pos
                 <section className='PostEdit_header'>
                     <section className='PostEdit_header_photo_name'>
                         <img src={Photo} alt='photo' />
-                        <h2>{Name}</h2>
+                        <section className='PostEdit_header_photo_name_pin'>
+                            <h2>{Name}</h2>
+                            {isPined ? <span>pined</span>: null}
+                        </section>
                     </section>
                     <section className='PostEdit_header_control'>
                         <motion.button 
@@ -74,6 +77,7 @@ export const PostEdit = ({ id, index, Name, Photo, DisplayDescription, Text, pos
                             Photo={Photo}
                             DisplayDescription={DisplayDescription}
                             Text={Text}
+                            isPined={isPined}
                             setCloseEdit={CloseHendle}
                         />
                     }
