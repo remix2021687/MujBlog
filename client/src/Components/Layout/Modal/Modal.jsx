@@ -102,7 +102,20 @@ export const Modal = ({id, setReturnEvent, pinMode}) => {
                             <h1>Auhor by</h1>
                             <h3>{data.author?.last_name} {data.author?.first_name}</h3>
                         </section>
-                        <motion.button variants={ModalAnimationChildren} onClick={ClickHendler}>Close</motion.button>
+                        <motion.button 
+                            variants={ModalAnimationChildren} 
+                            onClick={ClickHendler}
+                            whileHover={{
+                                backgroundColor: "#ff0000",
+                                borderColor: "#ff0000",
+                                color: '#ffffff',
+                            }}
+                            whileTap={{
+                                scale: 0.9
+                            }}
+                        >
+                        Close
+                        </motion.button>
                     </motion.section>
                     <motion.h4 variants={ModalAnimationChildren}><span>Created by</span> {formateData}</motion.h4>
                 </section>
