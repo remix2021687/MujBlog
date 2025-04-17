@@ -18,13 +18,14 @@ AxiosInit.interceptors.response.use(
     response => response,
     async error => {
       const originalRequest = error.config;
+      const refreshToken = localStorage.getItem('token_ref')
       
       if (error.response?.status === 401 && !originalRequest._retry) {
         originalRequest._retry = true;
         
         try {
           const { data } = await AxiosInit.post('auth/login/refresh/',
-            {refresh: localStorage.getItem('token_ref')}
+            {refresh: refreshToken}
           );
           
           localStorage.setItem('token', data.access);
@@ -34,7 +35,7 @@ AxiosInit.interceptors.response.use(
         } catch (refreshError) {
           localStorage.removeItem('token');
           localStorage.removeItem('token_ref');
-          window.location.href = '/admin/login/'
+          window.location.href = '/'
           return Promise.reject(refreshError)
         }
       }
