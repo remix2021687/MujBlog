@@ -13,7 +13,7 @@ class AdminProfileSerializer(serializers.ModelSerializer):
 class AdminProfileListSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username')
+        fields = ('id', 'date_joined')
 
 
 class PostListSerializer(serializers.ModelSerializer):

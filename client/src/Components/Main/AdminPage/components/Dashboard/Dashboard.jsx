@@ -3,23 +3,38 @@ import { motion } from "motion/react"
 import { User, Note } from "@phosphor-icons/react"
 import { InfoBlocks } from "./components/InfoBlocks"
 import { PostBlock } from "./components/PostBlock/PostBlock"
-import { GetPostAdmin } from "../../../../../Axios/AxiosInit";
+import { GetAdminList, GetPostAdmin } from "../../../../../Axios/AxiosInit";
 import moment from "moment";
 
 
 export const Dashboard = () => {
-    const [data, setData] = useState([]);
+    const [dataPosts, setDataPosts] = useState([]);
+    const [dataCountAdmins, setDataCountAdmins] = useState(0);
 
     useEffect(() => {
         GetPostAdmin()
         .then((res) => {
-            setData(res.data)
+            setDataPosts(res.data)
         })
         .catch((err) => {
-            setData([])
+            setDataPosts([])
             console.error(err);
         })
     }, [])
+
+    useEffect(() => {
+        GetAdminList()
+        .then((res) => {
+            const countAdmin = res.data.length;
+
+            setDataCountAdmins(countAdmin);
+        })
+
+        .catch((err) => {
+            setDataCountAdmins(0);
+            console.error(err);
+        })
+    }, []);
 
     const DashboardParent = {
         open: {
@@ -81,7 +96,7 @@ export const Dashboard = () => {
                 <section className="Dashboard_content_header">
                     <InfoBlocks 
                         name={"User"}
-                        count={"2"}
+                        count={dataCountAdmins}
                         icon={<User size={40} />}
                         BgColorIcon={"#8280FF"}
                         colorIcon={'white'}
@@ -90,7 +105,7 @@ export const Dashboard = () => {
 
                     <InfoBlocks 
                         name={"Posts"}
-                        count={data.length}
+                        count={dataPosts.length}
                         icon={<Note size={40} />}
                         BgColorIcon={"#FEC53D"}
                         colorIcon={'white'}
@@ -108,8 +123,8 @@ export const Dashboard = () => {
                     exit="close"
                 >
                     {
-                        data ?
-                        data.map((data, index) => 
+                        dataPosts ?
+                        dataPosts.map((data, index) => 
                             <PostBlock
                                 key={index + 1}
                                 index={index + 1}

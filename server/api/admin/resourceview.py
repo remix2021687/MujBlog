@@ -4,7 +4,8 @@ from rest_framework.exceptions import MethodNotAllowed
 from rest_framework.permissions import IsAdminUser
 
 from blog.models import Post
-from .serializer import PostListSerializer, PostEditSerializer, PostCreateSerializer, AdminProfileSerializer
+from .serializer import PostListSerializer, PostEditSerializer, PostCreateSerializer, AdminProfileSerializer, \
+    AdminProfileListSerializer
 
 
 class AdminProfileViewSet(viewsets.ModelViewSet):
@@ -14,6 +15,15 @@ class AdminProfileViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return self.queryset.filter(username=self.request.user.username)
+
+
+class AdminProfileListViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = AdminProfileListSerializer
+    permission_classes = [IsAdminUser]
+
+    def get_queryset(self):
+        return self.queryset.filter(is_staff=True)
 
 
 class PostListAdminViewSet(viewsets.ReadOnlyModelViewSet):

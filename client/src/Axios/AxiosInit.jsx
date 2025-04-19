@@ -35,7 +35,7 @@ AxiosInit.interceptors.response.use(
         } catch (refreshError) {
           localStorage.removeItem('token');
           localStorage.removeItem('token_ref');
-          window.location.href = '/'
+          window.location.href = '/404'
           return Promise.reject(refreshError)
         }
       }
@@ -61,6 +61,8 @@ export const GetPostAdmin = async (id) => {
     return err;
   }
 }
+
+export const GetAdminList = async () => await AxiosInit.get('admin/list/')
 
 export const CreatePostAdmin = async (data) => await AxiosInit.post('admin/create/', data, 
     {headers: {"Content-Type": "multipart/form-data"}}

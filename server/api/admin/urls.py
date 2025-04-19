@@ -1,9 +1,10 @@
 from django.urls import path, include
 from rest_framework import routers
-from .resourceview import PostListAdminViewSet, AdminEditViewSet, AdminPostCreateViewSet, AdminProfileViewSet
+from .resourceview import PostListAdminViewSet, AdminEditViewSet, AdminPostCreateViewSet, AdminProfileViewSet, AdminProfileListViewSet
 
 router = routers.DefaultRouter()
 router.register('profile', AdminProfileViewSet, basename='admin_profile')
+router.register('list', AdminProfileListViewSet, basename='admin_list')
 router.register('posts', PostListAdminViewSet, basename='admin_posts')
 router.register('create', AdminPostCreateViewSet, basename='admin_post_create')
 router.register('edit', AdminEditViewSet, basename='admin_post_edit')

@@ -1,6 +1,5 @@
-import { motion, AnimatePresence } from "motion/react"
+import { motion } from "motion/react"
 import { useState } from "react";
-import { DropmenuInfoPost } from "./components/DropmenuInfoPost";
 
 export const PostBlock = ({id, index, name, photo, isPined, dateCreated, childAnimation }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -9,9 +8,6 @@ export const PostBlock = ({id, index, name, photo, isPined, dateCreated, childAn
         <>
             <motion.section 
                 className="PostBlock"
-                whileHover={{
-                    boxShadow: '8px 7px 9px 11px rgba(0,0,0,0.11)'
-                }}
                 custom={index}
                 variants={childAnimation}
                 onClick={() => {setIsOpen(isOpen => !isOpen)}}
@@ -27,12 +23,6 @@ export const PostBlock = ({id, index, name, photo, isPined, dateCreated, childAn
                 <h2>{dateCreated}</h2>
 
             </motion.section>
-            
-            <AnimatePresence>
-                {
-                    isOpen && <DropmenuInfoPost id={id} />
-                }
-            </AnimatePresence>
         </>
     )
 }
