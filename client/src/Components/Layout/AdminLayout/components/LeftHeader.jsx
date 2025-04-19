@@ -85,6 +85,10 @@ export const LeftHeader = ({ setCatergoryState }) => {
                                         <motion.section 
                                             layoutId='selected'
                                             className='LeftHeader_catergory_button_bg'
+                                            transition={{
+                                                type: 'spring',
+                                                bounce: 0.45
+                                            }}
                                         ></motion.section>
                                     )}
                                     <span>
