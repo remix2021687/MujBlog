@@ -1,5 +1,7 @@
 import { Image, Plus } from '@phosphor-icons/react'
 import { motion } from 'motion/react'
+import { useDispatch } from 'react-redux'
+import { posts } from '../../../../../redux/slices/CategorySlice'
 import { useForm } from 'react-hook-form'
 import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
@@ -9,7 +11,8 @@ import { CreatePostAdmin, GetProfile } from '../../../../../Axios/AxiosInit'
 export const Create = () => {
     const RequiredErrorMSG = 'This field is required !'
     const { register, handleSubmit, watch, formState: {errors} } = useForm();
-    const [AdminID, setAdminID] = useState([]);
+    const [ AdminID, setAdminID ] = useState([]);
+    const dispatch = useDispatch();
 
     const ImageWatch = watch("photo");
 
@@ -31,6 +34,7 @@ export const Create = () => {
                 pauseOnHover: false,
                 autoClose: 3000,
             })
+            dispatch(posts());
         })
 
         .catch(() => {
@@ -78,7 +82,7 @@ export const Create = () => {
     useEffect(() => {
         GetProfile()
         .then((res) => {
-            setAdminID(res.data?.[0].id)
+            setAdminID(res.data?.[0].id)            
         })
         .catch((res) => {
             setAdminID([]);

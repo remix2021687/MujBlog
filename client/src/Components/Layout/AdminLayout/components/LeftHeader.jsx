@@ -1,32 +1,38 @@
 import { motion } from 'motion/react'
 import { toast } from "react-toastify";
 import { useNavigate } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { dashboard, posts, create } from '../../../../redux/slices/CategorySlice';
 import { useState, useEffect } from 'react'
 import { Gauge, Note, User, Plus } from '@phosphor-icons/react'
 
 import { GetProfile } from '../../../../Axios/AxiosInit'
 import Logo from '../../../../assets/img/kludieLogo.png'
 
-export const LeftHeader = ({ setCatergoryState }) => {
-    const [selectButton, setSelectButton] = useState('Dashboard');
+export const LeftHeader = () => {
+    const CatergoryValue = useSelector(state => state.category.value)
     const [data, setData] = useState([]);
     const navigate = useNavigate()
+    const dispatch = useDispatch();
     
     const ButtonInfo = [
         {
             value: "Dashboard",
             name: 'Dashboard',
-            icon: <Gauge size={22} />
+            icon: <Gauge size={22} />,
+            onclick: () => dispatch(dashboard())
         },
         {
             value: "Posts",
             name: "Posts",
-            icon: <Note size={22} />
+            icon: <Note size={22} />,
+            onclick: () => dispatch(posts())
         },
         {
             value: "Create",
             name: "Create",
-            icon: <Plus size={22} />
+            icon: <Plus size={22} />,
+            onclick: () => dispatch(create())
         },
     ]
 
@@ -41,10 +47,6 @@ export const LeftHeader = ({ setCatergoryState }) => {
             console.error(err);
         })
     }, [])
-
-    useEffect(() => {
-        setCatergoryState(selectButton)
-    })
 
     const Logout = () => {
         navigate('/')
@@ -71,17 +73,15 @@ export const LeftHeader = ({ setCatergoryState }) => {
                                 <motion.button
                                     key={index + 1}
                                     className={
-                                        selectButton == data.name ?
+                                        CatergoryValue == data.name ?
                                         "LeftHeader_catergory_button activ"
                                         :
                                         'LeftHeader_catergory_button'
                                     }
                                     name={data.name}
-                                    onClick={() => {
-                                        setSelectButton(data.name)
-                                    }}
+                                    onClick={data.onclick}
                                 >
-                                    {selectButton === data.name && (
+                                    {CatergoryValue === data.name && (
                                         <motion.section 
                                             layoutId='selected'
                                             className='LeftHeader_catergory_button_bg'
