@@ -109,21 +109,6 @@
             border-radius: 8px;
             background: none;
             cursor: pointer;
-            transition: 0.3s ease;
-
-            &.save {
-                &:hover {
-                    color: white;
-                    background-color: green;
-                }
-            }
-
-            &.cancel {
-                &:hover {
-                    color: white;
-                    background-color: red;
-                }
-            }
         }
     }
 }

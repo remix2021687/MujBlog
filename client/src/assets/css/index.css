@@ -1209,16 +1209,6 @@ main {
   border-radius: 8px;
   background: none;
   cursor: pointer;
-  -webkit-transition: 0.3s ease;
-  transition: 0.3s ease;
-}
-.PostEdit .PostEdit_edit_dropmenu .PostEdit_edit_dropmenu_change_submit_cancel button.save:hover {
-  color: white;
-  background-color: green;
-}
-.PostEdit .PostEdit_edit_dropmenu .PostEdit_edit_dropmenu_change_submit_cancel button.cancel:hover {
-  color: white;
-  background-color: red;
 }
 
 .ConfirmDelateModal {

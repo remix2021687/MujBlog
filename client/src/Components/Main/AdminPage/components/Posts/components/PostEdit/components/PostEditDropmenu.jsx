@@ -175,11 +175,24 @@ export const PostEditDropmenu = ({ Id, Photo, Name, DisplayDescription, Text, is
                         <h4>Pin post</h4>
                 </section>
                 <section className='PostEdit_edit_dropmenu_change_submit_cancel'>
-                    <motion.button variants={PostEditChild} className='save'>Save</motion.button>
+                    <motion.button 
+                        variants={PostEditChild} 
+                        whileHover={{
+                            color: '#ffffff',
+                            backgroundColor: '#008000'
+                        }}
+                        whileTap={{scale: 0.9}}
+                    >
+                        Save
+                    </motion.button>
                     <motion.button
                         type='button'
                         variants={PostEditChild} 
-                        className='cancel'
+                        whileHover={{
+                            color: '#ffffff',
+                            backgroundColor: '#ff0000'
+                        }}
+                        whileTap={{scale: 0.9}}
                         onClick={() => {setCloseEdit(true)}}
                     >
                         Cancel
