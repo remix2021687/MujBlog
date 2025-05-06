@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import { color, motion } from 'motion/react'
 import { toast } from "react-toastify";
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
@@ -69,34 +69,34 @@ export const LeftHeader = () => {
                 <section className='LeftHeader_catergory'>
                     {
                         ButtonInfo.map((data, index) => 
-                            <>
-                                <motion.button
-                                    key={index + 1}
-                                    className={
-                                        CatergoryValue == data.name ?
-                                        "LeftHeader_catergory_button activ"
-                                        :
-                                        'LeftHeader_catergory_button'
-                                    }
-                                    name={data.name}
-                                    onClick={data.onclick}
-                                >
-                                    {CatergoryValue === data.name && (
-                                        <motion.section 
-                                            layoutId='selected'
-                                            className='LeftHeader_catergory_button_bg'
-                                            transition={{
-                                                type: 'spring',
-                                                bounce: 0.45
-                                            }}
-                                        ></motion.section>
-                                    )}
-                                    <span>
-                                        {data.icon}
-                                        {data.value}
-                                    </span>
-                                </motion.button>
-                            </>
+                            <motion.button
+                                key={index + 1}
+
+                                animate={
+                                    CatergoryValue == data.value ?
+                                    {color: '#ffffff'}
+                                    :
+                                    {color: '#000000'}
+                                }
+
+                                name={data.name}
+                                onClick={data.onclick}
+                            >
+                                {CatergoryValue === data.name && (
+                                    <motion.section 
+                                        layoutId='selected'
+                                        className='LeftHeader_catergory_button_bg'
+                                        transition={{
+                                            type: 'spring',
+                                            bounce: 0.25
+                                        }}
+                                    ></motion.section>
+                                )}
+                                <span>
+                                    {data.icon}
+                                    {data.value}
+                                </span>
+                            </motion.button>
                         )
                     }
                 </section>

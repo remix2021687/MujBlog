@@ -179,9 +179,6 @@ main {
   background: none;
   cursor: pointer;
 }
-.LeftHeader .LeftHeader_content .LeftHeader_catergory button.activ span {
-  color: white;
-}
 .LeftHeader .LeftHeader_content .LeftHeader_catergory button span {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -197,13 +194,10 @@ main {
       -ms-flex-pack: center;
           justify-content: center;
   gap: 16px;
-  padding: 0 20px;
   width: 100%;
   height: 100%;
   position: relative;
   z-index: 10;
-  -webkit-transition: 0.5s ease;
-  transition: 0.5s ease;
 }
 .LeftHeader .LeftHeader_content .LeftHeader_catergory button .LeftHeader_catergory_button_bg {
   display: -webkit-box;
