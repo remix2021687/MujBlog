@@ -80,6 +80,11 @@ export const AuthPage = () => {
                     initial={{scale: 1}}
                     whileHover={{scale: 1.2}}
                     whileTap={{scale: 0.8}}
+                    transition={{
+                        type: 'tween',
+                        ease: 'backOut',
+                        duration: 0.5
+                    }}
                 >
                     <span>Login</span>
                 </motion.button>

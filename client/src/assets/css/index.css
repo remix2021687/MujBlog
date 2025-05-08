@@ -1324,8 +1324,6 @@ main {
       -ms-flex-pack: center;
           justify-content: center;
   gap: 25px;
-  width: 100%;
-  height: 100%;
   padding: 25px 0;
 }
 .Create .Create_form span {
@@ -1524,8 +1522,8 @@ main {
   background-color: black;
   -webkit-transform: scale(0);
           transform: scale(0);
-  -webkit-transition: 0.5s ease;
-  transition: 0.5s ease;
+  -webkit-transition: 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .AuthPage .AuthPage_form .AuthPage_form_username_password {
   display: -webkit-box;

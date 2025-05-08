@@ -49,7 +49,6 @@ export const PostEdit = ({ id, index, Name, Photo, isPined, DisplayDescription, 
                             whileHover={{
                                 color: '#ffffff',
                                 backgroundColor: '#ffa500',
-                                boxShadow: '0px 0px 10px 7px rgba(0,0,0,0.12)'
                             }}
                             whileTap={{scale: 0.9}}
                         >
@@ -61,7 +60,6 @@ export const PostEdit = ({ id, index, Name, Photo, isPined, DisplayDescription, 
                             whileHover={{
                                 color: '#ffffff',
                                 backgroundColor: '#ff0000',
-                                boxShadow: '0px 0px 10px 7px rgba(0,0,0,0.12)'
                             }}
                             whileTap={{scale: 0.9}}
                         >
