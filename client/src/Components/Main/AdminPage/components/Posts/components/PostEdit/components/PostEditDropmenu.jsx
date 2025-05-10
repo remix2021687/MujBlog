@@ -19,7 +19,7 @@ export const PostEditDropmenu = ({ Id, Photo, Name, DisplayDescription, Text, is
 
     const ImgaeWatch = watch('photo');
 
-    const ImgaePreview = ImgaeWatch !== undefined ? ImgaeWatch.length > 0 ? URL.createObjectURL(ImgaeWatch[0]): null: Photo
+    const ImgaePreview = ImgaeWatch !== undefined ? ImgaeWatch.length > 0 ? URL.createObjectURL(ImgaeWatch[0]): null: Photo;
 
     const PostEditParent = {
         open: {
@@ -98,7 +98,7 @@ export const PostEditDropmenu = ({ Id, Photo, Name, DisplayDescription, Text, is
                 onSubmit={handleSubmit(OnSubmit)}
             >
                 <motion.label variants={PostEditChild} htmlFor='NewPhoto' className='PostEdit_edit_dropmenu_change_photo'>
-                    <img src={ImgaePreview}  alt={Name} />
+                    <img src={ImgaePreview == null ? Photo: ImgaePreview}  alt={Name} />
                     <section className='NewPhoto_change'>
                         <FileArrowUp size={32} />
                         <h2>Click to Change</h2>
@@ -157,7 +157,10 @@ export const PostEditDropmenu = ({ Id, Photo, Name, DisplayDescription, Text, is
                     />
                     <span>{errors.text?.message}</span>
                 </section>
-                <section className="PostEdit_edit_dropmenu_change_check">
+                <motion.section
+                    variants={PostEditChild} 
+                    className="PostEdit_edit_dropmenu_change_check"
+                >
                         <Controller 
                             name="pin_post"
                             control={control}
@@ -173,7 +176,7 @@ export const PostEditDropmenu = ({ Id, Photo, Name, DisplayDescription, Text, is
                             }
                         />
                         <h4>Pin post</h4>
-                </section>
+                </motion.section>
                 <section className='PostEdit_edit_dropmenu_change_submit_cancel'>
                     <motion.button 
                         variants={PostEditChild} 

@@ -20,7 +20,7 @@ export const PinPost = () => {
             {
                 data ?
                 <section className="PinPost">
-                    <h1>Pin Posts</h1>
+                    <h1>Favorite Posts</h1>
                     <section className="PinPost_content">
                         {
                             data.map((data, index) => 
