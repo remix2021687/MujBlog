@@ -42,8 +42,24 @@ AxiosInit.interceptors.response.use(
       
       return Promise.reject(error);
     }
-  );
-  
+);
+
+export const axiosBaseQuery = () => 
+  async ({ method, data, params }) => {
+    try {
+      const result = await AxiosInit({
+        method,
+        data,
+        params
+      });
+
+      return {data: result.data}
+    } catch(AxiosErrors) {
+      const error = AxiosErrors.response?.data || AxiosErrors.message;
+
+      return { error }
+    }
+};
 
 export const AuthLogin = async (data) => await AxiosInit.post('auth/login/', data)
 
