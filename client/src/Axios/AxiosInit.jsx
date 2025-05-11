@@ -44,13 +44,15 @@ AxiosInit.interceptors.response.use(
     }
 );
 
-export const axiosBaseQuery = () => 
-  async ({ method, data, params }) => {
+export const axiosBaseQuery = ({ baseURL } = {baseURL: ''}) => 
+  async ({ url, method, data, headers, params }) => {
     try {
       const result = await AxiosInit({
+        url: baseURL + url,
         method,
         data,
-        params
+        params,
+        headers
       });
 
       return {data: result.data}
@@ -64,21 +66,6 @@ export const axiosBaseQuery = () =>
 export const AuthLogin = async (data) => await AxiosInit.post('auth/login/', data)
 
 export const GetProfile = async () => await AxiosInit.get('admin/profile/')
-
-export const GetPostAdmin = async (id) => {
-  
-  try {
-    if (id) {
-     return await AxiosInit.get(`admin/posts/${id}`)
-    } else {
-      return await AxiosInit.get('admin/posts/')
-    }
-  } catch(err) {
-    return err;
-  }
-}
-
-export const GetAdminList = async () => await AxiosInit.get('admin/list/')
 
 export const CreatePostAdmin = async (data) => await AxiosInit.post('admin/create/', data, 
     {headers: {"Content-Type": "multipart/form-data"}}

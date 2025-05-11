@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react"
 import { motion } from "motion/react"
+import { Spin } from "antd";
+import { LoadingOutlined } from '@ant-design/icons'
 import { PostEdit } from "./components/PostEdit/PostEdit"
-import { GetPostAdmin } from "../../../../../Axios/AxiosInit";
+import { useGetPostsQuery } from "../../../../../redux/slices/api/AdminSlice";
 
 
 export const Posts = () => {
-    const [data, setData] = useState([]);
+    const {data: posts, isLoading, Errors} = useGetPostsQuery({});
     
     const PostParent = {
         open: {
@@ -41,17 +43,15 @@ export const Posts = () => {
         }
     }
 
-    useEffect(() => {
-        GetPostAdmin()
-        .then((res) => {
-            setData(res.data)
-        })
-        .catch((err) => {
-            console.error(err);
-            setData([])
-        })
 
-    }, [])
+    if (isLoading) {
+        return (
+            <Spin
+                size="large" 
+                indicator={<LoadingOutlined />}
+            />
+        )
+    }
 
 
     return (
@@ -65,8 +65,7 @@ export const Posts = () => {
             <motion.h1 variants={PostChild}>Posts</motion.h1>
             <section className="Posts_content">
                 {
-                    data ?
-                    data.map((data, index) => 
+                    posts.map((data, index) => 
                         <PostEdit
                             key={index + 1}
                             index={index}
@@ -79,8 +78,6 @@ export const Posts = () => {
                             postChild={PostChild} 
                         />
                     )
-                    :
-                    null
                 }
             </section>
         </motion.section>

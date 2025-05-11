@@ -1,40 +1,19 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { motion } from "motion/react"
 import { User, Note } from "@phosphor-icons/react"
+import { LoadingOutlined } from '@ant-design/icons'
+import { Spin } from "antd";
 import { InfoBlocks } from "./components/InfoBlocks"
 import { PostBlock } from "./components/PostBlock/PostBlock"
-import { GetAdminList, GetPostAdmin } from "../../../../../Axios/AxiosInit";
 import moment from "moment";
+
+import { useGetPostsQuery, useGetAdminListQuery } from "../../../../../redux/slices/api/AdminSlice";
 
 
 export const Dashboard = () => {
-    const [dataPosts, setDataPosts] = useState([]);
-    const [dataCountAdmins, setDataCountAdmins] = useState(0);
-
-    useEffect(() => {
-        GetPostAdmin()
-        .then((res) => {
-            setDataPosts(res.data)
-        })
-        .catch((err) => {
-            setDataPosts([])
-            console.error(err);
-        })
-    }, [])
-
-    useEffect(() => {
-        GetAdminList()
-        .then((res) => {
-            const countAdmin = res.data.length;
-
-            setDataCountAdmins(countAdmin);
-        })
-
-        .catch((err) => {
-            setDataCountAdmins(0);
-            console.error(err);
-        })
-    }, []);
+    const { data: posts, isLoading, Errors } = useGetPostsQuery({});
+    const { data: adminCount } = useGetAdminListQuery({})
 
     const DashboardParent = {
         open: {
@@ -81,6 +60,15 @@ export const Dashboard = () => {
             x: -15,
         }
     }
+    
+    if (isLoading) {
+        return (
+            <Spin
+                size="large" 
+                indicator={<LoadingOutlined />}
+            />
+        )
+    }
 
     return (
         <motion.section 
@@ -96,7 +84,7 @@ export const Dashboard = () => {
                 <section className="Dashboard_content_header">
                     <InfoBlocks 
                         name={"User"}
-                        count={dataCountAdmins}
+                        count={adminCount.length}
                         icon={<User size={40} />}
                         BgColorIcon={"#8280FF"}
                         colorIcon={'white'}
@@ -105,7 +93,7 @@ export const Dashboard = () => {
 
                     <InfoBlocks 
                         name={"Posts"}
-                        count={dataPosts.length}
+                        count={posts.length}
                         icon={<Note size={40} />}
                         BgColorIcon={"#FEC53D"}
                         colorIcon={'white'}
@@ -123,8 +111,7 @@ export const Dashboard = () => {
                     exit="close"
                 >
                     {
-                        dataPosts ?
-                        dataPosts.map((data, index) => 
+                        posts.map((data, index) => 
                             <PostBlock
                                 key={index + 1}
                                 index={index + 1}
@@ -136,8 +123,6 @@ export const Dashboard = () => {
                                 childAnimation={DashboardChildPosts}
                             />
                         )
-                        :
-                        null
                     }
                 </motion.section>
             </section>
