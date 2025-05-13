@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { setupListeners } from '@reduxjs/toolkit/query';
 import CategoryReducer from './slices/CategorySlice';
 import { apiSlice } from './slices/api/AdminSlice';
 
 
-export default configureStore({
+export const store = configureStore({
     reducer: {
         category: CategoryReducer,
         [apiSlice.reducerPath]: apiSlice.reducer,
@@ -12,3 +13,5 @@ export default configureStore({
         return getDefaultMiddleware().concat(apiSlice.middleware);
     }
 })
+
+setupListeners(store.dispatch)

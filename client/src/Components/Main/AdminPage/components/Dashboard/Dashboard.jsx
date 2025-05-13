@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { motion } from "motion/react"
 import { User, Note } from "@phosphor-icons/react"
 import { LoadingOutlined } from '@ant-design/icons'
@@ -12,8 +10,8 @@ import { useGetPostsQuery, useGetAdminListQuery } from "../../../../../redux/sli
 
 
 export const Dashboard = () => {
-    const { data: posts, isLoading, Errors } = useGetPostsQuery({});
-    const { data: adminCount } = useGetAdminListQuery({})
+    const { data: posts, isLoading, Errors } = useGetPostsQuery();
+    const { data: adminCount } = useGetAdminListQuery()
 
     const DashboardParent = {
         open: {
@@ -84,7 +82,7 @@ export const Dashboard = () => {
                 <section className="Dashboard_content_header">
                     <InfoBlocks 
                         name={"User"}
-                        count={adminCount.length}
+                        count={adminCount?.length}
                         icon={<User size={40} />}
                         BgColorIcon={"#8280FF"}
                         colorIcon={'white'}
@@ -93,7 +91,7 @@ export const Dashboard = () => {
 
                     <InfoBlocks 
                         name={"Posts"}
-                        count={posts.length}
+                        count={posts?.length}
                         icon={<Note size={40} />}
                         BgColorIcon={"#FEC53D"}
                         colorIcon={'white'}
@@ -111,7 +109,7 @@ export const Dashboard = () => {
                     exit="close"
                 >
                     {
-                        posts.map((data, index) => 
+                        posts?.map((data, index) => 
                             <PostBlock
                                 key={index + 1}
                                 index={index + 1}
