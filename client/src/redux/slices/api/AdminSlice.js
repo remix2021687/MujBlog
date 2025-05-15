@@ -6,7 +6,6 @@ export const apiSlice = createApi({
     baseQuery: axiosBaseQuery({
         baseURL: `${import.meta.env.VITE_URL}/api/`
     }),
-    tagTypes: ["admin_panel"],
     refetchOnMountOrArgChange: true,
     
     endpoints: builder => ({
@@ -16,7 +15,6 @@ export const apiSlice = createApi({
                 url: 'admin/list/',
                 method: 'GET'
             }),
-            providesTags: ['admin_panel']
         }),
 
         GetPosts: builder.query({
@@ -24,7 +22,6 @@ export const apiSlice = createApi({
                 url: 'admin/posts/',
                 method: 'GET'
             }),
-            providesTags: ['admin_panel']
         }),
 
         GetPostByID: builder.query({
@@ -32,8 +29,22 @@ export const apiSlice = createApi({
                 url: `admin/posts/${id}`,
                 method: 'GET',
             })
+        }),
+
+        CreatePostAdmin: builder.mutation({
+            query: (body) => ({
+                url: 'admin/create/',
+                method: 'POST',
+                headers: {"Content-Type": 'multipart/form-data'},
+                data: body
+            }),
         })
     })
 })
 
-export const { useGetPostsQuery, useGetPostByIDQuery, useGetAdminListQuery } = apiSlice;
+export const { 
+    useGetPostsQuery, 
+    useGetPostByIDQuery, 
+    useGetAdminListQuery,
+    useCreatePostAdminMutation
+} = apiSlice;

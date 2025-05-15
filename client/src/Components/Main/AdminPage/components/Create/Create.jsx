@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { CreatePostAdmin, GetProfile } from '../../../../../Axios/AxiosInit'
+import { useCreatePostAdminMutation } from '../../../../../redux/slices/api/AdminSlice'
 
 
 export const Create = () => {
@@ -13,41 +14,56 @@ export const Create = () => {
     const { register, handleSubmit, watch, formState: {errors} } = useForm();
     const [ AdminID, setAdminID ] = useState([]);
     const dispatch = useDispatch();
+    const [addPostAdmin, {
+        isLoading, 
+        isSuccess, 
+        isError, 
+        error
+    }] = useCreatePostAdminMutation();
 
     const ImageWatch = watch("photo");
 
 
-    const OnSubmit = (data) => {
-        CreatePostAdmin({
+    const OnSubmit = async (data) => {
+        await addPostAdmin({
             'photo': data.photo[0],
             'name': data.name,
             'display_description': data.display_description,
             'text': data.text,
             'author': AdminID
-        })
+        })        
+    }
 
-        .then(() => {
+    useEffect(() => {
+        if (isLoading) {
+            toast.loading('Loading...', {
+                position: 'top-right',
+                closeOnClick: true,
+                draggable: true,
+                pauseOnHover: false,
+                autoClose: 3000,
+            })
+        } else if (isSuccess) {
             toast.success('Post has been created', {
                 position: 'top-right',
-                closeOnClick: false,
+                closeOnClick: true,
                 draggable: true,
                 pauseOnHover: false,
                 autoClose: 3000,
             })
             dispatch(posts());
-        })
-
-        .catch(() => {
-            toast.error('Post hasnt created', {
+        } else if (isError) {
+            toast.error("Post didn't created", {
                 position: 'top-right',
-                closeOnClick: false,
+                closeOnClick: true,
                 draggable: true,
                 pauseOnHover: false,
                 autoClose: 3000,
             })
-        })
-        
-    }
+
+            console.log(error);
+        }
+    }, [isLoading, isLoading, isError])
 
     const CreateParent = {
         open: {
