@@ -16,31 +16,30 @@ AxiosInit.interceptors.request.use((config) => {
 
 AxiosInit.interceptors.response.use(
     response => response,
-    async error => {
-      const originalRequest = error.config;
+    async response => {
+      const originalRequest = response.config;
       const refreshToken = localStorage.getItem('token_ref')
-      
-      if (error.response?.status === 401 && !originalRequest._retry) {
-        originalRequest._retry = true;
-        
-        try {
-          const { data } = await AxiosInit.post('auth/login/refresh/',
-            {refresh: refreshToken}
-          );
-          
-          localStorage.setItem('token', data.access);
-          originalRequest.headers.Authorization = `Bearer ${data.access}`;
-          return AxiosInit(originalRequest);
-          
-        } catch (refreshError) {
-          localStorage.removeItem('token');
-          localStorage.removeItem('token_ref');
-          window.location.href = '/404'
-          return Promise.reject(refreshError)
+
+        if (response.response?.status === 401 && window.location.pathname == '/admin/') {
+          const { data } = await AxiosInit.post('auth/login/refresh/', 
+              {refresh: refreshToken}
+          )
+
+          .then(() => {
+            localStorage.setItem('token', data.access)
+            originalRequest.headers.Authorization = `Bearer ${data.access}`
+          })
+
+          .catch(() => {
+            localStorage.removeItem('token')
+            localStorage.removeItem('token_ref')
+            window.location.href = '/404'
+          })
         }
-      }
-      
-      return Promise.reject(error);
+
+        else if (response.response?.status === 401 && window.window.location.pathname == '/admin/login/') {
+          return Promise.reject("penus")
+        }
     }
 );
 
