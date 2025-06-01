@@ -1,7 +1,8 @@
 import axios from "axios";
 
 export const AxiosInit = axios.create({
-    baseURL: `${import.meta.env.VITE_URL}/api/`
+    baseURL: `${import.meta.env.VITE_URL}/api/`,
+    timeout: 5000,
 })
 
 AxiosInit.interceptors.request.use((config) => {
@@ -14,34 +15,44 @@ AxiosInit.interceptors.request.use((config) => {
     return config
 })
 
-AxiosInit.interceptors.response.use(
-    response => response,
-    async response => {
-      const originalRequest = response.config;
-      const refreshToken = localStorage.getItem('token_ref')
+AxiosInit.interceptors.response.use((response) => {
+  return response
+}, async (ErrorResponse) => {
+  const token = localStorage.getItem('token')
+  const refreshToken = localStorage.getItem('token_ref')
+  const pathURL = location.pathname.replace(/^\/+|\/+$/g, "")
 
-        if (response.response?.status === 401 && window.location.pathname == '/admin/') {
-          const { data } = await AxiosInit.post('auth/login/refresh/', 
-              {refresh: refreshToken}
-          )
 
-          .then(() => {
-            localStorage.setItem('token', data.access)
-            originalRequest.headers.Authorization = `Bearer ${data.access}`
-          })
+  if (token || refreshToken) {
+    if (ErrorResponse.response?.status == 401) {
+      const responseConfig = ErrorResponse.config;
+      
+      await AxiosInit.post('auth/login/refresh/', 
+        {refresh: refreshToken}
+      )
+      
+      .then((res) => {
+        console.log(res.data.access)
+        localStorage.setItem('token', res.data.access)
+        responseConfig.headers.Authorization = `Bearer ${res.data.access}`
+      })
 
-          .catch(() => {
-            localStorage.removeItem('token')
-            localStorage.removeItem('token_ref')
-            window.location.href = '/404'
-          })
-        }
-
-        else if (response.response?.status === 401 && window.window.location.pathname == '/admin/login/') {
-          return Promise.reject("penus")
-        }
+      .catch(() => {
+        localStorage.removeItem('token')
+        localStorage.removeItem('token_ref')
+        location.href = '/404'
+      })
+    } else {
+      location.href = '/admin'
     }
-);
+  } 
+  else if (ErrorResponse.response?.status == 401 && pathURL == 'admin/login') {
+      
+    return ErrorResponse
+  } else {
+    location.href = '/404'
+  }
+})
 
 export const axiosBaseQuery = ({ baseURL } = {baseURL: ''}) => 
   async ({ url, method, data, headers, params }) => {
