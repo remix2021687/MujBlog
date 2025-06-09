@@ -75,6 +75,7 @@ export const axiosBaseQuery = ({ baseURL } = {baseURL: ''}) =>
 
 export const AuthLogin = async (data) => await AxiosInit.post('auth/login/', data)
 
+//Admin Redux
 export const GetProfile = async () => await AxiosInit.get('admin/profile/')
 
 export const CreatePostAdmin = async (data) => await AxiosInit.post('admin/create/', data, 
