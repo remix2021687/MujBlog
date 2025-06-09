@@ -5,7 +5,7 @@ import { posts } from '../../../../../redux/slices/CategorySlice'
 import { useForm } from 'react-hook-form'
 import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
-import { CreatePostAdmin, GetProfile } from '../../../../../Axios/AxiosInit'
+import { GetProfile } from '../../../../../Axios/AxiosInit'
 import { useCreatePostAdminMutation } from '../../../../../redux/slices/api/AdminSlice'
 
 

@@ -78,10 +78,6 @@ export const AuthLogin = async (data) => await AxiosInit.post('auth/login/', dat
 //Admin Redux
 export const GetProfile = async () => await AxiosInit.get('admin/profile/')
 
-export const CreatePostAdmin = async (data) => await AxiosInit.post('admin/create/', data, 
-    {headers: {"Content-Type": "multipart/form-data"}}
-)
-
 export const EditPostAdmin = async (id, data) => await AxiosInit.put(`admin/edit/${id}/`, data, 
     {headers: {"Content-Type": 'multipart/form-data'}}
 )

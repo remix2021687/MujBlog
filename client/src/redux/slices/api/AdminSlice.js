@@ -38,6 +38,24 @@ export const apiSlice = createApi({
                 headers: {"Content-Type": 'multipart/form-data'},
                 data: body
             }),
+        }),
+
+        EditPostAdmin: builder.mutation({
+           query: (id, body) => ({
+                url: `admin/edit/${id}/`,
+                method: 'POST',
+                headers: {"Content-Type": 'multipart/form-data'},
+                data: body
+            }),
+        }),
+
+        DeletePostAdmin: builder.mutation({
+            query: (id, body) => ({
+                url: `admin/edit/${id}/`,
+                method: 'DELETE',
+                headers: {"Content-Type": 'multipart/form-data'},
+                data: body
+            }),
         })
     })
 })
@@ -46,5 +64,6 @@ export const {
     useGetPostsQuery, 
     useGetPostByIDQuery, 
     useGetAdminListQuery,
-    useCreatePostAdminMutation
+    useCreatePostAdminMutation,
+    useEditPostAdminMutation
 } = apiSlice;

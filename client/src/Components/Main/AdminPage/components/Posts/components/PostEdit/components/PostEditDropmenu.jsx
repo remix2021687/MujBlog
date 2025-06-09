@@ -4,6 +4,8 @@ import { toast } from "react-toastify";
 import { FileArrowUp } from '@phosphor-icons/react'
 import { EditPostAdmin } from "../../../../../../../../Axios/AxiosInit"
 import { Checkbox } from "antd";
+import { useEditPostAdminMutation } from "../../../../../../../../redux/slices/api/AdminSlice";
+import { useEffect } from "react";
 
 export const PostEditDropmenu = ({ Id, Photo, Name, DisplayDescription, Text, isPined, setCloseEdit}) => {
     const RequiredErrorMSG = 'This field is required !'
@@ -15,6 +17,12 @@ export const PostEditDropmenu = ({ Id, Photo, Name, DisplayDescription, Text, is
             "pin_post": isPined
         }
     });
+
+    const [EditPostAdmin, {
+        isLoading,
+        isSuccess, 
+        isError, 
+    }] = useEditPostAdminMutation();
 
 
     const ImgaeWatch = watch('photo');
@@ -58,14 +66,54 @@ export const PostEditDropmenu = ({ Id, Photo, Name, DisplayDescription, Text, is
     }
 
     const OnSubmit = (data) => {
+
         EditPostAdmin(Id, {
             ...(data.photo && data.photo.length > 0 && {"photo": data.photo}),
             "name": data.name,
             "display_description": data.display_description,
             "text": data.text,
             "pin_post": data.pin_post
-        })
-        .then(() => {
+        })        
+        // EditPostAdmin(Id, {
+        //     ...(data.photo && data.photo.length > 0 && {"photo": data.photo}),
+        //     "name": data.name,
+        //     "display_description": data.display_description,
+        //     "text": data.text,
+        //     "pin_post": data.pin_post
+        // })
+        // .then(() => {
+        //     toast.success('Update successfull !', {
+        //         position: 'top-right',
+        //         closeOnClick: false,
+        //         draggable: true,
+        //         pauseOnHover: false,
+        //         autoClose: 3000,
+        //     })
+
+        //     setCloseEdit(true)
+        // })
+        // .catch(() => {
+        //     toast.error('Problem to update !', {
+        //         position: 'top-right',
+        //         closeOnClick: false,
+        //         draggable: true,
+        //         pauseOnHover: false,
+        //         autoClose: 3000,
+        //     })
+        // })
+    }
+
+    useEffect(() => {
+        if (isLoading) {
+            toast.loading('Loading...', {
+                position: 'top-right',
+                closeOnClick: true,
+                draggable: true,
+                pauseOnHover: false,
+                autoClose: 3000,
+            })
+        } 
+        else if (isSuccess) {
             toast.success('Update successfull !', {
                 position: 'top-right',
                 closeOnClick: false,
@@ -73,19 +121,17 @@ export const PostEditDropmenu = ({ Id, Photo, Name, DisplayDescription, Text, is
                 pauseOnHover: false,
                 autoClose: 3000,
             })
-
-            setCloseEdit(true)
-        })
-        .catch(() => {
-            toast.error('Problem to update !', {
+        } 
+        else if (isError) {
+            toast.error("Post didn't update !", {
                 position: 'top-right',
                 closeOnClick: false,
                 draggable: true,
-                pauseOnHover: false,
                 autoClose: 3000,
             })
-        })
-    }
+        }
+
+    },[isLoading, isSuccess, isError])
 
     return (
         <>
