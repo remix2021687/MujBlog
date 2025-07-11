@@ -1,7 +1,6 @@
+import { useEffect, useState } from "react"
 import { BlogBox } from '../../Layout/BlogBox/BlogBox'
 import { GetPost } from "../../../Axios/AxiosInit"
-import { useState } from "react"
-import { useEffect } from "react"
 import { PinPost } from './components/PinPost/PinPost'
 
 export const HomePage = () => {
