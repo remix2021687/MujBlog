@@ -1,11 +1,10 @@
-import { motion } from "motion/react"
+import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form"
 import { toast } from "react-toastify";
+import { motion } from "motion/react"
 import { FileArrowUp } from '@phosphor-icons/react'
-import { EditPostAdmin } from "../../../../../../../../Axios/AxiosInit"
 import { Checkbox } from "antd";
 import { useEditPostAdminMutation } from "../../../../../../../../redux/slices/api/AdminSlice";
-import { useEffect } from "react";
 
 export const PostEditDropmenu = ({ Id, Photo, Name, DisplayDescription, Text, isPined, setCloseEdit}) => {
     const RequiredErrorMSG = 'This field is required !'
@@ -65,43 +64,7 @@ export const PostEditDropmenu = ({ Id, Photo, Name, DisplayDescription, Text, is
         }
     }
 
-    const OnSubmit = (data) => {
-
-        EditPostAdmin(Id, {
-            ...(data.photo && data.photo.length > 0 && {"photo": data.photo}),
-            "name": data.name,
-            "display_description": data.display_description,
-            "text": data.text,
-            "pin_post": data.pin_post
-        })        
-        // EditPostAdmin(Id, {
-        //     ...(data.photo && data.photo.length > 0 && {"photo": data.photo}),
-        //     "name": data.name,
-        //     "display_description": data.display_description,
-        //     "text": data.text,
-        //     "pin_post": data.pin_post
-        // })
-        // .then(() => {
-        //     toast.success('Update successfull !', {
-        //         position: 'top-right',
-        //         closeOnClick: false,
-        //         draggable: true,
-        //         pauseOnHover: false,
-        //         autoClose: 3000,
-        //     })
-
-        //     setCloseEdit(true)
-        // })
-        // .catch(() => {
-        //     toast.error('Problem to update !', {
-        //         position: 'top-right',
-        //         closeOnClick: false,
-        //         draggable: true,
-        //         pauseOnHover: false,
-        //         autoClose: 3000,
-        //     })
-        // })
-    }
+    const OnSubmit = (data) => EditPostAdmin(Object.assign(data, {id: Id}))
 
     useEffect(() => {
         if (isLoading) {
@@ -131,7 +94,7 @@ export const PostEditDropmenu = ({ Id, Photo, Name, DisplayDescription, Text, is
             })
         }
 
-    },[isLoading, isSuccess, isError])
+    }, [isLoading, isSuccess, isError])
 
     return (
         <>

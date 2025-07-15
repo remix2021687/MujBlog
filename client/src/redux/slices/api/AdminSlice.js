@@ -41,11 +41,17 @@ export const apiSlice = createApi({
         }),
 
         EditPostAdmin: builder.mutation({
-           query: (id, body) => ({
-                url: `admin/edit/${id}/`,
+           query: (post) => ({
+                url: `admin/edit/${post.id}/`,
                 method: 'PUT',
                 headers: {"Content-Type": 'multipart/form-data'},
-                data: body
+                data: {
+                    ...(post.photo && post.photo.length > 0 && {"photo": post.photo}),
+                    "name": post.name,
+                    "display_description": post.display_description,
+                    "text": post.text,
+                    "pin_post": post.pin_post
+                }
             }),
         }),
 

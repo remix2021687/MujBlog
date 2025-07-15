@@ -16,43 +16,27 @@ AxiosInit.interceptors.request.use((config) => {
 })
 
 AxiosInit.interceptors.response.use((response) => {
-  return response
-}, async (ErrorResponse) => {
-  const token = localStorage.getItem('token')
-  const refreshToken = localStorage.getItem('token_ref')
-  const pathURL = location.pathname.replace(/^\/+|\/+$/g, "")
+    return response
+}, async (error) => {
+    const originalRequest = error.config;
+    
+    if (error.response.status === 401 && !originalRequest._retry) {
+        originalRequest._retry = true;
+        const refreshToken = localStorage.getItem('token_ref');
 
-
-  if (token || refreshToken) {
-    if (ErrorResponse.response?.status == 401) {
-      const responseConfig = ErrorResponse.config;
-      
-      await AxiosInit.post('auth/login/refresh/', 
-        {refresh: refreshToken}
-      )
-      
-      .then((res) => {
-        console.log(res.data.access)
-        localStorage.setItem('token', res.data.access)
-        responseConfig.headers.Authorization = `Bearer ${res.data.access}`
-      })
-
-      .catch(() => {
-        localStorage.removeItem('token')
-        localStorage.removeItem('token_ref')
-        location.href = '/404'
-      })
-    } else {
-      location.href = '/admin'
+        try {
+            const response = await AxiosInit.post('auth/login/refresh/', { refresh: refreshToken });
+            localStorage.setItem('token', response.data.access);
+            originalRequest.headers.Authorization = `Bearer ${response.data.access}`;
+            return AxiosInit(originalRequest);
+        } catch (refreshError) {
+            localStorage.removeItem('token');
+            localStorage.removeItem('token_ref');
+            location.href = '/404';
+        }
     }
-  } 
-  else if (ErrorResponse.response?.status == 401 && pathURL == 'admin/login') {
-      
-    return ErrorResponse
-  } else {
-    location.href = '/404'
-  }
 })
+
 
 export const axiosBaseQuery = ({ baseURL } = {baseURL: ''}) => 
   async ({ url, method, data, headers, params }) => {
@@ -77,10 +61,6 @@ export const AuthLogin = async (data) => await AxiosInit.post('auth/login/', dat
 
 //Admin Redux
 export const GetProfile = async () => await AxiosInit.get('admin/profile/')
-
-export const EditPostAdmin = async (id, data) => await AxiosInit.put(`admin/edit/${id}/`, data, 
-    {headers: {"Content-Type": 'multipart/form-data'}}
-)
 
 export const DeletePostAdmin = async (id) => await AxiosInit.delete(`admin/edit/${id}`)
 
