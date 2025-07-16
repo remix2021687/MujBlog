@@ -56,11 +56,9 @@ export const apiSlice = createApi({
         }),
 
         DeletePostAdmin: builder.mutation({
-            query: (id, body) => ({
+            query: (id) => ({
                 url: `admin/edit/${id}/`,
                 method: 'DELETE',
-                headers: {"Content-Type": 'multipart/form-data'},
-                data: body
             }),
         })
     })
@@ -71,5 +69,6 @@ export const {
     useGetPostByIDQuery, 
     useGetAdminListQuery,
     useCreatePostAdminMutation,
-    useEditPostAdminMutation
+    useEditPostAdminMutation,
+    useDeletePostAdminMutation
 } = apiSlice;
