@@ -24,6 +24,13 @@ export const apiSlice = createApi({
             }),
         }),
 
+        GetProfile: builder.query({
+            query: () => ({
+                url: 'admin/profile/',
+                method: 'GET'
+            }),
+        }), 
+
         GetPostByID: builder.query({
             query: (id) => ({
                 url: `admin/posts/${id}`,
@@ -68,7 +75,8 @@ export const {
     useGetPostsQuery, 
     useGetPostByIDQuery, 
     useGetAdminListQuery,
+    useGetProfileQuery,
     useCreatePostAdminMutation,
     useEditPostAdminMutation,
-    useDeletePostAdminMutation
+    useDeletePostAdminMutation,
 } = apiSlice;

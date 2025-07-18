@@ -59,11 +59,6 @@ export const axiosBaseQuery = ({ baseURL } = {baseURL: ''}) =>
 
 export const AuthLogin = async (data) => await AxiosInit.post('auth/login/', data)
 
-//Admin Redux
-export const GetProfile = async () => await AxiosInit.get('admin/profile/')
-
-export const DeletePostAdmin = async (id) => await AxiosInit.delete(`admin/edit/${id}`)
-
 export const GetPost = async () => await AxiosInit.get('posts/')
 
 export const GetPostSelf = async (id) => await AxiosInit.get(`posts/${id}/`)

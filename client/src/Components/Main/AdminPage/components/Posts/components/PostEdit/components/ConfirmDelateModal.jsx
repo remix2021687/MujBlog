@@ -1,13 +1,18 @@
 import { useEffect } from "react";
 import { motion } from "motion/react"
 import { toast } from 'react-toastify';
-import { DeletePostAdmin } from "../../../../../../../../Axios/AxiosInit"
 import { useDeletePostAdminMutation } from "../../../../../../../../redux/slices/api/AdminSlice";
 import { useDispatch } from "react-redux";
 import { closeDeleteModel } from "../../../../../../../../redux/slices/DeleteModelSlice";
 
 export const ConfirmDelateModal = ({ id, name }) => {
     const dispatch = useDispatch();
+
+    const [DeletePostAdmin, {
+        isLoading, 
+        isSuccess, 
+        isError 
+    }] = useDeletePostAdminMutation();
 
     const ConfirmDelateModalParent = {
         open: {
@@ -56,12 +61,6 @@ export const ConfirmDelateModal = ({ id, name }) => {
 
         }
     }
-
-    const [DeletePostAdmin, {
-        isLoading, 
-        isSuccess, 
-        isError 
-        }] = useDeletePostAdminMutation();
 
     const DeleteBtn = () => {
         DeletePostAdmin(id)

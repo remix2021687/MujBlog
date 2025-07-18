@@ -1,19 +1,18 @@
-import { color, motion } from 'motion/react'
-import { toast } from "react-toastify";
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { dashboard, posts, create } from '../../../../redux/slices/CategorySlice';
-import { useState, useEffect } from 'react'
+import { motion } from 'motion/react'
+import { toast } from "react-toastify";
 import { Gauge, Note, User, Plus } from '@phosphor-icons/react'
+import { dashboard, posts, create } from '../../../../redux/slices/CategorySlice';
+import { useGetProfileQuery } from '../../../../redux/slices/api/AdminSlice';
 
-import { GetProfile } from '../../../../Axios/AxiosInit'
 import Logo from '../../../../assets/img/kludieLogo.png'
 
 export const LeftHeader = () => {
     const CatergoryValue = useSelector(state => state.category.value)
-    const [data, setData] = useState([]);
     const navigate = useNavigate()
     const dispatch = useDispatch();
+    const { data: adminProfile } = useGetProfileQuery();
     
     const ButtonInfo = [
         {
@@ -35,18 +34,6 @@ export const LeftHeader = () => {
             onclick: () => dispatch(create())
         },
     ]
-
-    useEffect(() => {
-        GetProfile()
-        .then((res) => {
-            setData(res.data)
-        })
-
-        .catch((err) => {
-            setData([]);
-            console.error(err);
-        })
-    }, [])
 
     const Logout = () => {
         navigate('/')
@@ -106,7 +93,12 @@ export const LeftHeader = () => {
                         <section className='LeftHeader_details_profile'>
                             <span><User size={32}/></span>
                             <section className='LeftHeader_details_profile_info'>
-                                <h4>{data[0]?.last_name} {data[0]?.first_name}</h4>
+                                {
+                                    adminProfile ? 
+                                    <h4>{adminProfile[0]?.last_name} {adminProfile[0]?.first_name}</h4>
+                                    :
+                                    null
+                                }
                                 <h5>Admin</h5>
                             </section>
                         </section>
