@@ -18,7 +18,7 @@ export const PinPost = () => {
     return (
         <>
             {
-                data ?
+                data.length > 0 ?
                 <section className="PinPost">
                     <h1>Favorite Posts</h1>
                     <section className="PinPost_content">

@@ -324,7 +324,7 @@ main {
   top: 35%;
 }
 .BlogBox .Blogbox_content h2 {
-  font-size: 64px;
+  font-size: clamp(14px, 2.5vw, 64px);
   font-weight: 500;
   color: white;
 }
@@ -403,6 +403,10 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 35px;
   width: 50%;
 }
 .Modal .Modal_left img {

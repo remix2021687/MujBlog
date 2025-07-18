@@ -18,6 +18,8 @@
     .Modal_left {
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
+        gap: 35px;      
         width: 50%;
 
         img {

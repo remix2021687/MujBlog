@@ -1,8 +1,18 @@
+import { useEffect } from "react";
 import { motion } from "motion/react"
 import { toast } from 'react-toastify';
-import { DeletePostAdmin } from "../../../../../../../../Axios/AxiosInit"
+import { useDeletePostAdminMutation } from "../../../../../../../../redux/slices/api/AdminSlice";
+import { useDispatch } from "react-redux";
+import { closeDeleteModel } from "../../../../../../../../redux/slices/DeleteModelSlice";
 
-export const ConfirmDelateModal = ({ id, name, cancelState }) => {
+export const ConfirmDelateModal = ({ id, name }) => {
+    const dispatch = useDispatch();
+
+    const [DeletePostAdmin, {
+        isLoading, 
+        isSuccess, 
+        isError 
+    }] = useDeletePostAdminMutation();
 
     const ConfirmDelateModalParent = {
         open: {
@@ -54,28 +64,38 @@ export const ConfirmDelateModal = ({ id, name, cancelState }) => {
 
     const DeleteBtn = () => {
         DeletePostAdmin(id)
-        .then(() => {
-            toast.success('Delete Post is successfull !', {
-                position: 'top-right',
-                closeOnClick: false,
-                draggable: true,
-                pauseOnHover: false,
-                autoClose: 3000,
-            })
-
-            cancelState(true)
-        })
-
-        .catch(() => {
-            toast.error("Delete Post isn't successfull !", {
-                position: 'top-right',
-                closeOnClick: false,
-                draggable: true,
-                pauseOnHover: false,
-                autoClose: 3000,
-            })
-        })
+        dispatch(closeDeleteModel());
     }
+
+    useEffect(() => {
+        if (isLoading) {
+            toast.loading('Deleting post...', {
+                position: 'top-right',
+                closeOnClick: true,
+                draggable: true,
+                pauseOnHover: false,
+                autoClose: 3000,
+            })
+        } 
+        else if (isSuccess) {
+            toast.success('Post deleted successfully!', {
+                position: 'top-right',
+                closeOnClick: false,
+                draggable: true,
+                pauseOnHover: false,
+                autoClose: 3000,
+            })
+        } 
+        else if (isError) {
+            toast.error("Post deletion failed!", {
+                position: 'top-right',
+                closeOnClick: false,
+                draggable: true,
+                pauseOnHover: false,
+                autoClose: 3000,
+            })
+        }
+    }, [isLoading, isSuccess, isError]);
 
     return (
         <>
@@ -119,7 +139,7 @@ export const ConfirmDelateModal = ({ id, name, cancelState }) => {
                                 color: '#ffffff'
                             }}
                             whileTap={{scale: 0.9}}
-                            onClick={() => cancelState(true)}
+                            onClick={() => dispatch(closeDeleteModel())}
                         >
                             Cancel
                         </motion.button>

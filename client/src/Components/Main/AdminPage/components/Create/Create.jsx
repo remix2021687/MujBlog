@@ -3,17 +3,18 @@ import { motion } from 'motion/react'
 import { useDispatch } from 'react-redux'
 import { posts } from '../../../../../redux/slices/CategorySlice'
 import { useForm } from 'react-hook-form'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { toast } from 'react-toastify'
-import { CreatePostAdmin, GetProfile } from '../../../../../Axios/AxiosInit'
-import { useCreatePostAdminMutation } from '../../../../../redux/slices/api/AdminSlice'
+import { useCreatePostAdminMutation, useGetProfileQuery } from '../../../../../redux/slices/api/AdminSlice'
 
 
 export const Create = () => {
     const RequiredErrorMSG = 'This field is required !'
     const { register, handleSubmit, watch, formState: {errors} } = useForm();
-    const [ AdminID, setAdminID ] = useState([]);
     const dispatch = useDispatch();
+    
+    const { data: adminProfile } = useGetProfileQuery();
+    
     const [addPostAdmin, {
         isLoading, 
         isSuccess, 
@@ -21,8 +22,8 @@ export const Create = () => {
         error
     }] = useCreatePostAdminMutation();
 
-    const ImageWatch = watch("photo");
 
+    const ImageWatch = watch("photo");
 
     const OnSubmit = async (data) => {
         await addPostAdmin({
@@ -30,7 +31,7 @@ export const Create = () => {
             'name': data.name,
             'display_description': data.display_description,
             'text': data.text,
-            'author': AdminID
+            'author': adminProfile[0].id,
         })        
     }
 
@@ -43,6 +44,7 @@ export const Create = () => {
                 pauseOnHover: false,
                 autoClose: 3000,
             })
+            
         } else if (isSuccess) {
             toast.success('Post has been created', {
                 position: 'top-right',
@@ -52,6 +54,7 @@ export const Create = () => {
                 autoClose: 3000,
             })
             dispatch(posts());
+
         } else if (isError) {
             toast.error("Post didn't created", {
                 position: 'top-right',
@@ -60,8 +63,6 @@ export const Create = () => {
                 pauseOnHover: false,
                 autoClose: 3000,
             })
-
-            console.log(error);
         }
     }, [isLoading, isLoading, isError])
 
@@ -94,16 +95,6 @@ export const Create = () => {
             y: -15
         }
     }
-
-    useEffect(() => {
-        GetProfile()
-        .then((res) => {
-            setAdminID(res.data?.[0].id)            
-        })
-        .catch((res) => {
-            setAdminID([]);
-        })
-    }, [])
 
     return (
         <motion.section 

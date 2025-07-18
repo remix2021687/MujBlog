@@ -24,6 +24,13 @@ export const apiSlice = createApi({
             }),
         }),
 
+        GetProfile: builder.query({
+            query: () => ({
+                url: 'admin/profile/',
+                method: 'GET'
+            }),
+        }), 
+
         GetPostByID: builder.query({
             query: (id) => ({
                 url: `admin/posts/${id}`,
@@ -38,6 +45,28 @@ export const apiSlice = createApi({
                 headers: {"Content-Type": 'multipart/form-data'},
                 data: body
             }),
+        }),
+
+        EditPostAdmin: builder.mutation({
+           query: (post) => ({
+                url: `admin/edit/${post.id}/`,
+                method: 'PUT',
+                headers: {"Content-Type": 'multipart/form-data'},
+                data: {
+                    ...(post.photo && post.photo.length > 0 && {"photo": post.photo}),
+                    "name": post.name,
+                    "display_description": post.display_description,
+                    "text": post.text,
+                    "pin_post": post.pin_post
+                }
+            }),
+        }),
+
+        DeletePostAdmin: builder.mutation({
+            query: (id) => ({
+                url: `admin/edit/${id}/`,
+                method: 'DELETE',
+            }),
         })
     })
 })
@@ -46,5 +75,8 @@ export const {
     useGetPostsQuery, 
     useGetPostByIDQuery, 
     useGetAdminListQuery,
-    useCreatePostAdminMutation
+    useGetProfileQuery,
+    useCreatePostAdminMutation,
+    useEditPostAdminMutation,
+    useDeletePostAdminMutation,
 } = apiSlice;
