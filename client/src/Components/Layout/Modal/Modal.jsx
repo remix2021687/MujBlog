@@ -1,13 +1,13 @@
 import { motion } from "motion/react"
 import { useEffect } from "react"
-import { GetPostSelf, GetPostPinSelf } from "../../../Axios/AxiosInit"
-import { useState } from "react"
+import { GetPostPinSelf } from "../../../Axios/AxiosInit"
 import moment from "moment/moment"
+import { useGetPostSelfQuery } from "../../../redux/slices/api/PostsSlice"
 
 export const Modal = ({id, setReturnEvent, pinMode}) => {
-    const [data, setData] = useState([]);
+    const { data: postData, isError } = useGetPostSelfQuery(id);
 
-    const formateData = moment(data.date_created).format("D.MM.YYYY")
+    const formateData = moment(postData?.date_created).format("D.MM.YYYY")
     
     const ModalAnimation = {
         open: {
@@ -47,7 +47,6 @@ export const Modal = ({id, setReturnEvent, pinMode}) => {
         }
     }
 
-
     const ClickHendler = (event) => {
         setReturnEvent(event)
     }
@@ -63,19 +62,13 @@ export const Modal = ({id, setReturnEvent, pinMode}) => {
                 setReturnEvent(false);
             })
             
-        } else {
-            GetPostSelf(id)
-            .then((res) => {
-                setData(res.data)
-            })
-            .catch(() => {
-                setData(false)
-                setReturnEvent(false);
-            })
-
         }
 
-    }, [])
+        if (isError) {
+            setReturnEvent(false);
+        }
+
+    }, [isError])
 
     return (
         <>
@@ -90,17 +83,17 @@ export const Modal = ({id, setReturnEvent, pinMode}) => {
                 }}
             >
                 <section className="Modal_left">
-                    <motion.img variants={ModalAnimationChildren} src={data.photo} />
+                    <motion.img variants={ModalAnimationChildren} src={postData?.photo} />
                     <section className="Modal_left_header">
-                        <motion.h1 variants={ModalAnimationChildren}>{data.name}</motion.h1>
-                        <motion.p variants={ModalAnimationChildren}>{data.text}</motion.p>
+                        <motion.h1 variants={ModalAnimationChildren}>{postData?.name}</motion.h1>
+                        <motion.p variants={ModalAnimationChildren}>{postData?.text}</motion.p>
                     </section>
                 </section>
                 <section className="Modal_right">
                     <motion.section variants={ModalAnimationChildren} className="Modal_right_presonal">
                         <section>
                             <h1>Auhor by</h1>
-                            <h3>{data.author?.last_name} {data.author?.first_name}</h3>
+                            <h3>{postData?.author.last_name} {postData?.author.first_name}</h3>
                         </section>
                         <motion.button 
                             variants={ModalAnimationChildren} 
