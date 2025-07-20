@@ -52,9 +52,6 @@ export const BlogBox = ({id, name, image, display_description, pinMode=false}) =
                 {IsOpenModal && 
                     <Modal
                         id={id}
-                        image={image}
-                        name={name}
-                        text={display_description}
                         setReturnEvent={setReturnEvent}
                         pinMode={pinMode}
                     />

@@ -23,10 +23,26 @@ export const PostsSliceAPI = createApi({
                 method: "GET",
             }),
         }),
+
+        GetPostPin: builder.query({
+            query: () => ({
+                url: "pins/",
+                method: "GET"
+            }),
+        }),
+
+        GetPostPinSelf: builder.query({
+            query: (id) => ({
+                url: `pins/${id}/`,
+                method: "GET"
+            }),
+        }),
     })
 })
 
 export const { 
     useGetPostsQuery,
-    useGetPostSelfQuery
+    useGetPostSelfQuery,
+    useGetPostPinQuery,
+    useGetPostPinSelfQuery,
 } = PostsSliceAPI;

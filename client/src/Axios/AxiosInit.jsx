@@ -59,10 +59,4 @@ export const axiosBaseQuery = ({ baseURL } = {baseURL: ''}) =>
 
 export const AuthLogin = async (data) => await AxiosInit.post('auth/login/', data)
 
-export const GetPostSelf = async (id) => await AxiosInit.get(`posts/${id}/`)
-
-export const GetPostPin = async () => await AxiosInit.get('pins/')
-
-export const GetPostPinSelf = async (id) => await AxiosInit.get(`pins/${id}/`)
-
 export const GetGallery = async () => await AxiosInit.get('gallery/')

@@ -1,29 +1,18 @@
-import { GetPostPin } from "../../../../../Axios/AxiosInit";
 import { BlogBox } from "../../../../Layout/BlogBox/BlogBox"
-import { useState, useEffect } from "react"
+import { useGetPostPinQuery } from "../../../../../redux/slices/api/PostsSlice";
 
 export const PinPost = () => {
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        GetPostPin()
-        .then((res) => {
-            setData(res.data)
-        })
-        .catch(() => {
-            setData([]);
-        })
-    }, [])
+    const { data: pinData, isLoading } = useGetPostPinQuery();
 
     return (
         <>
             {
-                data.length > 0 ?
+                pinData?.length > 0 ?
                 <section className="PinPost">
                     <h1>Favorite Posts</h1>
                     <section className="PinPost_content">
                         {
-                            data.map((data, index) => 
+                            pinData?.map((data, index) => 
                                 <BlogBox
                                     key={index + 1}
                                     id={data.id}
