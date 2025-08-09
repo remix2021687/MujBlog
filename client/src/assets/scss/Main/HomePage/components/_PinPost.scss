@@ -1,27 +1,33 @@
 .PinPost {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 80%;
-    padding: 25px;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.082);
-    box-shadow: 9px 8px 50px 0px rgba(0,0,0,0.1);
-    overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	width: 80%;
+	padding: 25px;
+	border-radius: 10px;
+	background-color: #ed0d9367;
+	overflow: hidden;
+	transition: 0.35s ease-in-out;
 
-    & > h1 {
-        text-align: center;
-        font-size: 32px;
-        font-weight: 500;
-    }
+	& > h1 {
+		text-align: center;
+		font-size: 32px;
+		color: white;
+		font-weight: 600;
+	}
 
-    .PinPost_content {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        position: relative;
-        gap: 25px;
-    }
+	.PinPost_content {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-around;
+		flex-wrap: wrap;
+		position: relative;
+		gap: 25px;
+	}
+
+	&:hover {
+		box-shadow: 14px 14px 5px 0px rgba(0, 0, 0, 0.1);
+		transform: scale(1.02);
+	}
 }
