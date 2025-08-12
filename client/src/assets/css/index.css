@@ -37,10 +37,6 @@ li {
   font-family: "Gothic A1", sans-serif;
 }
 
-body {
-  background-color: #f5a3c8;
-}
-
 main {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -71,7 +67,7 @@ main {
   position: sticky !important;
   top: 0;
   width: 100%;
-  background-color: #f5a3c8;
+  background-color: rgb(255, 255, 255);
   padding: 20px 0;
   z-index: 100;
 }
@@ -99,7 +95,7 @@ main {
   font-size: 20px;
   font-weight: 600;
   letter-spacing: 3px;
-  color: white;
+  color: black;
   position: relative;
   text-transform: uppercase;
 }
@@ -384,9 +380,9 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   position: fixed;
   z-index: 150;
   width: 95%;
@@ -455,7 +451,8 @@ main {
   border-radius: 10px;
   padding: 25px;
   overflow: hidden;
-  border: 2px solid black;
+  -webkit-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.1);
 }
 .Modal .Modal_right .Modal_right_presonal {
   display: -webkit-box;
@@ -608,10 +605,8 @@ main {
   width: 80%;
   padding: 25px;
   border-radius: 10px;
-  background-color: rgba(237, 13, 147, 0.4039215686);
+  background-color: black;
   overflow: hidden;
-  -webkit-transition: 0.35s ease-in-out;
-  transition: 0.35s ease-in-out;
 }
 .HomePage .PinPost > h1 {
   text-align: center;
@@ -636,12 +631,6 @@ main {
       flex-wrap: wrap;
   position: relative;
   gap: 25px;
-}
-.HomePage .PinPost:hover {
-  -webkit-box-shadow: 14px 14px 5px 0px rgba(0, 0, 0, 0.1);
-          box-shadow: 14px 14px 5px 0px rgba(0, 0, 0, 0.1);
-  -webkit-transform: scale(1.02);
-          transform: scale(1.02);
 }
 
 .GalleryPage {
@@ -695,7 +684,7 @@ main {
   border-radius: 10px;
 }
 .GalleryPhoto h1 {
-  font-size: 60px;
+  font-size: clamp(14px, 2.5vw, 64px);
   position: absolute;
   top: 45%;
   color: white;
@@ -728,6 +717,7 @@ main {
   left: 89%;
   width: 10%;
   height: 50px;
+  z-index: 100;
   border-radius: 10px;
   border: 2px solid red;
   background: none;

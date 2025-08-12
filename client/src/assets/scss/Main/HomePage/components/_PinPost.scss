@@ -5,9 +5,8 @@
 	width: 80%;
 	padding: 25px;
 	border-radius: 10px;
-	background-color: #ed0d9367;
+	background-color: black;
 	overflow: hidden;
-	transition: 0.35s ease-in-out;
 
 	& > h1 {
 		text-align: center;
@@ -24,10 +23,5 @@
 		flex-wrap: wrap;
 		position: relative;
 		gap: 25px;
-	}
-
-	&:hover {
-		box-shadow: 14px 14px 5px 0px rgba(0, 0, 0, 0.1);
-		transform: scale(1.02);
 	}
 }

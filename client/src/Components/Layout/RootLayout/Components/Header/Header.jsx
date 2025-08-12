@@ -9,8 +9,8 @@ export const Header = () => {
 	const [scrollDuraction, setScrollDuraction] = useState("up");
 
 	useMotionValueEvent(scrollY, "change", (current) => {
-		const diff = current - scrollY.getPrevious();
-		setScrollDuraction(diff > 0 ? "down" : "up");
+		// const diff = current - scrollY.getPrevious();
+		setScrollDuraction(current > 0 ? "down" : "up");
 	});
 
 	return (

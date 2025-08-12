@@ -9,6 +9,7 @@ import {
 export const Modal = ({ id, setReturnEvent, pinMode }) => {
 	const { data: postData, isError: postDataError } = useGetPostSelfQuery(id);
 	const { data: postDataPin, isError: isPinError } = useGetPostPinSelfQuery(id);
+
 	const formateData = moment(
 		pinMode ? postDataPin?.date_created : postData?.date_created
 	).format("D.MM.YYYY");
@@ -53,10 +54,6 @@ export const Modal = ({ id, setReturnEvent, pinMode }) => {
 		setReturnEvent(event);
 	};
 
-	useEffect(() => {
-		console.log(postDataError, isPinError);
-	}, [postDataError, isPinError]);
-
 	return (
 		<>
 			<motion.section
@@ -83,7 +80,9 @@ export const Modal = ({ id, setReturnEvent, pinMode }) => {
 						</motion.p>
 					</section>
 				</section>
-				<section className='Modal_right'>
+				<motion.section
+					className='Modal_right'
+					variants={ModalAnimationChildren}>
 					<motion.section
 						variants={ModalAnimationChildren}
 						className='Modal_right_presonal'>
@@ -105,6 +104,7 @@ export const Modal = ({ id, setReturnEvent, pinMode }) => {
 								backgroundColor: "#ff0000",
 								borderColor: "#ff0000",
 								color: "#ffffff",
+								boxShadow: "0 0 10px rgba(255, 0, 0, 0.5)",
 							}}
 							whileTap={{
 								scale: 0.9,
@@ -115,7 +115,7 @@ export const Modal = ({ id, setReturnEvent, pinMode }) => {
 					<motion.h4 variants={ModalAnimationChildren}>
 						<span>Created by</span> {formateData}
 					</motion.h4>
-				</section>
+				</motion.section>
 			</motion.section>
 		</>
 	);
