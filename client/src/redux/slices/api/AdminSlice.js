@@ -1,7 +1,7 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
 import { axiosBaseQuery } from '../../../Axios/AxiosInit'
 
-export const apiSlice = createApi({
+export const AdminAPISlice = createApi({
     reducerPath: 'api/admin',
     baseQuery: axiosBaseQuery({
         baseURL: `${import.meta.env.VITE_URL}/api/`
@@ -79,4 +79,4 @@ export const {
     useCreatePostAdminMutation,
     useEditPostAdminMutation,
     useDeletePostAdminMutation,
-} = apiSlice;
+} = AdminAPISlice;

@@ -1,18 +1,21 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
+import { AdminAPISlice } from './slices/api/AdminSlice';
+import { PostsSliceAPI } from './slices/api/PostsSlice';
 import CategoryReducer from './slices/CategorySlice';
 import DeleteModelReducer from './slices/DeleteModelSlice';
-import { apiSlice } from './slices/api/AdminSlice';
 
 
 export const store = configureStore({
     reducer: {
         category: CategoryReducer,
         deletemodel: DeleteModelReducer,
-        [apiSlice.reducerPath]: apiSlice.reducer,
+        [AdminAPISlice.reducerPath]: AdminAPISlice.reducer,
+        [PostsSliceAPI.reducerPath]: PostsSliceAPI.reducer
+        
     },
     middleware: (getDefaultMiddleware) => {
-        return getDefaultMiddleware().concat(apiSlice.middleware);
+        return getDefaultMiddleware().concat(AdminAPISlice.middleware, PostsSliceAPI.middleware);
     }
 })
 

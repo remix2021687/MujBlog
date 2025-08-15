@@ -1,44 +1,38 @@
-import { GetPostPin } from "../../../../../Axios/AxiosInit";
-import { BlogBox } from "../../../../Layout/BlogBox/BlogBox"
-import { useState, useEffect } from "react"
+import { BlogBox } from "../../../../Layout/BlogBox/BlogBox";
+import { useGetPostPinQuery } from "../../../../../redux/slices/api/PostsSlice";
+import { TrueFocus } from "../../../../Layout/TrueFocus/TrueFocus";
 
 export const PinPost = () => {
-    const [data, setData] = useState([]);
+	const { data: pinData, isLoading } = useGetPostPinQuery();
 
-    useEffect(() => {
-        GetPostPin()
-        .then((res) => {
-            setData(res.data)
-        })
-        .catch(() => {
-            setData([]);
-        })
-    }, [])
-
-    return (
-        <>
-            {
-                data.length > 0 ?
-                <section className="PinPost">
-                    <h1>Favorite Posts</h1>
-                    <section className="PinPost_content">
-                        {
-                            data.map((data, index) => 
-                                <BlogBox
-                                    key={index + 1}
-                                    id={data.id}
-                                    name={data.name}
-                                    image={data.photo}
-                                    display_description={data.display_description}
-                                    pinMode={true}
-                                />
-                            )
-                        }
-                    </section>
-                </section>
-                :
-                null
-            }
-        </>
-    )
-}
+	return (
+		<>
+			{pinData?.length > 0 ? (
+				<section className='PinPost'>
+					{/* TrueFocus Component for PinPost For testing */}
+					<TrueFocus
+						sentence='Favorite Posts'
+						manualMode={false}
+						blurAmount={5}
+						borderColor='white'
+						glowColor='rgba(255, 255, 255, 1)'
+						animationDuration={0.5}
+						pauseBetweenAnimations={2}
+					/>
+					<section className='PinPost_content'>
+						{pinData?.map((data, index) => (
+							<BlogBox
+								key={index + 1}
+								id={data.id}
+								name={data.name}
+								image={data.photo}
+								display_description={data.display_description}
+								pinMode={true}
+							/>
+						))}
+					</section>
+				</section>
+			) : null}
+		</>
+	);
+};

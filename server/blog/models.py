@@ -15,7 +15,7 @@ class Post(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, editable=False)
 
     class Meta:
-        ordering = ['date_created']
+        ordering = ['-pin_post', 'date_created']
 
     def __str__(self):
         return f'Post: {self.name} | Author: {self.author}'

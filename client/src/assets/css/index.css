@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -34,7 +34,7 @@ li {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  font-family: "Roboto", sans-serif;
+  font-family: "Gothic A1", sans-serif;
 }
 
 main {
@@ -67,12 +67,9 @@ main {
   position: sticky !important;
   top: 0;
   width: 100%;
-  background-color: white;
-  padding: 10px 0;
+  background-color: rgb(255, 255, 255);
+  padding: 20px 0;
   z-index: 100;
-}
-.Header h1 {
-  font-size: 24px;
 }
 .Header .Header_links {
   display: -webkit-box;
@@ -96,8 +93,11 @@ main {
       -ms-flex-align: center;
           align-items: center;
   font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 3px;
   color: black;
   position: relative;
+  text-transform: uppercase;
 }
 .Header .Header_links a:hover::before {
   width: 100%;
@@ -109,8 +109,8 @@ main {
   width: 0%;
   height: 2px;
   background-color: black;
-  -webkit-transition: 0.5s ease;
-  transition: 0.5s ease;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .LeftHeader {
@@ -129,9 +129,12 @@ main {
   padding: 24px 0;
 }
 .LeftHeader img {
-  width: 100%;
+  width: 80%;
   -o-object-fit: cover;
      object-fit: cover;
+  -ms-flex-item-align: center;
+      align-self: center;
+  justify-self: center;
 }
 .LeftHeader .LeftHeader_content {
   display: -webkit-box;
@@ -147,7 +150,7 @@ main {
   height: 100%;
 }
 .LeftHeader .LeftHeader_content hr {
-  color: #E0E0E0;
+  color: #e0e0e0;
   height: 1px;
 }
 .LeftHeader .LeftHeader_content .LeftHeader_catergory {
@@ -258,6 +261,9 @@ main {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 3px;
+}
+.LeftHeader .LeftHeader_content .LeftHeader_details .LeftHeader_details_profile .LeftHeader_details_profile_info h4 {
+  font-size: clamp(14px, 0.5vw, 20px);
 }
 .LeftHeader .LeftHeader_content .LeftHeader_details .LeftHeader_details_exit {
   width: 80%;
@@ -380,9 +386,9 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   position: fixed;
   z-index: 150;
   width: 95%;
@@ -451,7 +457,8 @@ main {
   border-radius: 10px;
   padding: 25px;
   overflow: hidden;
-  border: 2px solid black;
+  -webkit-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.1);
 }
 .Modal .Modal_right .Modal_right_presonal {
   display: -webkit-box;
@@ -575,6 +582,89 @@ main {
   transition: 0.3s ease;
 }
 
+.focus-container {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1em;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.focus-word {
+  position: relative;
+  font-size: 3rem;
+  font-weight: 900;
+  cursor: pointer;
+  -webkit-transition: color 0.3s ease, -webkit-filter 0.3s ease;
+  transition: color 0.3s ease, -webkit-filter 0.3s ease;
+  transition: filter 0.3s ease, color 0.3s ease;
+  transition: filter 0.3s ease, color 0.3s ease, -webkit-filter 0.3s ease;
+  color: white;
+}
+
+.focus-word.active {
+  -webkit-filter: blur(0);
+          filter: blur(0);
+}
+
+.focus-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  border: none;
+}
+
+.corner {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  border: 3px solid var(--border-color, #fff);
+  -webkit-filter: drop-shadow(0px 0px 4px var(--border-color, #fff));
+          filter: drop-shadow(0px 0px 4px var(--border-color, #fff));
+  border-radius: 3px;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.top-left {
+  top: -10px;
+  left: -10px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.top-right {
+  top: -10px;
+  right: -10px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.bottom-left {
+  bottom: -10px;
+  left: -10px;
+  border-right: none;
+  border-top: none;
+}
+
+.bottom-right {
+  bottom: -10px;
+  right: -10px;
+  border-left: none;
+  border-top: none;
+}
+
 .HomePage {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -604,15 +694,14 @@ main {
   width: 80%;
   padding: 25px;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.082);
-  -webkit-box-shadow: 9px 8px 50px 0px rgba(0, 0, 0, 0.1);
-          box-shadow: 9px 8px 50px 0px rgba(0, 0, 0, 0.1);
+  background-color: black;
   overflow: hidden;
 }
 .HomePage .PinPost > h1 {
   text-align: center;
   font-size: 32px;
-  font-weight: 500;
+  color: white;
+  font-weight: 600;
 }
 .HomePage .PinPost .PinPost_content {
   display: -webkit-box;
@@ -661,11 +750,10 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 30%;
-  height: 100px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
   position: relative;
   z-index: 50;
   cursor: pointer;
@@ -676,7 +764,8 @@ main {
 }
 .GalleryPhoto img {
   justify-self: center;
-  max-width: 100%;
+  width: 100%;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   -webkit-transition: 0.5s ease;
@@ -684,9 +773,9 @@ main {
   border-radius: 10px;
 }
 .GalleryPhoto h1 {
-  font-size: 60px;
+  font-size: clamp(14px, 2.5vw, 64px);
   position: absolute;
-  top: 45%;
+  text-align: center;
   color: white;
 }
 
@@ -709,8 +798,7 @@ main {
   width: 100%;
   height: 100vh;
   z-index: 100;
-  -webkit-backdrop-filter: brightness(0.5);
-          backdrop-filter: brightness(0.5);
+  backdrop-filter: brightness(0.5);
 }
 .GalleryPhotoModel button {
   position: absolute;
@@ -718,6 +806,7 @@ main {
   left: 89%;
   width: 10%;
   height: 50px;
+  z-index: 100;
   border-radius: 10px;
   border: 2px solid red;
   background: none;
@@ -1227,8 +1316,7 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-  -webkit-backdrop-filter: blur(0.9px);
-          backdrop-filter: blur(0.9px);
+  backdrop-filter: blur(0.9px);
 }
 .ConfirmDelateModal .ConfirmDelateModal_modal {
   display: -webkit-box;
@@ -1384,8 +1472,7 @@ main {
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
   opacity: 0;
-  -webkit-backdrop-filter: blur(2px);
-          backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
 }
 .Create .Create_form .Create_form_photo_label .Create_form_photo_label_zone.choosed:hover {
   opacity: 1;
