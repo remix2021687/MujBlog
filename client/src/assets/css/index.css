@@ -129,9 +129,12 @@ main {
   padding: 24px 0;
 }
 .LeftHeader img {
-  width: 100%;
+  width: 80%;
   -o-object-fit: cover;
      object-fit: cover;
+  -ms-flex-item-align: center;
+      align-self: center;
+  justify-self: center;
 }
 .LeftHeader .LeftHeader_content {
   display: -webkit-box;
@@ -147,7 +150,7 @@ main {
   height: 100%;
 }
 .LeftHeader .LeftHeader_content hr {
-  color: #E0E0E0;
+  color: #e0e0e0;
   height: 1px;
 }
 .LeftHeader .LeftHeader_content .LeftHeader_catergory {
@@ -258,6 +261,9 @@ main {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 3px;
+}
+.LeftHeader .LeftHeader_content .LeftHeader_details .LeftHeader_details_profile .LeftHeader_details_profile_info h4 {
+  font-size: clamp(14px, 0.5vw, 20px);
 }
 .LeftHeader .LeftHeader_content .LeftHeader_details .LeftHeader_details_exit {
   width: 80%;
@@ -744,11 +750,10 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 30%;
-  height: 100px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
   position: relative;
   z-index: 50;
   cursor: pointer;
@@ -759,7 +764,8 @@ main {
 }
 .GalleryPhoto img {
   justify-self: center;
-  max-width: 100%;
+  width: 100%;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   -webkit-transition: 0.5s ease;
@@ -769,7 +775,7 @@ main {
 .GalleryPhoto h1 {
   font-size: clamp(14px, 2.5vw, 64px);
   position: absolute;
-  top: 45%;
+  text-align: center;
   color: white;
 }
 

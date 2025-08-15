@@ -19,7 +19,6 @@ export const PinPost = () => {
 						animationDuration={0.5}
 						pauseBetweenAnimations={2}
 					/>
-					{/* <h1>Favorite Posts</h1> */}
 					<section className='PinPost_content'>
 						{pinData?.map((data, index) => (
 							<BlogBox
