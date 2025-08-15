@@ -1,68 +1,66 @@
 .BlogBox {
-    position: relative;
-    text-align: center;
-    width: 35%;
-    cursor: pointer;
+	position: relative;
+	text-align: center;
+	width: 35%;
+	cursor: pointer;
 
-    &:hover {
-        img {
-            filter: brightness(0.70);
-        }
-    }
+	&:hover {
+		img {
+			filter: brightness(0.7);
+		}
+	}
 
-    img {
-        max-width: 100%;
-        object-fit: cover;
-        border-radius: 10px;
-        transition: 0.5s ease;
-    }
+	img {
+		max-width: 100%;
+		object-fit: cover;
+		border-radius: 10px;
+		transition: 0.5s ease;
+	}
 
-    .Blogbox_content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 15px;
-        position: absolute;
-        width: 100%;
-        top: 35%;
+	.Blogbox_content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 15px;
+		position: absolute;
+		width: 100%;
+		top: 35%;
 
-        h2 {
-            font-size: 64px;
-            font-weight: 500;
-            color: white;
-        }
+		h2 {
+			font-size: clamp(14px, 2.5vw, 64px);
+			font-weight: 500;
+			color: white;
+		}
 
-        p {
-            max-width: 80%;
-            font-size: 14px;
-            font-weight: 400;
-            color: white;
-        }
+		p {
+			max-width: 80%;
+			font-size: 14px;
+			font-weight: 400;
+			color: white;
+		}
 
-        section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+		section {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 100%;
 
-            width: 100%;
-            button {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                width: 40%;
-                height: 50px;
-                background-color: black;
-                border: none;
-                color: white;
-                font-size: 24px;
-                font-weight: 500;
-                border-radius: 15px;
-                cursor: pointer;
-            }
-        }
-
-    
-    }
+			button {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				width: 40%;
+				height: 50px;
+				background-color: black;
+				border: none;
+				color: white;
+				font-size: 24px;
+				font-weight: 500;
+				border-radius: 15px;
+				cursor: pointer;
+			}
+		}
+	}
 }

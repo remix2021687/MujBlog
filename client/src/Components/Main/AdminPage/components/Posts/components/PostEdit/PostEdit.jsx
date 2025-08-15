@@ -2,11 +2,14 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
 import { PostEditDropmenu } from './components/PostEditDropmenu';
 import { ConfirmDelateModal } from './components/ConfirmDelateModal';
+import { useSelector, useDispatch } from 'react-redux';
+import { openDeleteModel } from '../../../../../../../redux/slices/DeleteModelSlice';
 
 
 export const PostEdit = ({ id, index, Name, Photo, isPined, DisplayDescription, Text, postChild }) => {
+    const dispatch = useDispatch();
     const [isOpen, setIsOpen] = useState(false);
-    const [isOnDelete, setIsOnDelete] = useState(false);
+    const DeleteMenuState = useSelector((state) => state.deletemodel.isOpen);
 
     const CloseHendle = (event) => {
         if (event) {
@@ -14,19 +17,13 @@ export const PostEdit = ({ id, index, Name, Photo, isPined, DisplayDescription, 
         }
     }
 
-    const CancelHendle = (event) => {
-        if (event) {
-            setIsOnDelete(false);
-        }
-    }
-
-    const onDelete = () => setIsOnDelete(true);
+    const onDelete = () => dispatch(openDeleteModel());
 
     return (
         <>
             <AnimatePresence>
                 {
-                    isOnDelete && <ConfirmDelateModal id={id} name={Name}  cancelState={CancelHendle}/>
+                    DeleteMenuState && <ConfirmDelateModal id={id} name={Name} />
                 }
             </AnimatePresence>
             <motion.section 
@@ -49,7 +46,6 @@ export const PostEdit = ({ id, index, Name, Photo, isPined, DisplayDescription, 
                             whileHover={{
                                 color: '#ffffff',
                                 backgroundColor: '#ffa500',
-                                boxShadow: '0px 0px 10px 7px rgba(0,0,0,0.12)'
                             }}
                             whileTap={{scale: 0.9}}
                         >
@@ -61,7 +57,6 @@ export const PostEdit = ({ id, index, Name, Photo, isPined, DisplayDescription, 
                             whileHover={{
                                 color: '#ffffff',
                                 backgroundColor: '#ff0000',
-                                boxShadow: '0px 0px 10px 7px rgba(0,0,0,0.12)'
                             }}
                             whileTap={{scale: 0.9}}
                         >

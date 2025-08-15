@@ -1,127 +1,123 @@
 .LeftHeader {
-    display: flex;
-    flex-direction: column;
-    position: sticky;
-    top: 0;
-    width: 15%;
-    height: 100vh;
-    background-color: white;
-    padding: 24px 0;
+	display: flex;
+	flex-direction: column;
+	position: sticky;
+	top: 0;
+	width: 15%;
+	height: 100vh;
+	background-color: white;
+	padding: 24px 0;
 
-    img {
-        width: 100%;
-        object-fit: cover;
-    }
+	img {
+		width: 80%;
+		object-fit: cover;
+		align-self: center;
+		justify-self: center;
+	}
 
-    .LeftHeader_content {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 100%;
+	.LeftHeader_content {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 100%;
 
-        hr {
-            color: #E0E0E0;
-            height: 1px;
-        }
+		hr {
+			color: #e0e0e0;
+			height: 1px;
+		}
 
-        .LeftHeader_catergory {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            gap: 20px;
-            padding: 16px 0;
-            
-            
-            button {
-                gap: 16px;
-                padding: 0 25px;
-                position: relative;
-                z-index: 5;
-                width: 80%;
-                height: 50px;
-                font-size: 14px;
-                font-weight: 500;
-                border: none;
-                border-radius: 10px;
-                background: none;
-                cursor: pointer;
-    
-                &.activ {
-    
-                    span {
-                        color: white;
-                    }
-                }
-    
-                span {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 16px;
-                    padding: 0 20px;
-                    width: 100%;
-                    height: 100%;
-                    position: relative;
-                    z-index: 10;
-                    transition: 0.5s ease;
-                }
-    
-                .LeftHeader_catergory_button_bg {
-                    display: flex;
-                    flex-direction: row;
-                    width: 100%;
-                    position: absolute;
-                    z-index: 5;
-                    width: 80%;
-                    height: 50px;
-                    border-radius: 10px;
-                    background-color: black;
-                }
-            }
-        }
+		.LeftHeader_catergory {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			position: relative;
+			gap: 20px;
+			padding: 16px 0;
 
-        .LeftHeader_details {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 25px;
-            padding: 40px 0;
+			button {
+				gap: 16px;
+				padding: 0 25px;
+				position: relative;
+				z-index: 5;
+				width: 80%;
+				height: 50px;
+				font-size: 14px;
+				font-weight: 500;
+				border: none;
+				border-radius: 10px;
+				background: none;
+				cursor: pointer;
 
-            .LeftHeader_details_profile {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: center;
-                gap: 15px;
-                width: 80%;
-                height: 60px;
-                background-color: white;
-                border-radius: 16px;
+				span {
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					justify-content: center;
+					gap: 16px;
+					width: 100%;
+					height: 100%;
+					position: relative;
+					z-index: 10;
+				}
 
-                .LeftHeader_details_profile_info {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 3px;
-                }
-            }
+				.LeftHeader_catergory_button_bg {
+					display: flex;
+					flex-direction: row;
+					width: 100%;
+					position: absolute;
+					z-index: 5;
+					width: 80%;
+					height: 50px;
+					border-radius: 10px;
+					background-color: black;
+				}
+			}
+		}
 
-            .LeftHeader_details_exit {
-                width: 80%;
-                height: 50px;
-                font-size: 18px;
-                background: none;
-                border: none;
-                border-radius: 10px;
-                cursor: pointer;
-                transition: 0.5s ease;
+		.LeftHeader_details {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 25px;
+			padding: 40px 0;
 
-                &:hover {
-                    background-color: red;
-                    color: white;
-                }
-            }
-        }
-    }
+			.LeftHeader_details_profile {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: center;
+				gap: 15px;
+				width: 80%;
+				height: 60px;
+				background-color: white;
+				border-radius: 16px;
+
+				.LeftHeader_details_profile_info {
+					display: flex;
+					flex-direction: column;
+					gap: 3px;
+
+					h4 {
+						font-size: clamp(14px, 0.5vw, 20px);
+					}
+				}
+			}
+
+			.LeftHeader_details_exit {
+				width: 80%;
+				height: 50px;
+				font-size: 18px;
+				background: none;
+				border: none;
+				border-radius: 10px;
+				cursor: pointer;
+				transition: 0.5s ease;
+
+				&:hover {
+					background-color: red;
+					color: white;
+				}
+			}
+		}
+	}
 }

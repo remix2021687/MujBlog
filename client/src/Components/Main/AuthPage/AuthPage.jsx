@@ -2,9 +2,10 @@ import { motion } from 'motion/react'
 import { useForm } from 'react-hook-form'
 import { AuthLogin } from '../../../Axios/AxiosInit'
 import { useNavigate } from 'react-router'
+import { useEffect } from 'react'
+import { toast, Slide } from 'react-toastify'
 
 import Logo from '../../../assets/img/kludieLogo.png'
-import { useEffect } from 'react'
 
 
 
@@ -19,17 +20,33 @@ export const AuthPage = () => {
             "password": event.password
         })
         .then((res) => {
-            localStorage.setItem('token', res.data.access)
-            localStorage.setItem('token_ref', res.data.refresh)
-            navigate('/admin');
-        })
-        .catch((err) => {
-            console.log(err)
+                localStorage.setItem('token', res.data.access)
+                localStorage.setItem('token_ref', res.data.refresh)
+                navigate('/admin');
+            })
+            .catch(() => {
+                toast.error(
+                <div>
+                    <h2>Account not found</h2>
+                    <p style={{fontSize: 14}}>Please check your username or password</p>
+                </div>, 
+            {
+                position: 'top-center',
+                autoClose: 3000,
+                pauseOnHover: false,
+                transition: Slide,
+                closeButton: false,
+                style: {
+                    textAlign: 'center',
+                    whiteSpace: 'pre-line'
+                }
+            })
         })
     }
-
+    
     useEffect(() => {
-        if (localStorage.getItem('token')) {
+        let token = localStorage.getItem('token')
+        if (token) {
             navigate('/admin')
         }
     })
@@ -80,6 +97,11 @@ export const AuthPage = () => {
                     initial={{scale: 1}}
                     whileHover={{scale: 1.2}}
                     whileTap={{scale: 0.8}}
+                    transition={{
+                        type: 'tween',
+                        ease: 'backOut',
+                        duration: 0.5
+                    }}
                 >
                     <span>Login</span>
                 </motion.button>

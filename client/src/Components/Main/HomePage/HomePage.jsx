@@ -1,29 +1,16 @@
 import { BlogBox } from '../../Layout/BlogBox/BlogBox'
-import { GetPost } from "../../../Axios/AxiosInit"
-import { useState } from "react"
-import { useEffect } from "react"
 import { PinPost } from './components/PinPost/PinPost'
+import { useGetPostsQuery } from "../../../redux/slices/api/PostsSlice"
 
 export const HomePage = () => {
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        GetPost()
-        .then((res) => {
-            setData(res.data)
-        })
-        .catch((err) => {
-            setData(false);
-            console.error(err)
-        })
-    }, [])
+    const { data: postsData, isLoading } = useGetPostsQuery();
 
     return (
         <section className="HomePage">
             <PinPost />
             {
-                data ?
-                data.map((data, index) => 
+                postsData ?
+                postsData.map((data, index) => 
                     <BlogBox 
                         key={index + 1}
                         id={data.id}

@@ -1,65 +1,66 @@
 .GalleryPhotoModel {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 100;
-    backdrop-filter: brightness(0.5);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100vh;
+	z-index: 100;
+	backdrop-filter: brightness(0.5);
 
-    button {
-        position: absolute;
-        top: 10px;
-        left: 89%;
-        width: 10%;
-        height: 50px;
-        border-radius: 10px;
-        border: 2px solid red;
-        background: none;
-        cursor: pointer;
-        overflow: hidden;
+	button {
+		position: absolute;
+		top: 10px;
+		left: 89%;
+		width: 10%;
+		height: 50px;
+		z-index: 100;
+		border-radius: 10px;
+		border: 2px solid red;
+		background: none;
+		cursor: pointer;
+		overflow: hidden;
 
-        &:hover {
-            &::before {
-                transform: scale(1);
-            }
-        }
+		&:hover {
+			&::before {
+				transform: scale(1);
+			}
+		}
 
-        span {
-            font-size: 20px;
-            font-weight: 600;
-            color: white;
-            position: relative;
-            z-index: 5;
-        }
+		span {
+			font-size: 20px;
+			font-weight: 600;
+			color: white;
+			position: relative;
+			z-index: 5;
+		}
 
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: red;
-            border-radius: 10px;
-            transform: scale(0);
-            transition: 0.3s ease;
-        }
-    }
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: red;
+			border-radius: 10px;
+			transform: scale(0);
+			transition: 0.3s ease;
+		}
+	}
 
-    .GalleryPhotoModel_bg {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 30%;
-    }
+	.GalleryPhotoModel_bg {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 30%;
+	}
 
-    img {
-        width: 100%;
-        border-radius: 10px;
-    }
+	img {
+		width: 100%;
+		border-radius: 10px;
+	}
 }
