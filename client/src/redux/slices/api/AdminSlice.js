@@ -1,82 +1,81 @@
-import { createApi } from '@reduxjs/toolkit/query/react'
-import { axiosBaseQuery } from '../../../Axios/AxiosInit'
+import { createApi } from "@reduxjs/toolkit/query/react";
+import { axiosBaseQuery } from "../../../Axios/AxiosInit";
 
 export const AdminAPISlice = createApi({
-    reducerPath: 'api/admin',
-    baseQuery: axiosBaseQuery({
-        baseURL: `${import.meta.env.VITE_URL}/api/`
-    }),
-    refetchOnMountOrArgChange: true,
-    
-    endpoints: builder => ({
-        
-        GetAdminList: builder.query({
-            query: () => ({
-                url: 'admin/list/',
-                method: 'GET'
-            }),
-        }),
+	reducerPath: "api/admin",
+	baseQuery: axiosBaseQuery({
+		baseURL: `${import.meta.env.VITE_URL}/api/`,
+	}),
+	refetchOnMountOrArgChange: true,
 
-        GetPosts: builder.query({
-            query: () => ({
-                url: 'admin/posts/',
-                method: 'GET'
-            }),
-        }),
+	endpoints: (builder) => ({
+		GetAdminList: builder.query({
+			query: () => ({
+				url: "admin/list/",
+				method: "GET",
+			}),
+		}),
 
-        GetProfile: builder.query({
-            query: () => ({
-                url: 'admin/profile/',
-                method: 'GET'
-            }),
-        }), 
+		GetPosts: builder.query({
+			query: () => ({
+				url: "admin/posts/",
+				method: "GET",
+			}),
+		}),
 
-        GetPostByID: builder.query({
-            query: (id) => ({
-                url: `admin/posts/${id}`,
-                method: 'GET',
-            })
-        }),
+		GetProfile: builder.query({
+			query: () => ({
+				url: "admin/profile/",
+				method: "GET",
+			}),
+		}),
 
-        CreatePostAdmin: builder.mutation({
-            query: (body) => ({
-                url: 'admin/create/',
-                method: 'POST',
-                headers: {"Content-Type": 'multipart/form-data'},
-                data: body
-            }),
-        }),
+		GetPostByID: builder.query({
+			query: (id) => ({
+				url: `admin/posts/${id}`,
+				method: "GET",
+			}),
+		}),
 
-        EditPostAdmin: builder.mutation({
-           query: (post) => ({
-                url: `admin/edit/${post.id}/`,
-                method: 'PUT',
-                headers: {"Content-Type": 'multipart/form-data'},
-                data: {
-                    ...(post.photo && post.photo.length > 0 && {"photo": post.photo}),
-                    "name": post.name,
-                    "display_description": post.display_description,
-                    "text": post.text,
-                    "pin_post": post.pin_post
-                }
-            }),
-        }),
+		CreatePostAdmin: builder.mutation({
+			query: (body) => ({
+				url: "admin/create/",
+				method: "POST",
+				headers: { "Content-Type": "multipart/form-data" },
+				data: body,
+			}),
+		}),
 
-        DeletePostAdmin: builder.mutation({
-            query: (id) => ({
-                url: `admin/edit/${id}/`,
-                method: 'DELETE',
-            }),
-        })
-    })
-})
+		EditPostAdmin: builder.mutation({
+			query: (post) => ({
+				url: `admin/edit/${post.id}/`,
+				method: "PUT",
+				headers: { "Content-Type": "multipart/form-data" },
+				data: {
+					...(post.photo && post.photo.length > 0 && { photo: post.photo }),
+					name: post.name,
+					display_description: post.display_description,
+					text: post.text,
+					pin_post: post.pin_post,
+				},
+			}),
+		}),
 
-export const { 
-    useGetPostsQuery, 
-    useGetPostByIDQuery, 
-    useGetAdminListQuery,
-    useGetProfileQuery,
-    useCreatePostAdminMutation,
-    useEditPostAdminMutation,
-    useDeletePostAdminMutation,
+		DeletePostAdmin: builder.mutation({
+			query: (id) => ({
+				url: `admin/edit/${id}/`,
+				method: "DELETE",
+			}),
+		}),
+	}),
+});
+
+export const {
+	useGetPostsQuery,
+	useGetPostByIDQuery,
+	useGetAdminListQuery,
+	useGetProfileQuery,
+	useCreatePostAdminMutation,
+	useEditPostAdminMutation,
+	useDeletePostAdminMutation,
 } = AdminAPISlice;

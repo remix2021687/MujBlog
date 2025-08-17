@@ -91,7 +91,7 @@ export const Modal = ({ id, setReturnEvent, pinMode }) => {
 							<h3>
 								{pinMode
 									? postDataPin?.author.last_name
-									: postData?.author.last_name}
+									: postData?.author.last_name}{" "}
 								{pinMode
 									? postDataPin?.author.first_name
 									: postData?.author.first_name}

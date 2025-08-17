@@ -94,7 +94,8 @@ export const LeftHeader = () => {
 							<section className='LeftHeader_details_profile_info'>
 								{adminProfile ? (
 									<h4>
-										{adminProfile[0]?.last_name} {adminProfile[0]?.first_name}
+										{adminProfile[0]?.last_name}
+										{adminProfile[0]?.first_name}
 									</h4>
 								) : null}
 								<h5>Admin</h5>
