@@ -79,7 +79,7 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  gap: 64px;
+  gap: 60px;
 }
 .Header .Header_links a {
   display: -webkit-box;
