@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
-import { useEffect } from "react";
+// import gasp from "gasp";
+import { useGSAP } from "@gsap/react";
 import moment from "moment/moment";
 import {
 	useGetPostSelfQuery,
@@ -9,6 +10,8 @@ import {
 export const Modal = ({ id, setReturnEvent, pinMode }) => {
 	const { data: postData, isError: postDataError } = useGetPostSelfQuery(id);
 	const { data: postDataPin, isError: isPinError } = useGetPostPinSelfQuery(id);
+
+	// let split =
 
 	const formateData = moment(
 		pinMode ? postDataPin?.date_created : postData?.date_created
@@ -75,9 +78,7 @@ export const Modal = ({ id, setReturnEvent, pinMode }) => {
 							{pinMode ? postDataPin?.name : postData?.name}
 						</motion.h1>
 
-						<motion.p variants={ModalAnimationChildren}>
-							{pinMode ? postDataPin?.text : postData?.text}
-						</motion.p>
+						<p>{pinMode ? postDataPin?.text : postData?.text}</p>
 					</section>
 				</section>
 				<motion.section

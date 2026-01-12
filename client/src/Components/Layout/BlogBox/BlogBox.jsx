@@ -68,7 +68,9 @@ export const BlogBox = ({
 				<img src={image} alt={name} />
 				<section className='Blogbox_content'>
 					<motion.h2 variants={BlogBoxChildren}>{name}</motion.h2>
-					<motion.p variants={BlogBoxChildren}>{display_description}</motion.p>
+					<motion.h4 variants={BlogBoxChildren}>
+						{display_description}
+					</motion.h4>
 				</section>
 			</motion.section>
 		</>

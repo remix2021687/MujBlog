@@ -79,7 +79,7 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  gap: 64px;
+  gap: 60px;
 }
 .Header .Header_links a {
   display: -webkit-box;
@@ -334,9 +334,9 @@ main {
   font-weight: 500;
   color: white;
 }
-.BlogBox .Blogbox_content p {
+.BlogBox .Blogbox_content h4 {
   max-width: 80%;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 400;
   color: white;
 }
