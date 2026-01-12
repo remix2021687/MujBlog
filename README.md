@@ -43,12 +43,6 @@ python manage.py createsuperuser
 python manage.py collectstatic
 ```
 
-### Docker Setup
-```bash
-# Start PostgreSQL database
-docker-compose up -d
-```
-
 ## Project Architecture
 
 ### Technology Stack
