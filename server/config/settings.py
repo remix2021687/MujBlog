@@ -29,10 +29,10 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # Application definition
 
 INSTALLED_APPS = [
-    'cloudinary_storage',
-    'django.contrib.staticfiles',
-    'cloudinary',
     'django.contrib.admin',
+    'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -114,11 +114,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = '/upload/'
+STATIC_URL = '/staticfiles/'
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'uploads',  # или BASE_DIR / 'assets'
-]
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
@@ -139,6 +136,7 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
