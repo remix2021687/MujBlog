@@ -6,7 +6,7 @@ export const HomePage = () => {
 	const { data: postsData, isLoading } = useGetPostsQuery();
 
 	return (
-		<section className='HomePage'>
+		<section className="HomePage">
 			<PinPost />
 			{postsData ? (
 				postsData.map((data, index) => (
